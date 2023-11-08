@@ -1,0 +1,17 @@
+{
+    "name": "_Game_Instances",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d4fbe58358c7cfa4d925e3689ec7ecc9",
+        "GUID:f6267cf39b17107489e9bb26b9ec3847"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
