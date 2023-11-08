@@ -64,6 +64,7 @@
     <Compile Include="Assets\Engine_Scripts\MonoInstances\Player\Basement\components\PlayerComponents.cs" />
     <Compile Include="Assets\Engine_Scripts\MonoInstances\Player\PlayerViewBehav.cs" />
     <Compile Include="Assets\Engine_Scripts\MonoInstances\Player\Basement\PlayerBehaviour.cs" />
+    <Compile Include="Assets\Engine_Scripts\MonoInstances\GitHubTesting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Engine_Scripts\MonoInstances\_Game_Instances.asmdef" />
