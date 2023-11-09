@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5377714702063303431}
+  - component: {fileID: 5582532084107697592}
   - component: {fileID: 3557274724543046227}
   m_Layer: 0
   m_Name: SimulateGun
@@ -116,6 +117,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5582532084107697592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341442282117732449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08596329def79ca47a84c42bf584f9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _master: {fileID: 0}
 --- !u!114 &3557274724543046227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1615ae4ea15b794782d3d25cc4a1b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followPoint: {fileID: 0}
 --- !u!1 &5412184714074269358
 GameObject:
   m_ObjectHideFlags: 0

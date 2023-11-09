@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 2630632268396808693}
   - component: {fileID: 9122134497242637858}
   - component: {fileID: 2779159681115100151}
+  - component: {fileID: 1082105057795404200}
   m_Layer: 0
   m_Name: "\u673A\u7532_player"
   m_TagString: Untagged
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 995aefa444ceb5e42a1c6bb1fdaf5cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1082105057795404200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110504489830083394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6b6fe217966664186dabeb8356963d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5255614019324253512
@@ -473,6 +486,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5582532084107697592, guid: 756cdf2258899d648a439b296bab04a4,
+        type: 3}
+      propertyPath: _master
+      value: 
+      objectReference: {fileID: 5110504489830083394}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
