@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Game.Instances.Player
 {
     internal sealed class PlayerComponents : MonoBehaviour
-    {       
+    {      
         [field: SerializeField]
         internal Rigidbody PlayerRb { get; private set; }
 
@@ -14,6 +14,7 @@ namespace Game.Instances.Player
         [field: SerializeField]
         internal Transform RootTransform { get; private set; }
 
+        [field: Header("External")]
         [field: SerializeField]
         internal AimPoint AimPoint { get; private set; }
 

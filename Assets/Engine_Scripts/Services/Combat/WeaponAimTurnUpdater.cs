@@ -8,13 +8,13 @@ using UnityEngine;
 
 namespace Game.Services.Combat 
 { 
-    public sealed class CharAimTurnUpdater
+    public sealed class WeaponAimTurnUpdater
     {
         private readonly IDynamicPoint _aimPoint;
         private readonly Transform _aimBone;
         private readonly float? _aimHeight;
 
-        public CharAimTurnUpdater(IDynamicPoint aimPoint, Transform aimBone, float? aimHeight = null)
+        public WeaponAimTurnUpdater(IDynamicPoint aimPoint, Transform aimBone, float? aimHeight = null)
         {
             _aimPoint = aimPoint ?? throw new ArgumentNullException(nameof(aimPoint));
             _aimBone = aimBone != null ? aimBone : throw new ArgumentNullException(nameof(aimBone));

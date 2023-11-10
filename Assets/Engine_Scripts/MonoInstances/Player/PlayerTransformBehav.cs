@@ -23,7 +23,18 @@ namespace Game.Instances.Player
                 this.DataHandler.CurrentMoveSpeed);
 
             _faceFlipCtrller.SetFlipState(
-                this.DataHandler.CurrentFacingDirIsLeft);
+                dirIsLeft: CurrentFaceDirIsLeft());
+        }
+
+        private bool CurrentFaceDirIsLeft()
+        {
+            var keyInputIsLeft = this.DataHandler.CurrentKeyInputDirIsLeft;
+            var mousePosIsLeft = this.Components.AimPoint.transform.position.x < transform.position.x;
+
+            if (keyInputIsLeft == null)
+                return mousePosIsLeft; 
+            else 
+                return keyInputIsLeft.Value;
         }
     }
 }

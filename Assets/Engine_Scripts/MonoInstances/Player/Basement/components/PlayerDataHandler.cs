@@ -19,12 +19,18 @@ namespace Game.Instances.Player
 
 
         internal Vector3 CurrentInputDirection => new(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        internal bool? CurrentFacingDirIsLeft => this.CurrentInputDirection.x switch
+        internal bool? CurrentKeyInputDirIsLeft
         {
-            < 0 => true,
-            > 0 => false,
-            _ => null
-        };      
+            get
+            {
+                return this.CurrentInputDirection.x switch
+                {
+                    < 0 => true,
+                    > 0 => false,
+                    _ => null
+                };
+            }
+        }
         
     }
 }
