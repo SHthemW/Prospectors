@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2978791135930456482
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5801680709335194961}
-  - component: {fileID: 2316146831005874062}
-  m_Layer: 0
-  m_Name: aim point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5801680709335194961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978791135930456482}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 103416089449177707}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2316146831005874062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978791135930456482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1abe4f6483d90084e801ea21cfd1c31a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5110504489830083394
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +36,6 @@ Transform:
   m_Children:
   - {fileID: 2556337405832750334}
   - {fileID: 4411805288924646801}
-  - {fileID: 5801680709335194961}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,7 +81,7 @@ MonoBehaviour:
   <PlayerRb>k__BackingField: {fileID: 890540894982427003}
   <CharAnimator>k__BackingField: {fileID: 1646830458376478711}
   <RootTransform>k__BackingField: {fileID: 103416089449177707}
-  <AimPoint>k__BackingField: {fileID: 2316146831005874062}
+  <AimPoint>k__BackingField: {fileID: 0}
   <AimBone>k__BackingField: {fileID: 0}
 --- !u!114 &2630632268396808693
 MonoBehaviour:
