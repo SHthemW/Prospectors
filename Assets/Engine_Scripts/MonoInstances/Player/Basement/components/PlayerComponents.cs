@@ -14,6 +14,9 @@ namespace Game.Instances.Player
         [field: SerializeField]
         internal Transform RootTransform { get; private set; }
 
+        [field: SerializeField]
+        internal Transform WeaponParent { get; private set; }
+
         [field: Header("External")]
         [field: SerializeField]
         internal AimPoint AimPoint { get; private set; }

@@ -81,6 +81,7 @@ MonoBehaviour:
   <PlayerRb>k__BackingField: {fileID: 890540894982427003}
   <CharAnimator>k__BackingField: {fileID: 1646830458376478711}
   <RootTransform>k__BackingField: {fileID: 103416089449177707}
+  <WeaponParent>k__BackingField: {fileID: 4411805288924646801}
   <AimPoint>k__BackingField: {fileID: 0}
   <AimBone>k__BackingField: {fileID: 0}
 --- !u!114 &2630632268396808693
