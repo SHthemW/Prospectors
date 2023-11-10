@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5582532084107697592}
   - component: {fileID: 3557274724543046227}
   m_Layer: 0
-  m_Name: SimulateGun
+  m_Name: Gun_Simulate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
