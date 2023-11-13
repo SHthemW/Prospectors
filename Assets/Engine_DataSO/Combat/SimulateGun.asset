@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec32c472fb2acc42a8e438f487e2473, type: 3}
+  m_Script: {fileID: 11500000, guid: f5024389783d1cd46b3a171678705657, type: 3}
   m_Name: SimulateGun
   m_EditorClassIdentifier: 
   _prefeb: {fileID: 5341442282117732449, guid: 756cdf2258899d648a439b296bab04a4, type: 3}
