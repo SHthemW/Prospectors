@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec32c472fb2acc42a8e438f487e2473, type: 3}
   m_Name: SimulateGun
   m_EditorClassIdentifier: 
-  <Prefeb>k__BackingField: {fileID: 5341442282117732449, guid: 756cdf2258899d648a439b296bab04a4,
-    type: 3}
+  _prefeb: {fileID: 5341442282117732449, guid: 756cdf2258899d648a439b296bab04a4, type: 3}
+  _damage: 15
