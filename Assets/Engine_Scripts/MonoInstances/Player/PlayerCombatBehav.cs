@@ -1,5 +1,6 @@
 ﻿using Game.Interfaces;
 using Game.Services.Combat;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Instances.Player
@@ -7,7 +8,8 @@ namespace Game.Instances.Player
     internal sealed class PlayerCombatBehav : PlayerBehaviour, IWeaponMaster
     {
         [SerializeField]
-        private WeaponData_SO _testWeapon;
+        private List<WeaponData_SO> _testWeapons;
+        private int _currentTestWeaponIndex;
 
         private WeaponSwitcher _weaponSwitcher;
 
@@ -27,7 +29,10 @@ namespace Game.Instances.Player
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                _weaponSwitcher.EquipOrSwitchWeapon(_testWeapon);
+                _weaponSwitcher.EquipOrSwitchWeapon(_testWeapons[_currentTestWeaponIndex]);
+                _currentTestWeaponIndex = _currentTestWeaponIndex == _testWeapons.Count - 1
+                    ? 0 
+                    : _currentTestWeaponIndex + 1;
             }
         }
     }

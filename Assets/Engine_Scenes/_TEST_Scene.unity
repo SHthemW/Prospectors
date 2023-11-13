@@ -39654,6 +39654,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309,
         type: 2}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309,
+        type: 2}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c834147092fc8f43afb012cc8a689fd,
+        type: 2}
     - target: {fileID: 4430908518486789005, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Mesh
