@@ -1,30 +1,23 @@
-﻿using Game.Interfaces.GameObj;
+﻿using Game.Interfaces;
+using Game.Services.Combat;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game.Instances.Combat
 {
-    public sealed class WeaponDataAndComponentsHandler : MonoBehaviour
+    public sealed class WeaponDataAndComponentsHandler : MonoBehaviour, IWeapon
     {
         [SerializeField]
-        private GameObject _master;
-
-        private IWeaponAimMaster _aimMaster;
-        public IWeaponAimMaster AimMaster
-        {
-            get
-            {
-                if ( _aimMaster == null )
-                {
-                    var master = _master.GetComponent<IWeaponAimMaster>();
-                    _aimMaster = master ?? throw new System.NotImplementedException($"[err] {nameof(IWeaponAimMaster)} was not found in {_master.name}");
-                }
-                return _aimMaster;
-            }
+        private WeaponData_SO _data; // TODO: ** impl weapon combat data
+        private IWeaponMaster _master;
+        
+        IWeaponMaster IWeapon.Master 
+        { 
+            get => _master; 
+            set => _master = value; 
         }
+
+        public Vector3 AimingPosition => _master.AimingPosition;   
     }
 }
