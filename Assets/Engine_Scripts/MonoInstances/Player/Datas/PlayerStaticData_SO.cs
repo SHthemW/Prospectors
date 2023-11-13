@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Game.Instances.Player
 {
     [CreateAssetMenu(fileName="PlayerData", menuName="Data/Player")]
-    internal sealed class PlayerData_SO : ScriptableObject
+    internal sealed class PlayerStaticData_SO : ScriptableObject
     {
         [SerializeField]
         private float _moveSpeed;

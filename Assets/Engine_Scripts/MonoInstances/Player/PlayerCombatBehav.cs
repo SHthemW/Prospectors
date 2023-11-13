@@ -8,7 +8,7 @@ namespace Game.Instances.Player
     internal sealed class PlayerCombatBehav : PlayerBehaviour, IWeaponMaster
     {
         [SerializeField]
-        private List<WeaponData_SO> _testWeapons;
+        private List<WeaponStaticData_SO> _testWeapons;
         private int _currentTestWeaponIndex;
 
         private WeaponSwitcher _weaponSwitcher;

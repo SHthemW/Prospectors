@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Services.Combat
 {
     [CreateAssetMenu(fileName = "new Weapon", menuName = "Data/Combat/Weapon")]
-    public sealed class WeaponData_SO : ScriptableObject
+    public sealed class WeaponStaticData_SO : ScriptableObject
     {
         [Header("Assets")]
 

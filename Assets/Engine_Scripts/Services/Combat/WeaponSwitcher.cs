@@ -15,7 +15,7 @@ namespace Game.Services.Combat
             _weaponParent = weaponParent != null ? weaponParent : throw new ArgumentNullException(nameof(weaponParent));
             _weaponMaster = weaponMaster ?? throw new ArgumentNullException(nameof(weaponMaster));
         }
-        public void EquipOrSwitchWeapon(WeaponData_SO weaponData)
+        public void EquipOrSwitchWeapon(WeaponStaticData_SO weaponData)
         {
             if (weaponData == null)
                 throw new ArgumentNullException(nameof(weaponData));
@@ -32,7 +32,7 @@ namespace Game.Services.Combat
         {
             UnityEngine.Object.Destroy(_weaponParent.GetChild(0).gameObject);
         }
-        private void EquipNewWeapon(WeaponData_SO weaponData)
+        private void EquipNewWeapon(WeaponStaticData_SO weaponData)
         {
             var weaponObj = UnityEngine.Object.Instantiate(weaponData.Prefeb, _weaponParent);
 
