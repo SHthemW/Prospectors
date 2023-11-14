@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Interfaces.GameObj
+namespace Game.Interfaces
 {
-    public interface IWeaponAimMaster
+    public interface IWeaponMaster
     {
         Vector3 AimingPosition { get; }
     }

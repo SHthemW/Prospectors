@@ -13,7 +13,7 @@ namespace Game.Instances.Combat
 
         private void FollowTheAim()
         {
-            transform.forward = ThisWeapon.AimMaster.AimingPosition - transform.position;
+            transform.forward = ThisWeapon.AimingPosition - transform.position;
         }
     }
 }
