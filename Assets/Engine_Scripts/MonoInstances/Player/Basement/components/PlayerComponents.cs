@@ -20,8 +20,6 @@ namespace Game.Instances.Player
 
         [field: SerializeField]
         internal GameObject[] PlayerModels { get; private set; }
-        internal readonly int[] FrontModelIndexList = { 0 };
-        internal readonly int[] BackModelIndexList  = { 1 };
 
         [field: Header("External")]
         [field: SerializeField]

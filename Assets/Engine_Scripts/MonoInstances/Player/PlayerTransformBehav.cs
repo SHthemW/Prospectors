@@ -29,9 +29,9 @@ namespace Game.Instances.Player
 
             _modelDirCtrller.EnableActiveOfObjectExclusively(
                 index: CalcCurrentFacingDirection_isDown()
-                ? Components.BackModelIndexList
-                : Components.FrontModelIndexList
-                );
+                ? 1
+                : 0
+                ); // TODO: use "tagable" items - a new custom collection type.
         }
 
         private bool CalcCurrentFacingDirection_isLeft()

@@ -9,31 +9,31 @@ namespace Game.Services.Physics
 {
     public sealed class ObjActiveTurner
     {
-        private readonly GameObject[] _objects;
+        private readonly GameObject[] _gameObjects;
 
-        public ObjActiveTurner(GameObject[] objects)
+        public ObjActiveTurner(GameObject gameObject)
         {
-            _objects = objects ?? throw new ArgumentNullException(nameof(objects));
+            if (gameObject == null)
+                throw new ArgumentNullException(nameof(gameObject));
+            _gameObjects = new GameObject[1] { gameObject };
         }
-        public void EnableActiveOfObject(int[] index)
+        public ObjActiveTurner(GameObject[] gameObjects)
         {
-            if (index == null || index.Length == 0) 
-                throw new ArgumentNullException(nameof(index));
-
-            foreach (int i in index)
-                _objects[i].SetActive(true);
+            _gameObjects = gameObjects ?? throw new ArgumentNullException(nameof(gameObjects));
         }
-        public void EnableActiveOfObjectExclusively(int[] index)
-        {
-            if (index == null || index.Length == 0)
-                throw new ArgumentNullException(nameof(index));
 
-            for (int i = 0; i < _objects.Length; i++)
+        public void EnableActiveOfObject(int index = 0)
+        {
+            _gameObjects[index].SetActive(true);
+        }
+        public void EnableActiveOfObjectExclusively(int index = 0)
+        {
+            for (int i = 0; i < _gameObjects.Length; i++)
             {
-                if (index.Contains(i))
-                    _objects[i].SetActive(true);
+                if (i == index)
+                    _gameObjects[i].SetActive(true);
                 else
-                    _objects[i].SetActive(false);
+                    _gameObjects[i].SetActive(false);
             }
         }
 
