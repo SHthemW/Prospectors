@@ -82,6 +82,9 @@ MonoBehaviour:
   <CharAnimator>k__BackingField: {fileID: 2731748018018910407}
   <RootTransform>k__BackingField: {fileID: 103416089449177707}
   <WeaponParent>k__BackingField: {fileID: 4411805288924646801}
+  <PlayerModels>k__BackingField:
+  - {fileID: 2818605107726242407}
+  - {fileID: 1783087426941274565}
   <AimPoint>k__BackingField: {fileID: 0}
   <AimBone>k__BackingField: {fileID: 2710655787756005589}
 --- !u!114 &2630632268396808693
@@ -378,6 +381,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6060945559873864771}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2818605107726242407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8287045211874170404, guid: 6e344eb7f453d1446899af781b62e49c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6060945559873864771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4464570622840604594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7631800970083320817, guid: 6e344eb7f453d1446899af781b62e49c,
@@ -467,6 +476,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4341f21c3b3757f4cbeba990a58ce86c, type: 3}
+--- !u!1 &1783087426941274565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7688769592162813941, guid: 4341f21c3b3757f4cbeba990a58ce86c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8218281675612507696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7449841457661291852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1544194751683453820, guid: 4341f21c3b3757f4cbeba990a58ce86c,

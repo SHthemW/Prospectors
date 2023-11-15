@@ -7,13 +7,15 @@ namespace Game.Instances.Player
 {
     internal sealed class PlayerTransformBehav : PlayerBehaviour
     {           
-        private RbTransformer _movementCtrller;
-        private ObjFlipper _faceFlipCtrller;
+        private RbTransformer   _movementCtrller;   
+        private ObjFlipper      _faceFlipCtrller;
+        private ObjActiveTurner _modelDirCtrller;
 
         private void Awake()
         {
             _movementCtrller = new(this.Components.PlayerRb);
             _faceFlipCtrller = new(this.Components.RootTransform);
+            _modelDirCtrller = new(this.Components.PlayerModels);
         }
 
         private void FixedUpdate()
@@ -23,10 +25,16 @@ namespace Game.Instances.Player
                 this.DataHandler.CurrentMoveSpeed);
 
             _faceFlipCtrller.SetFlipState(
-                dirIsLeft: CurrentFaceDirIsLeft());
+                dirIsLeft: CalcCurrentFacingDirection_isLeft());
+
+            _modelDirCtrller.EnableActiveOfObjectExclusively(
+                index: CalcCurrentFacingDirection_isDown()
+                ? Components.BackModelIndexList
+                : Components.FrontModelIndexList
+                );
         }
 
-        private bool CurrentFaceDirIsLeft()
+        private bool CalcCurrentFacingDirection_isLeft()
         {
             var keyInputIsLeft = this.DataHandler.CurrentKeyInputDirIsLeft;
             var mousePosIsLeft = this.Components.AimPoint.transform.position.x < transform.position.x;
@@ -35,6 +43,11 @@ namespace Game.Instances.Player
                 return mousePosIsLeft; 
             else 
                 return keyInputIsLeft.Value;
+        }
+        private bool CalcCurrentFacingDirection_isDown()
+        {
+            bool mousePosIsDown = this.Components.AimPoint.transform.position.z > transform.position.z;
+            return mousePosIsDown;
         }
     }
 }
