@@ -10,7 +10,7 @@ namespace Game.Instances.Player
         internal Rigidbody PlayerRb { get; private set; }
 
         [field: SerializeField]
-        internal Animator CharAnimator { get; private set; }
+        internal Animator[] CharAnimator { get; private set; }
 
         [field: SerializeField]
         internal Transform RootTransform { get; private set; }

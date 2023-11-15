@@ -79,7 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerRb>k__BackingField: {fileID: 890540894982427003}
-  <CharAnimator>k__BackingField: {fileID: 2731748018018910407}
+  <CharAnimator>k__BackingField:
+  - {fileID: 2731748018018910407}
+  - {fileID: 557823506765234549}
   <RootTransform>k__BackingField: {fileID: 103416089449177707}
   <WeaponParent>k__BackingField: {fileID: 4411805288924646801}
   <PlayerModels>k__BackingField:
@@ -476,6 +478,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4341f21c3b3757f4cbeba990a58ce86c, type: 3}
+--- !u!95 &557823506765234549 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8480553123933753157, guid: 4341f21c3b3757f4cbeba990a58ce86c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8218281675612507696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1783087426941274565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7688769592162813941, guid: 4341f21c3b3757f4cbeba990a58ce86c,
