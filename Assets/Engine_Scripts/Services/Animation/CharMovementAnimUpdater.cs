@@ -25,7 +25,8 @@ namespace Game.Services.Animation
         public void UpdateAnim(float currentVelocity)
         {
             foreach (var animator in _animators)
-                animator.SetFloat(_property.CurrentVelocity, currentVelocity);
+                if (animator.isActiveAndEnabled)
+                    animator.SetFloat(_property.CurrentVelocity, currentVelocity);
         }
 
         private CharMovementAnimUpdater()
