@@ -39648,6 +39648,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 280538170903899355, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: _testWeapon
@@ -39671,6 +39676,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3c834147092fc8f43afb012cc8a689fd,
         type: 2}
+    - target: {fileID: 2709375991612389706, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4430908518486789005, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Mesh
@@ -39686,6 +39696,11 @@ PrefabInstance:
       propertyPath: <AimPoint>k__BackingField
       value: 
       objectReference: {fileID: 1491892978}
+    - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: <Objs>k__BackingField._items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
