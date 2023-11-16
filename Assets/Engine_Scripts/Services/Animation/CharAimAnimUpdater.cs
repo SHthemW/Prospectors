@@ -1,13 +1,9 @@
-﻿using Game.Interfaces.GameObj;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using UnityEngine;
 
-namespace Game.Services.Combat 
-{ 
+namespace Game.Services.Combat
+{
+    [Obsolete]    
     public sealed class CharAimAnimUpdater
     {
         private readonly Transform _aimTarget;
