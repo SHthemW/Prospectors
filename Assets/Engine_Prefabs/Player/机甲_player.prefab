@@ -85,8 +85,10 @@ MonoBehaviour:
   <RootTransform>k__BackingField: {fileID: 103416089449177707}
   <WeaponParent>k__BackingField: {fileID: 4411805288924646801}
   <PlayerModels>k__BackingField:
-  - {fileID: 2818605107726242407}
-  - {fileID: 1783087426941274565}
+  - _tag: Front
+    _item: {fileID: 2818605107726242407}
+  - _tag: Back
+    _item: {fileID: 1783087426941274565}
   <AimPoint>k__BackingField: {fileID: 0}
   <AimBone>k__BackingField: {fileID: 2710655787756005589}
 --- !u!114 &2630632268396808693

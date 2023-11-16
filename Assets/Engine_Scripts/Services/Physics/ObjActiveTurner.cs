@@ -1,39 +1,34 @@
-﻿using System;
+﻿using Game.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game.Services.Physics
 {
     public sealed class ObjActiveTurner
     {
-        private readonly GameObject[] _gameObjects;
+        private readonly Dictionary<string, GameObject> _gameObjects;
 
-        public ObjActiveTurner(GameObject gameObject)
+        public ObjActiveTurner(TaggedItem<GameObject>[] gameObjects)
         {
-            if (gameObject == null)
-                throw new ArgumentNullException(nameof(gameObject));
-            _gameObjects = new GameObject[1] { gameObject };
-        }
-        public ObjActiveTurner(GameObject[] gameObjects)
-        {
-            _gameObjects = gameObjects ?? throw new ArgumentNullException(nameof(gameObjects));
-        }
+            if (gameObjects == null)
+                throw new ArgumentNullException(nameof(gameObjects));
 
-        public void EnableActiveOfObject(int index = 0)
-        {
-            _gameObjects[index].SetActive(true);
+            _gameObjects = gameObjects.ToDictionary(o => o.Tag, o => o.Item);
         }
-        public void EnableActiveOfObjectExclusively(int index = 0)
+        public void EnableActiveOfObject(string key)
         {
-            for (int i = 0; i < _gameObjects.Length; i++)
+            _gameObjects[key].SetActive(true);
+        }
+        public void EnableActiveOfObjectExclusively(string key)
+        {
+            foreach (var obj in _gameObjects)
             {
-                if (i == index)
-                    _gameObjects[i].SetActive(true);
+                if (obj.Key == key)
+                    obj.Value.SetActive(true);
                 else
-                    _gameObjects[i].SetActive(false);
+                    obj.Value.SetActive(false);
             }
         }
 

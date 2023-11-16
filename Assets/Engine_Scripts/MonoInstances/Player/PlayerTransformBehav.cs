@@ -28,10 +28,10 @@ namespace Game.Instances.Player
                 dirIsLeft: CalcCurrentFacingDirection_isLeft());
 
             _modelDirCtrller.EnableActiveOfObjectExclusively(
-                index: CalcCurrentFacingDirection_isDown()
-                ? 1
-                : 0
-                ); // TODO: use "tagable" items - a new custom collection type.
+                key: CalcCurrentFacingDirection_isDown()
+                ? "Back"
+                : "Front"
+                );
         }
 
         private bool CalcCurrentFacingDirection_isLeft()

@@ -1,4 +1,5 @@
 using Game.Services.Combat;
+using Game.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace Game.Instances.Player
         internal Transform WeaponParent { get; private set; }
 
         [field: SerializeField]
-        internal GameObject[] PlayerModels { get; private set; }
+        internal TaggedItem<GameObject>[] PlayerModels { get; private set; }
 
         [field: Header("External")]
         [field: SerializeField]
