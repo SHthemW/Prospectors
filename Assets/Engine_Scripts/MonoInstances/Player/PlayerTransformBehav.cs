@@ -25,7 +25,7 @@ namespace Game.Instances.Player
                 this.DataHandler.CurrentMoveSpeed);
 
             _faceFlipCtrller.SetFlipState(
-                dirIsLeft: CalcCurrentFacingDirection_isLeft());
+                dirIsLeft: CurrentAimingPosIsInLeft());
 
             _modelDirCtrller.EnableActiveOfObjectExclusively(
                 key: CalcCurrentFacingDirection_isDown()
@@ -34,15 +34,9 @@ namespace Game.Instances.Player
                 );
         }
 
-        private bool CalcCurrentFacingDirection_isLeft()
+        private bool CurrentAimingPosIsInLeft()
         {
-            var keyInputIsLeft = this.DataHandler.CurrentKeyInputDirIsLeft;
-            var mousePosIsLeft = this.Components.AimPoint.transform.position.x < transform.position.x;
-
-            if (keyInputIsLeft == null)
-                return mousePosIsLeft; 
-            else 
-                return keyInputIsLeft.Value;
+            return this.Components.AimPoint.transform.position.x < transform.position.x;
         }
         private bool CalcCurrentFacingDirection_isDown()
         {
