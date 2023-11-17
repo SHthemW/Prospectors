@@ -39712,10 +39712,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u673A\u7532_player"
       objectReference: {fileID: 0}
+    - target: {fileID: 5150586607742898525, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7118422
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150586607742898525, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7023395
+      objectReference: {fileID: 0}
     - target: {fileID: 5575578477475130588, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344404197593517625, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344404197593517625, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}

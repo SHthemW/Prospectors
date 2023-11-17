@@ -22,11 +22,17 @@ namespace Game.Services.Animation
             _animators = animators ?? throw new ArgumentNullException(nameof(animators));
             _property = property != null ? property : throw new ArgumentNullException(nameof(property));
         }
-        public void UpdateAnim(float currentVelocity)
+        public void UpdateAnim(float currentVelocity, bool isBackward = false)
         {
             foreach (var animator in _animators)
-                if (animator.isActiveAndEnabled)
-                    animator.SetFloat(_property.CurrentVelocity, currentVelocity);
+            {
+                if (!animator.isActiveAndEnabled)
+                    continue;
+
+                animator.SetFloat(
+                    _property.CurrentVelocity,
+                    currentVelocity * (isBackward ? -1 : 1));
+            }
         }
 
         private CharMovementAnimUpdater()

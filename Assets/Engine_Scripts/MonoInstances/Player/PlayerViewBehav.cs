@@ -19,8 +19,19 @@ namespace Game.Instances.Player
 
         private void Update()
         {
-            _moveAnimUpdater.UpdateAnim(Components.PlayerRb.velocity.magnitude);
+            _moveAnimUpdater.UpdateAnim(
+                currentVelocity: Components.PlayerRb.velocity.magnitude,
+                isBackward: !CurrentMoveAndAimingIsInSameDirection()
+                );
             _aimAnimUpdater.UpdateAimBone();
+        }
+
+        private bool CurrentMoveAndAimingIsInSameDirection()
+        {
+            var keyInputIsLeft  = this.DataHandler.CurrentKeyInputDirIsLeft;
+            var aimingDirIsLeft = this.Components.AimPoint.transform.position.x < transform.position.x;
+
+            return keyInputIsLeft == aimingDirIsLeft;
         }
     }
 }
