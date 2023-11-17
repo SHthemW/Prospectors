@@ -34109,6 +34109,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &1459462292 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5282263394851996673, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4848509634068375646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1480427770
 GameObject:
   m_ObjectHideFlags: 0
@@ -39676,6 +39682,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3c834147092fc8f43afb012cc8a689fd,
         type: 2}
+    - target: {fileID: 1331734237814427336, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2709375991612389706, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Mesh
@@ -39686,11 +39697,31 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4461743668538161817, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675351777000040666, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5110504489830083394, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Name
       value: "\u673A\u7532_player"
       objectReference: {fileID: 0}
+    - target: {fileID: 5575578477475130588, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: <AimBone>k__BackingField
+      value: 
+      objectReference: {fileID: 1459462292}
     - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: <AimPoint>k__BackingField

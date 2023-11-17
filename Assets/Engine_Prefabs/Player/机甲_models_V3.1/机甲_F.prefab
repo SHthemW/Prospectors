@@ -725,7 +725,7 @@ Animator:
   m_GameObject: {fileID: 3870587723958615861}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 878df16ce94a3804fa521303de145927, type: 2}
+  m_Controller: {fileID: 22100000, guid: 66451cfb1831584468521e4ee33e0752, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -774,8 +774,8 @@ MonoBehaviour:
   translator:
     autoReset: 1
     useCustomMixMode: 1
-    layerMixModes: 01000000
-    layerBlendModes: 01000000
+    layerMixModes: 01000000010000000100000001000000
+    layerBlendModes: 01000000020000000200000002000000
   updateTiming: 1
 --- !u!114 &3372623823409339501
 MonoBehaviour:
