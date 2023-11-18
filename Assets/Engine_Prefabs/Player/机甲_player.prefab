@@ -89,6 +89,9 @@ MonoBehaviour:
     _item: {fileID: 5606997611839870386}
   - _tag: Back
     _item: {fileID: 2006112026218064877}
+  <CharacterHands>k__BackingField:
+  - {fileID: 4507229804914378418}
+  - {fileID: 2004786342617208265}
   <AimPoint>k__BackingField: {fileID: 0}
   <AimBone>k__BackingField: {fileID: 0}
 --- !u!114 &2630632268396808693
@@ -319,6 +322,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 8285513571832492194}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2004786342617208265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7579101048296449387, guid: c8e7cdb5d3fdb224f8680f26dfd0de3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8285513571832492194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006112026218064877 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7578198023841061711, guid: c8e7cdb5d3fdb224f8680f26dfd0de3f,
@@ -458,6 +467,12 @@ Animator:
 --- !u!4 &4117243796684919201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4703019093831351078, guid: 92e420a8fd91a514599dd722520ea285,
+    type: 3}
+  m_PrefabInstance: {fileID: 8675931356244978311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4507229804914378418 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5110455525709851701, guid: 92e420a8fd91a514599dd722520ea285,
     type: 3}
   m_PrefabInstance: {fileID: 8675931356244978311}
   m_PrefabAsset: {fileID: 0}

@@ -7,15 +7,24 @@ namespace Game.Instances.Player
 {
     internal sealed class PlayerTransformBehav : PlayerBehaviour
     {           
-        private RbTransformer   _movementCtrller;   
-        private ObjFlipper      _faceFlipCtrller;
-        private ObjActiveTurner _modelDirCtrller;
+        private RbTransformer           _movementCtrller;   
+        private ObjFlipper              _faceFlipCtrller;
+        private ObjActiveTurner         _modelDirCtrller;
+        private ObjPositionSynchronizer _handAndWeaponPosSyncr;
 
         private void Awake()
         {
             _movementCtrller = new(this.Components.PlayerRb);
+
             _faceFlipCtrller = new(this.Components.RootTransform);
+
             _modelDirCtrller = new(this.Components.PlayerModels);
+
+            _handAndWeaponPosSyncr = new
+            (
+                syncTarget: transform,
+                toBeSync:   Components.CharacterHands
+            );
         }
 
         private void FixedUpdate()
@@ -32,6 +41,8 @@ namespace Game.Instances.Player
                 ? "Back"
                 : "Front"
                 );
+
+            _handAndWeaponPosSyncr.Sync();
         }
 
         private bool CurrentAimingPosIsInLeft()

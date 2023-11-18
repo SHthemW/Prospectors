@@ -22,6 +22,9 @@ namespace Game.Instances.Player
         [field: SerializeField]
         internal TaggedItem<GameObject>[] PlayerModels { get; private set; }
 
+        [field: SerializeField]
+        internal Transform[] CharacterHands { get; private set; } = new Transform[2];
+
         [field: Header("External")]
         [field: SerializeField]
         internal AimPoint AimPoint { get; private set; }
