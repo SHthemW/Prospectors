@@ -14,6 +14,11 @@ namespace Game.Instances.Player
         private WeaponSwitcher _weaponSwitcher;
 
         Vector3 IWeaponMaster.AimingPosition => Components.AimPoint.transform.position;
+        IWeapon IWeaponMaster.CurrentWeapon 
+        { 
+            get => this.DataHandler.CurrentWeapon; 
+            set => this.DataHandler.CurrentWeapon = value; 
+        }
 
         private void Awake()
         {

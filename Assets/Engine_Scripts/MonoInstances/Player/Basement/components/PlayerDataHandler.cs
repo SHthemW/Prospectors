@@ -1,4 +1,5 @@
-﻿using Game.Services.Animation;
+﻿using Game.Interfaces;
+using Game.Services.Animation;
 using System.Collections;
 using UnityEngine;
 
@@ -31,6 +32,8 @@ namespace Game.Instances.Player
                 };
             }
         }
+
+        internal IWeapon CurrentWeapon { get; set; }
         
     }
 }

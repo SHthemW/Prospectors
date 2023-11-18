@@ -9,18 +9,23 @@ namespace Game.Services.Physics
 {
     public sealed class ObjPositionSynchronizer
     {
-        private readonly Transform _syncTarget;
         private readonly Transform[] _toBeSync;
 
-        public ObjPositionSynchronizer(Transform syncTarget, Transform[] toBeSync)
+        public ObjPositionSynchronizer(Transform[] toBeSync)
         {
-            _syncTarget = syncTarget != null ? syncTarget : throw new ArgumentNullException(nameof(syncTarget));
             _toBeSync = toBeSync ?? throw new ArgumentNullException(nameof(toBeSync));
         }
-        public void Sync()
+        public void SyncTo(Vector3 targetPosition)
         {
             foreach (var t in _toBeSync)
-                t.position = _syncTarget.position;
+                t.position = targetPosition;
+        }
+        public void SyncToIfGive(Vector3? targetPosition)
+        {
+            if (targetPosition == null)
+                return;
+
+            SyncTo(targetPosition.Value);
         }
 
         private ObjPositionSynchronizer()

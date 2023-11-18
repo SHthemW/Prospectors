@@ -9,6 +9,7 @@ namespace Game.Interfaces
 {
     public interface IWeapon
     {
-        IWeaponMaster Master  { get; set; }
+        Vector3 GripPosition { get; }
+        IWeaponMaster Master { get; set; }
     }
 }

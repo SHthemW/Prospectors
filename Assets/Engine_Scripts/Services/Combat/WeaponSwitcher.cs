@@ -41,6 +41,7 @@ namespace Game.Services.Combat
 
             // init weapon
             weapon.Master = _weaponMaster;
+            _weaponMaster.CurrentWeapon = weapon;
         }
     }
 }
