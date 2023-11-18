@@ -1,6 +1,8 @@
 ﻿using Game.Interfaces;
 using Game.Services.Combat;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Instances.Player
@@ -19,6 +21,10 @@ namespace Game.Instances.Player
             get => this.DataHandler.CurrentWeapon; 
             set => this.DataHandler.CurrentWeapon = value; 
         }
+        Func<Vector3> IWeaponMaster.CurrentHandPositionGetter =>
+            () => Components.PlayerModels  .First(i => i.Tag == "Front").Item.activeInHierarchy
+                ? Components.CharacterHands.First(i => i.Tag == "Front").Item.position
+                : Components.CharacterHands.First(i => i.Tag == "Back") .Item.position;
 
         private void Awake()
         {

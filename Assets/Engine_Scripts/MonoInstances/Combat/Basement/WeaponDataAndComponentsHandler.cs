@@ -21,6 +21,9 @@ namespace Game.Instances.Combat
             set => _master = value; 
         }
         Vector3 IWeapon.GripPosition => _grip.position;
+
+        public const float AIMING_HEIGHT = 0;
         public Vector3 AimingPosition => _master.AimingPosition;
+        public Vector3 HandlePosition => _master.CurrentHandPositionGetter.Invoke();
     }
 }

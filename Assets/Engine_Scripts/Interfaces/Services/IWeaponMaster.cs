@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,5 +9,6 @@ namespace Game.Interfaces
     {
         IWeapon CurrentWeapon { get; set; }
         Vector3 AimingPosition { get; }
+        Func<Vector3> CurrentHandPositionGetter { get; }
     }
 }

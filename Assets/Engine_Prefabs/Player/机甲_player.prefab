@@ -90,8 +90,10 @@ MonoBehaviour:
   - _tag: Back
     _item: {fileID: 2006112026218064877}
   <CharacterHands>k__BackingField:
-  - {fileID: 4507229804914378418}
-  - {fileID: 2004786342617208265}
+  - _tag: Front
+    _item: {fileID: 4507229804914378418}
+  - _tag: Back
+    _item: {fileID: 2004786342617208265}
   <AimPoint>k__BackingField: {fileID: 0}
   <AimBone>k__BackingField: {fileID: 0}
 --- !u!114 &2630632268396808693

@@ -9,11 +9,28 @@ namespace Game.Instances.Combat
         private void Update()
         {
             FollowTheAim();
+            SyncToMasterHand();
         }
 
         private void FollowTheAim()
         {
-            transform.forward = ThisWeapon.AimingPosition - transform.position;
+            var lookatPoint = ThisWeapon.AimingPosition - transform.position;
+            transform.forward = new Vector3
+            {
+                x = lookatPoint.x,
+                y = 0,
+                z = lookatPoint.z
+            };
+        }
+
+        private void SyncToMasterHand()
+        {
+            transform.position = new Vector3
+            {
+                x = transform.position.x,
+                y = ThisWeapon.HandlePosition.y,
+                z = transform.position.z
+            };
         }
     }
 }

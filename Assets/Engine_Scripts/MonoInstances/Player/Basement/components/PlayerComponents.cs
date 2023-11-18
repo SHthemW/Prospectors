@@ -23,7 +23,7 @@ namespace Game.Instances.Player
         internal TaggedItem<GameObject>[] PlayerModels { get; private set; }
 
         [field: SerializeField]
-        internal Transform[] CharacterHands { get; private set; } = new Transform[2];
+        internal TaggedItem<Transform>[] CharacterHands { get; private set; }
 
         [field: Header("External")]
         [field: SerializeField]

@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Game.Services.Physics
 {
+    [Obsolete]
     public sealed class ObjPositionSynchronizer
     {
         private readonly Transform[] _toBeSync;
