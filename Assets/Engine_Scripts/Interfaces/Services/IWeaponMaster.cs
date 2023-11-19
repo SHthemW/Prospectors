@@ -9,6 +9,7 @@ namespace Game.Interfaces
     {
         IWeapon CurrentWeapon { get; set; }
         Vector3 AimingPosition { get; }
+        Vector3 CenterPosition { get; }
         Func<Vector3> CurrentHandPositionGetter { get; }
     }
 }

@@ -15,6 +15,7 @@ namespace Game.Instances.Player
 
         private WeaponSwitcher _weaponSwitcher;
 
+        Vector3 IWeaponMaster.CenterPosition => transform.position;
         Vector3 IWeaponMaster.AimingPosition => Components.AimPoint.transform.position;
         IWeapon IWeaponMaster.CurrentWeapon 
         { 
@@ -25,6 +26,7 @@ namespace Game.Instances.Player
             () => Components.PlayerModels  .First(i => i.Tag == "Front").Item.activeInHierarchy
                 ? Components.CharacterHands.First(i => i.Tag == "Front").Item.position
                 : Components.CharacterHands.First(i => i.Tag == "Back") .Item.position;
+
 
         private void Awake()
         {

@@ -15,6 +15,7 @@ namespace Game.Instances.Combat
         private Transform _grip;
 
         private IWeaponMaster _master;     
+
         IWeaponMaster IWeapon.Master 
         { 
             get => _master; 
@@ -23,6 +24,7 @@ namespace Game.Instances.Combat
         Vector3 IWeapon.GripPosition => _grip.position;
 
         public Vector3 AimingPosition => _master.AimingPosition;
+        public Vector3 MasterPosition => _master.CenterPosition;
         public Vector3 HandlePosition => _master.CurrentHandPositionGetter.Invoke();
     }
 }

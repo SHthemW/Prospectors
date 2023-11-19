@@ -14,7 +14,7 @@ namespace Game.Instances.Combat
 
         private void FollowTheAim()
         {
-            var lookatPoint = ThisWeapon.AimingPosition - transform.position;
+            var lookatPoint = ThisWeapon.AimingPosition - ThisWeapon.MasterPosition;
             transform.forward = new Vector3
             {
                 x = lookatPoint.x,
