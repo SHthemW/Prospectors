@@ -25,11 +25,12 @@ namespace Game.Instances.Combat
 
         private void SyncToMasterHand()
         {
+            // sync shake
             transform.position = new Vector3
             {
-                x = transform.position.x,
+                x = ThisWeapon.HandlePosition.x,
                 y = ThisWeapon.HandlePosition.y,
-                z = transform.position.z
+                z = ThisWeapon.HandlePosition.z
             };
         }
     }
