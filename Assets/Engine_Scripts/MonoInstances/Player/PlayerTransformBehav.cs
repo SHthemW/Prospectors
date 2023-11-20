@@ -17,7 +17,7 @@ namespace Game.Instances.Player
 
             _faceFlipCtrller = new(this.Components.RootTransform);
 
-            _modelDirCtrller = new(this.Components.PlayerModels);
+            _modelDirCtrller = new(this.Components.CharModels);
         }
 
         private void FixedUpdate()

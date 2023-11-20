@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Utils;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,36 +14,11 @@ namespace Game.Services.Combat
         [SerializeField]
         private GameObject _prefeb;
         public GameObject Prefeb
-        {
-            get
-            {
-                if (_prefeb == null)
-                    throw new NotImplementedException();
-                return _prefeb;
-            }
-        }
-        private void CheckPrefeb()
-        {
-            if (_prefeb == null)
-            {        
-                Debug.LogWarning($"[data] {name} 的prefeb未配置.");
-                return;
-            }
-            if (!_prefeb.TryGetComponent<IWeapon>(out _))
-            {
-                Debug.LogWarning($"[data] {name} 的prefeb不是武器预制体.");
-                return;
-            }
-        }
+            => _prefeb.TryGetIf(name, p => p != null && _prefeb.TryGetComponent<IWeapon>(out _));
 
         [Header("Runtime")]
 
         [SerializeField]
         private int _damage;
-
-        private void OnValidate()
-        {
-            CheckPrefeb();
-        }
     }
 }

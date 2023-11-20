@@ -13,7 +13,7 @@ namespace Game.Instances.Player
 
         private void Awake()
         {
-            _moveAnimUpdater = new(Components.CharAnimator, DataHandler.AnimPropNames);
+            _moveAnimUpdater = new(Components.CharAnimators, DataHandler.AnimPropNames);
             _aimAnimUpdater = new(Components.AimPoint.transform, Components.AimBone, DataHandler.AimHeight);
         }
 

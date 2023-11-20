@@ -23,9 +23,9 @@ namespace Game.Instances.Player
             set => this.DataHandler.CurrentWeapon = value; 
         }
         Func<Vector3> IWeaponMaster.CurrentHandPositionGetter =>
-            () => Components.PlayerModels  .First(i => i.Tag == "Front").Item.activeInHierarchy
-                ? Components.CharacterHands.First(i => i.Tag == "Front").Item.position
-                : Components.CharacterHands.First(i => i.Tag == "Back") .Item.position;
+            () => Components.CharModels  .First(i => i.Tag == "Front").Item.activeInHierarchy
+                ? Components.CharHands.First(i => i.Tag == "Front").Item.position
+                : Components.CharHands.First(i => i.Tag == "Back") .Item.position;
 
 
         private void Awake()
