@@ -30,7 +30,7 @@ namespace Game.Instances.Player
                 dirIsLeft: CurrentAimingPosIsInLeft());
 
             _modelDirCtrller.EnableActiveOfObjectExclusively(
-                key: CalcCurrentFacingDirection_isDown()
+                key: CurrentFacingDirectionIsDown()
                 ? "Back"
                 : "Front"
                 );
@@ -40,7 +40,7 @@ namespace Game.Instances.Player
         {
             return this.Components.AimPoint.transform.position.x < transform.position.x;
         }
-        private bool CalcCurrentFacingDirection_isDown()
+        private bool CurrentFacingDirectionIsDown()
         {
             bool mousePosIsDown = this.Components.AimPoint.transform.position.z > transform.position.z;
             return mousePosIsDown;
