@@ -11,29 +11,9 @@ namespace Game.Instances.Player
 {
     internal sealed class PlayerDataHandler : MonoBehaviour
     {
-        // movement       
-        private float? _moveSpeedBase = null;
-        internal float MoveSpeedBase 
-        {
-            get 
-            {
-                if (_moveSpeedBase == null)
-                    throw new InvalidOperationException("[data] cannot double assign value for a base.");
-                return _moveSpeedBase.Value;
-            }
-            set
-            {
-                if (_moveSpeedBase != null)
-                    throw new InvalidOperationException("[data] cannot double assign value for a base.");
-                _moveSpeedBase = value;
-            }
-        }
-
-        internal event Func<float> MoveSpeedFactors = new(static () => 1);
-        internal float CalcCurrentMoveSpeed()
-        {
-            return MoveSpeedBase * MoveSpeedFactors.Invoke();
-        }
+        // movement
+        [SerializeField]
+        internal DynamicData<float> MoveSpeed = new(howToMerge: (a, b) => a * b, factorBase: 1);
 
         // input
         internal Vector3 CurrentInputDirection => new(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
