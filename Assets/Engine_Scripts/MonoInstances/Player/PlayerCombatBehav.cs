@@ -9,10 +9,6 @@ namespace Game.Instances.Player
 {
     internal sealed class PlayerCombatBehav : PlayerBehaviour, IWeaponMaster
     {
-        [SerializeField]
-        private List<WeaponStaticData_SO> _testWeapons;
-        private int _currentTestWeaponIndex;
-
         private WeaponSwitcher _weaponSwitcher;
 
         Vector3 IWeaponMaster.CenterPosition => transform.position;
@@ -42,10 +38,7 @@ namespace Game.Instances.Player
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                _weaponSwitcher.EquipOrSwitchWeapon(_testWeapons[_currentTestWeaponIndex]);
-                _currentTestWeaponIndex = _currentTestWeaponIndex == _testWeapons.Count - 1
-                    ? 0 
-                    : _currentTestWeaponIndex + 1;
+                _weaponSwitcher.EquipOrSwitchWeapon(DataHandler.GenerateNextTestWeapon());
             }
         }
     }

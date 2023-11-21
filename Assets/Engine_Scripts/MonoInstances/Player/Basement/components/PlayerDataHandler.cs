@@ -1,8 +1,10 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
+using Game.Services.Combat;
 using Game.Utils;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Instances.Player
@@ -50,5 +52,17 @@ namespace Game.Instances.Player
 
         // combat
         internal IWeapon CurrentWeapon { get; set; }
+
+        [SerializeField]
+        private List<WeaponStaticData_SO> _testWeapons;
+        private int _currentTestWeaponIndex = 0;
+        internal WeaponStaticData_SO GenerateNextTestWeapon()
+        {
+            var result = _testWeapons[_currentTestWeaponIndex];
+            _currentTestWeaponIndex = _currentTestWeaponIndex == _testWeapons.Count - 1
+                ? 0
+                : _currentTestWeaponIndex + 1;
+            return result;
+        }
     }
 }
