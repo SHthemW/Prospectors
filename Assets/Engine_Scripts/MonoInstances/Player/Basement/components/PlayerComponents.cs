@@ -3,11 +3,26 @@ using Game.Utils;
 using UnityEngine;
 using System;
 using static Game.Utils.InspectorPropertyUtil;
+using Game.Services.Animation;
 
 namespace Game.Instances.Player
 {
     internal sealed class PlayerComponents : MonoBehaviour
     {
+        [Header("Data Define")]
+
+        [SerializeField]
+        private PlayerStaticData_SO _staticBasicData;
+        internal PlayerStaticData_SO StaticBasicData 
+            => _staticBasicData.TryGetIf(name, o => o != null);
+
+        [SerializeField]
+        private AnimPropertyNameData_SO _animPropNames;
+        internal AnimPropertyNameData_SO AnimPropNames
+            => _animPropNames.TryGetIf(name, o => o != null);
+
+        [Header("Components Define")]
+
         [SerializeField]
         private Rigidbody _playerRb;
         internal Rigidbody PlayerRb 
@@ -22,8 +37,6 @@ namespace Game.Instances.Player
         private Transform _weaponParent;
         internal Transform WeaponParent 
             => _weaponParent.TryGetIf(name, p => p != null);
-
-        [Header("Each Direction")]
 
         [SerializeField]
         private Animator[] _charAnimators;

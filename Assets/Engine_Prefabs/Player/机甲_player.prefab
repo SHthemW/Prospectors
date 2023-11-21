@@ -78,12 +78,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906157d3d2ea30e4ebc3d318b2a61f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _staticBasicData: {fileID: 11400000, guid: 1440f8c4b2c90834ba661f187c4cf7ec, type: 2}
+  _animPropNames: {fileID: 11400000, guid: 83e6740f5d4161c498aabbf58f2a6203, type: 2}
   _playerRb: {fileID: 890540894982427003}
+  _rootTransform: {fileID: 103416089449177707}
+  _weaponParent: {fileID: 4411805288924646801}
   _charAnimators:
   - {fileID: 2622806256910958655}
   - {fileID: 655624493514281231}
-  _rootTransform: {fileID: 103416089449177707}
-  _weaponParent: {fileID: 4411805288924646801}
   _charModels:
   - _tag: Front
     _item: {fileID: 5606997611839870386}
@@ -108,8 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb457e00e72b0c43953f23503c5d4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _staticData: {fileID: 11400000, guid: 1440f8c4b2c90834ba661f187c4cf7ec, type: 2}
-  _animPropertyNames: {fileID: 11400000, guid: 83e6740f5d4161c498aabbf58f2a6203, type: 2}
 --- !u!114 &9122134497242637858
 MonoBehaviour:
   m_ObjectHideFlags: 0

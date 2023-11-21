@@ -1,5 +1,7 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
+using Game.Utils;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,18 +9,31 @@ namespace Game.Instances.Player
 {
     internal sealed class PlayerDataHandler : MonoBehaviour
     {
-        [SerializeField]
-        private PlayerStaticData_SO _staticData;
+        // movement       
+        private float? _moveSpeedBase = null;
+        internal float MoveSpeedBase 
+        {
+            get 
+            {
+                if (_moveSpeedBase == null)
+                    throw new InvalidOperationException("[data] cannot double assign value for a base.");
+                return _moveSpeedBase.Value;
+            }
+            set
+            {
+                if (_moveSpeedBase != null)
+                    throw new InvalidOperationException("[data] cannot double assign value for a base.");
+                _moveSpeedBase = value;
+            }
+        }
 
-        [SerializeField]
-        private AnimPropertyNameData_SO _animPropertyNames;
-        internal AnimPropertyNameData_SO AnimPropNames => _animPropertyNames;
+        internal event Func<float> MoveSpeedFactors = new(static () => 1);
+        internal float CalcCurrentMoveSpeed()
+        {
+            return MoveSpeedBase * MoveSpeedFactors.Invoke();
+        }
 
-        internal float CurrentMoveSpeed => _staticData.MoveSpeed;
-        internal float AimHeight => _staticData.AimHeight;
-        internal Vector2 MaxFollowOffsetDuringAim => _staticData.MaxFollowOffsetDuringAim;
-
-
+        // input
         internal Vector3 CurrentInputDirection => new(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         internal bool? CurrentKeyInputDirIsLeft
         {
@@ -33,7 +48,7 @@ namespace Game.Instances.Player
             }
         }
 
+        // combat
         internal IWeapon CurrentWeapon { get; set; }
-        
     }
 }

@@ -13,10 +13,10 @@ namespace Game.Instances.Player
 
         private void Awake()
         {
+            this.DataHandler.MoveSpeedBase = Components.StaticBasicData.MoveSpeed;
+
             _movementCtrller = new(this.Components.PlayerRb);
-
             _faceFlipCtrller = new(this.Components.RootTransform);
-
             _modelDirCtrller = new(this.Components.CharModels);
         }
 
@@ -24,7 +24,7 @@ namespace Game.Instances.Player
         {
             _movementCtrller.MoveInDirection(
                 this.DataHandler.CurrentInputDirection,
-                this.DataHandler.CurrentMoveSpeed);
+                this.DataHandler.CalcCurrentMoveSpeed());
 
             _faceFlipCtrller.SetFlipState(
                 dirIsLeft: CurrentAimingPosIsInLeft());

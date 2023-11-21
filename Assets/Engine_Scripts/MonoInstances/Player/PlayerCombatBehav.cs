@@ -23,14 +23,14 @@ namespace Game.Instances.Player
             set => this.DataHandler.CurrentWeapon = value; 
         }
         Func<Vector3> IWeaponMaster.CurrentHandPositionGetter =>
-            () => Components.CharModels  .First(i => i.Tag == "Front").Item.activeInHierarchy
+            () => Components.CharModels.First(i => i.Tag == "Front").Item.activeInHierarchy
                 ? Components.CharHands.First(i => i.Tag == "Front").Item.position
                 : Components.CharHands.First(i => i.Tag == "Back") .Item.position;
 
 
         private void Awake()
         {
-            Components.AimPoint.Init(Components.RootTransform, DataHandler.MaxFollowOffsetDuringAim);
+            Components.AimPoint.Init(Components.RootTransform, Components.StaticBasicData.MaxFollowOffsetDuringAim);
 
             _weaponSwitcher = new(
                 weaponParent: Components.WeaponParent,
