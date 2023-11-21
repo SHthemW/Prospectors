@@ -9,12 +9,10 @@ namespace Game.Instances.Player
     internal sealed class PlayerViewBehav : PlayerBehaviour
     {
         private CharMovementAnimUpdater _moveAnimUpdater;
-        private CharAimAnimUpdater _aimAnimUpdater;
 
         private void Awake()
         {
             _moveAnimUpdater = new(Components.CharAnimators, DataHandler.AnimPropNames);
-            _aimAnimUpdater = new(Components.AimPoint.transform, Components.AimBone, DataHandler.AimHeight);
         }
 
         private void Update()
@@ -23,7 +21,6 @@ namespace Game.Instances.Player
                 currentVelocity: Components.PlayerRb.velocity.magnitude,
                 isBackward: !CurrentMoveAndAimingIsInSameDirection()
                 );
-            _aimAnimUpdater.UpdateAimBone();
         }
 
         private bool CurrentMoveAndAimingIsInSameDirection()
