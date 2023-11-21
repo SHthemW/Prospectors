@@ -1,23 +1,21 @@
-﻿using Game.Services.Animation;
+﻿using Game.Interfaces;
+using Game.Services.Animation;
+using Game.Services.Combat;
+using Game.Utils;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Instances.Player
 {
     internal sealed class PlayerDataHandler : MonoBehaviour
     {
+        // movement
         [SerializeField]
-        private PlayerData_SO _data;
+        internal DynamicData<float> MoveSpeed = new(howToMerge: (a, b) => a * b, factorBase: 1);
 
-        [SerializeField]
-        private AnimPropertyNameData_SO _animPropertyNames;
-        internal AnimPropertyNameData_SO AnimPropNames => _animPropertyNames;
-
-        internal float CurrentMoveSpeed => _data.MoveSpeed;
-        internal float AimHeight => _data.AimHeight;
-        internal Vector2 MaxFollowOffsetDuringAim => _data.MaxFollowOffsetDuringAim;
-
-
+        // input
         internal Vector3 CurrentInputDirection => new(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         internal bool? CurrentKeyInputDirIsLeft
         {
@@ -31,6 +29,20 @@ namespace Game.Instances.Player
                 };
             }
         }
-        
+
+        // combat
+        internal IWeapon CurrentWeapon { get; set; }
+
+        [SerializeField]
+        private List<WeaponStaticData_SO> _testWeapons;
+        private int _currentTestWeaponIndex = 0;
+        internal WeaponStaticData_SO GenerateNextTestWeapon()
+        {
+            var result = _testWeapons[_currentTestWeaponIndex];
+            _currentTestWeaponIndex = _currentTestWeaponIndex == _testWeapons.Count - 1
+                ? 0
+                : _currentTestWeaponIndex + 1;
+            return result;
+        }
     }
 }

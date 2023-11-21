@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Game.Utils;
+using System.Collections;
 using UnityEngine;
 
 namespace Game.Services.Animation
@@ -8,6 +9,7 @@ namespace Game.Services.Animation
     {
         [SerializeField]
         private string _currentVelocity;
-        public string CurrentVelocity => _currentVelocity;
+        public string CurrentVelocity 
+            => _currentVelocity.TryGetIf(name, p => p != default);
     }
 }

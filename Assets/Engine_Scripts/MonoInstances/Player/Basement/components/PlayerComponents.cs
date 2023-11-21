@@ -1,27 +1,68 @@
 using Game.Services.Combat;
+using Game.Utils;
 using UnityEngine;
+using System;
+using static Game.Utils.InspectorPropertyUtil;
+using Game.Services.Animation;
 
 namespace Game.Instances.Player
 {
     internal sealed class PlayerComponents : MonoBehaviour
-    {      
-        [field: SerializeField]
-        internal Rigidbody PlayerRb { get; private set; }
+    {
+        [Header("Data Define")]
 
-        [field: SerializeField]
-        internal Animator CharAnimator { get; private set; }
+        [SerializeField]
+        private PlayerStaticData_SO _staticBasicData;
+        internal PlayerStaticData_SO StaticBasicData 
+            => _staticBasicData.TryGetIf(name, o => o != null);
 
-        [field: SerializeField]
-        internal Transform RootTransform { get; private set; }
+        [SerializeField]
+        private AnimPropertyNameData_SO _animPropNames;
+        internal AnimPropertyNameData_SO AnimPropNames
+            => _animPropNames.TryGetIf(name, o => o != null);
 
-        [field: SerializeField]
-        internal Transform WeaponParent { get; private set; }
+        [Header("Components Define")]
 
-        [field: Header("External")]
-        [field: SerializeField]
-        internal AimPoint AimPoint { get; private set; }
+        [SerializeField]
+        private Rigidbody _playerRb;
+        internal Rigidbody PlayerRb 
+            => _playerRb.TryGetIf(name, rb => rb != null);
 
-        [field: SerializeField]
-        internal Transform AimBone { get; private set; }
+        [SerializeField]
+        private Transform _rootTransform;
+        internal Transform RootTransform 
+            => _rootTransform.TryGetIf(name, p => p != null);
+
+        [SerializeField]
+        private Transform _weaponParent;
+        internal Transform WeaponParent 
+            => _weaponParent.TryGetIf(name, p => p != null);
+
+        [SerializeField]
+        private Animator[] _charAnimators;
+        internal Animator[] CharAnimators
+            => _charAnimators.TryGetIf(name, p => p != null && p.Length > 0);
+
+        [SerializeField]
+        private TaggedItem<GameObject>[] _charModels;
+        internal TaggedItem<GameObject>[] CharModels 
+            => _charModels.TryGetIf(name, p => p != null && p.Length > 0);
+
+        [SerializeField]
+        private TaggedItem<Transform>[] _charHands;
+        internal TaggedItem<Transform>[] CharHands 
+            => _charHands.TryGetIf(name, p => p != null);
+
+        [Header("External")]
+
+        [SerializeField]
+        private AimPoint _aimPoint;
+        internal AimPoint AimPoint
+            => _aimPoint.TryGetIf(name, p => p != null);
+
+        [SerializeField]
+        private Transform _aimBone;
+        internal Transform AimBone
+            => _aimBone.TryGetIf(name, p => p != null);
     }
 }

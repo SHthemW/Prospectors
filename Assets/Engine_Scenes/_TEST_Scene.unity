@@ -34109,6 +34109,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &1459462292 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5282263394851996673, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4848509634068375646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1480427770
 GameObject:
   m_ObjectHideFlags: 0
@@ -39349,6 +39355,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8023080413318814639, guid: 08fcac0ef9803674580ad65a13fb82c6, type: 3}
+--- !u!4 &1851527382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2724028229856325489, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4848509634068375646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889783888
 GameObject:
   m_ObjectHideFlags: 0
@@ -39497,7 +39509,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.9746522, g: 0.9490196, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -39648,7 +39660,78 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 280538170903899355, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309,
+        type: 2}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309,
+        type: 2}
+    - target: {fileID: 1082105057795404200, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c834147092fc8f43afb012cc8a689fd,
+        type: 2}
+    - target: {fileID: 1331734237814427336, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309,
+        type: 2}
+    - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5638be18f957e974ba776c3094fcaa67,
+        type: 2}
+    - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _testWeapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c834147092fc8f43afb012cc8a689fd,
+        type: 2}
+    - target: {fileID: 2709375991612389706, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4430908518486789005, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461743668538161817, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675351777000040666, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -39658,11 +39741,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u673A\u7532_player"
       objectReference: {fileID: 0}
+    - target: {fileID: 5150586607742898525, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7118422
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150586607742898525, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7023395
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575578477475130588, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344404197593517625, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344404197593517625, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _aimBone
+      value: 
+      objectReference: {fileID: 1851527382}
+    - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: _aimPoint
+      value: 
+      objectReference: {fileID: 1491892978}
+    - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: <AimBone>k__BackingField
+      value: 
+      objectReference: {fileID: 1459462292}
     - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: <AimPoint>k__BackingField
       value: 
       objectReference: {fileID: 1491892978}
+    - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: <Objs>k__BackingField._items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

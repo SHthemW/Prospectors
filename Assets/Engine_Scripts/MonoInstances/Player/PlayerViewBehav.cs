@@ -9,18 +9,26 @@ namespace Game.Instances.Player
     internal sealed class PlayerViewBehav : PlayerBehaviour
     {
         private CharMovementAnimUpdater _moveAnimUpdater;
-        private CharAimAnimUpdater _aimAnimUpdater;
 
         private void Awake()
         {
-            _moveAnimUpdater = new(Components.CharAnimator, DataHandler.AnimPropNames);
-            _aimAnimUpdater = new(Components.AimPoint.transform, Components.AimBone, DataHandler.AimHeight);
+            _moveAnimUpdater = new(Components.CharAnimators, Components.AnimPropNames);
         }
 
         private void Update()
         {
-            _moveAnimUpdater.UpdateAnim(Components.PlayerRb.velocity.magnitude);
-            _aimAnimUpdater.UpdateAimBone();
+            _moveAnimUpdater.UpdateAnim(
+                currentVelocity: Components.PlayerRb.velocity.magnitude,
+                isBackward: !CurrentMoveAndAimingIsInSameDirection()
+                );
+        }
+
+        private bool CurrentMoveAndAimingIsInSameDirection()
+        {
+            var keyInputIsLeft  = this.DataHandler.CurrentKeyInputDirIsLeft;
+            var aimingDirIsLeft = this.Components.AimPoint.transform.position.x < transform.position.x;
+
+            return keyInputIsLeft == aimingDirIsLeft;
         }
     }
 }

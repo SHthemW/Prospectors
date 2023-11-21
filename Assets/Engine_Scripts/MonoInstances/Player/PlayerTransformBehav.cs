@@ -7,34 +7,43 @@ namespace Game.Instances.Player
 {
     internal sealed class PlayerTransformBehav : PlayerBehaviour
     {           
-        private RbTransformer _movementCtrller;
-        private ObjFlipper _faceFlipCtrller;
+        private RbTransformer   _movementCtrller;   
+        private ObjFlipper      _faceFlipCtrller;
+        private ObjActiveTurner _modelDirCtrller;
 
         private void Awake()
         {
+            this.DataHandler.MoveSpeed.Init(Components.StaticBasicData.MoveSpeed);
+
             _movementCtrller = new(this.Components.PlayerRb);
             _faceFlipCtrller = new(this.Components.RootTransform);
+            _modelDirCtrller = new(this.Components.CharModels);
         }
 
         private void FixedUpdate()
         {
             _movementCtrller.MoveInDirection(
                 this.DataHandler.CurrentInputDirection,
-                this.DataHandler.CurrentMoveSpeed);
+                this.DataHandler.MoveSpeed.GetCurrent());
 
             _faceFlipCtrller.SetFlipState(
-                dirIsLeft: CurrentFaceDirIsLeft());
+                dirIsLeft: CurrentAimingPosIsInLeft());
+
+            _modelDirCtrller.EnableActiveOfObjectExclusively(
+                key: CurrentFacingDirectionIsDown()
+                ? "Back"
+                : "Front"
+                );
         }
 
-        private bool CurrentFaceDirIsLeft()
+        private bool CurrentAimingPosIsInLeft()
         {
-            var keyInputIsLeft = this.DataHandler.CurrentKeyInputDirIsLeft;
-            var mousePosIsLeft = this.Components.AimPoint.transform.position.x < transform.position.x;
-
-            if (keyInputIsLeft == null)
-                return mousePosIsLeft; 
-            else 
-                return keyInputIsLeft.Value;
+            return this.Components.AimPoint.transform.position.x < transform.position.x;
+        }
+        private bool CurrentFacingDirectionIsDown()
+        {
+            bool mousePosIsDown = this.Components.AimPoint.transform.position.z > transform.position.z;
+            return mousePosIsDown;
         }
     }
 }
