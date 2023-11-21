@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.Util
+namespace Game.Utils
 {
     public readonly struct Fmt
     {
