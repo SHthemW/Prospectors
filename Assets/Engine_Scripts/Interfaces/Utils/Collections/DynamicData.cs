@@ -14,8 +14,13 @@ namespace Game.Utils.Collections
         private TData? _baseValue;
         private bool   _wasInited;
 
+        #region Inspector Debugging
         [SerializeField, ReadOnly]
-        private TData? _currValue; // inspector debugging
+        private TData? _currentValue;
+
+        [SerializeField, ReadOnly]
+        private List<string> _factorList;
+        #endregion
 
         private readonly List<Func<TData>> _factorFuncs;
         private readonly Func<TData, TData, TData> _mergeFunc;
@@ -24,8 +29,9 @@ namespace Game.Utils.Collections
         {
             _wasInited = false;
             _baseValue = default;
-            _currValue = default;
+            _currentValue = default;
 
+            _factorList = new();
             _mergeFunc = howToMerge;
             _factorFuncs = new()
             {
@@ -40,9 +46,10 @@ namespace Game.Utils.Collections
             this._baseValue = baseValue;
             this._wasInited = true;
         }
-        public readonly void AddFactor(Func<TData> factorFunc)
+        public readonly void AddFactor(Func<TData> factorFunc, string factorName = "unnamed factor")
         {
             _factorFuncs.Add(factorFunc);
+            _factorList.Add(factorName);
         }
 
         public TData UpdateCurrentAndGet()
@@ -54,13 +61,15 @@ namespace Game.Utils.Collections
 
             foreach (var func in _factorFuncs)
             {
-                calcResult = _mergeFunc(calcResult, func.Invoke());
+                var effection = func.Invoke();
+                
+                calcResult = _mergeFunc(calcResult, effection);
             }
 
             // update current value (because we need it to debug in inspector)
-            _currValue = calcResult; 
+            _currentValue = calcResult; 
             // get
-            return _currValue;
+            return _currentValue;
         }
     }
 # nullable disable

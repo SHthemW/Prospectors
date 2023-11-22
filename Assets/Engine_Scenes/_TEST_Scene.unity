@@ -39694,6 +39694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
+      propertyPath: MoveSpeed._why.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
       propertyPath: _testWeapons.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309,
