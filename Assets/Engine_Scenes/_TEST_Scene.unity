@@ -39355,12 +39355,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8023080413318814639, guid: 08fcac0ef9803674580ad65a13fb82c6, type: 3}
---- !u!4 &1851527382 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2724028229856325489, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
-    type: 3}
-  m_PrefabInstance: {fileID: 4848509634068375646}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889783888
 GameObject:
   m_ObjectHideFlags: 0
@@ -39770,7 +39764,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _aimBone
       value: 
-      objectReference: {fileID: 1851527382}
+      objectReference: {fileID: 0}
     - target: {fileID: 8437403387758119463, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: _aimPoint

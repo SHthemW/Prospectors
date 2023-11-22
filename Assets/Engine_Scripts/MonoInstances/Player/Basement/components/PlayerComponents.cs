@@ -59,10 +59,5 @@ namespace Game.Instances.Player
         private AimPoint _aimPoint;
         internal AimPoint AimPoint
             => _aimPoint.AsSafeInspectorValue(name, p => p != null);
-
-        [SerializeField]
-        private Transform _aimBone;
-        internal Transform AimBone
-            => _aimBone.AsSafeInspectorValue(name, p => p != null);
     }
 }
