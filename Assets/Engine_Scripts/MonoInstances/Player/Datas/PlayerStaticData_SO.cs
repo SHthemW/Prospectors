@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using static Game.Utils.InspectorPropertyUtil;
+using Game.Utils.Extensions;
 
 namespace Game.Instances.Player
 {
@@ -10,16 +10,16 @@ namespace Game.Instances.Player
         [SerializeField]
         private float _moveSpeed;
         public float MoveSpeed
-            => _moveSpeed.TryGetIf(name, static p => p > 0);
+            => _moveSpeed.AsSafeInspectorValue(name, static p => p > 0);
 
         [SerializeField] 
         private float _aimHeight;
         public float AimHeight
-            => _aimHeight.TryGetIf(name, static p => p > 0);
+            => _aimHeight.AsSafeInspectorValue(name, static p => p > 0);
 
         [SerializeField]
         private Vector2 _maxFollowOffsetDuringAim;
         public Vector2 MaxFollowOffsetDuringAim 
-            => _maxFollowOffsetDuringAim.TryGetIf(name, p => p != default);
+            => _maxFollowOffsetDuringAim.AsSafeInspectorValue(name, p => p != default);
     }
 }

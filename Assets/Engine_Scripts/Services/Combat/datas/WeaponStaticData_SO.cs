@@ -1,5 +1,5 @@
 ﻿using Game.Interfaces;
-using Game.Utils;
+using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +14,7 @@ namespace Game.Services.Combat
         [SerializeField]
         private GameObject _prefeb;
         public GameObject Prefeb
-            => _prefeb.TryGetIf(name, p => p != null && _prefeb.TryGetComponent<IWeapon>(out _));
+            => _prefeb.AsSafeInspectorValue(name, p => p != null && _prefeb.TryGetComponent<IWeapon>(out _));
 
         [Header("Runtime")]
 
