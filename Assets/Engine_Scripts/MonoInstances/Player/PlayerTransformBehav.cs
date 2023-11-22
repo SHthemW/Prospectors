@@ -24,7 +24,7 @@ namespace Game.Instances.Player
         {
             _movementCtrller.MoveInDirection(
                 this.DataHandler.CurrentInputDirection,
-                this.DataHandler.MoveSpeed.GetCurrent());
+                this.DataHandler.MoveSpeed.UpdateCurrentAndGet());
 
             _faceFlipCtrller.SetFlipState(
                 dirIsLeft: CurrentAimingPosIsInLeft());
