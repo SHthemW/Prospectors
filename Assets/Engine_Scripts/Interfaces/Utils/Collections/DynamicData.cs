@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Utils.Attributes;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Game.Utils.Collections
     [Serializable]
     public struct DynamicData<TData>
     {
+        [SerializeField, ReadOnly]
         private TData? _baseValue;
         private bool   _wasInited;
 
