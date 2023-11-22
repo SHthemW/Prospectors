@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Utils
+namespace Game.Utils.Collections
 {
 # nullable enable
     [Serializable]

@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections.Generic;
 using System.Data;
 
-namespace Game.Utils
+namespace Game.Utils.Collections
 {
     [Serializable]
     public struct TaggedItem<TItem>

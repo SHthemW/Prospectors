@@ -1,7 +1,7 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
 using Game.Services.Combat;
-using Game.Utils;
+using Game.Utils.Collections;
 using System;
 using System.Collections;
 using System.Collections.Generic;

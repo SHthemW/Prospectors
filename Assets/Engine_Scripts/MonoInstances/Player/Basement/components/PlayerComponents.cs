@@ -1,5 +1,5 @@
 using Game.Services.Combat;
-using Game.Utils;
+using Game.Utils.Collections;
 using UnityEngine;
 using System;
 using Game.Utils.Extensions;
