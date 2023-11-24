@@ -12,18 +12,22 @@ namespace Game.Instances.Player
     {
         private WeaponSwitcher _weaponSwitcher;
 
-        Vector3 IWeaponMaster.CenterPosition => transform.position;
-        Vector3 IWeaponMaster.AimingPosition => Components.AimPoint.transform.position;
+        bool IWeaponMaster.WantToShoot 
+            => this.DataHandler.PressingShootKey;
         IWeapon IWeaponMaster.CurrentWeapon
-        { 
-            get => this.DataHandler.CurrentWeapon; 
-            set => this.DataHandler.CurrentWeapon = value; 
+        {
+            get => this.DataHandler.CurrentWeapon;
+            set => this.DataHandler.CurrentWeapon = value;
         }
+        Vector3 IWeaponMaster.CenterPosition 
+            => transform.position;
+        Vector3 IWeaponMaster.AimingPosition 
+            => Components.AimPoint.transform.position; 
         Func<Vector3> IWeaponMaster.CurrentHandPositionGetter =>
             () => Components.CharModels.First(i => i.Tag == "Front").Item.activeInHierarchy
                 ? Components.CharHands.First(i => i.Tag == "Front").Item.position
                 : Components.CharHands.First(i => i.Tag == "Back") .Item.position;
-
+        
 
         private void Awake()
         {
@@ -43,11 +47,10 @@ namespace Game.Instances.Player
             }
 
             if (Input.GetMouseButtonDown(button: 0))
-            {
-                if ((this as IWeaponMaster).CurrentWeapon == null)
-                    return;
-                (this as IWeaponMaster).CurrentWeapon.ShootBullet();
-            }
+                this.DataHandler.PressingShootKey = true;
+
+            if (Input.GetMouseButtonUp(button: 0))
+                this.DataHandler.PressingShootKey = false;
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Game.Instances.Combat
         [SerializeField]
         private WeaponStaticData_SO _staticData; // TODO: ** impl weapon combat data
 
-        private IWeaponMaster     _master;
-        private WeaponCombatBehav _combator;
-        
+        private IWeaponMaster _master;
+
+        public bool TriggerIsPressing => _master.WantToShoot;
         public Vector3 AimingPosition => _master.AimingPosition;
         public Vector3 MasterPosition => _master.CenterPosition;
         public Vector3 HandlePosition => _master.CurrentHandPositionGetter.Invoke();
@@ -22,13 +22,6 @@ namespace Game.Instances.Combat
         {
             get => _master;
             set => _master = value;
-        }
-        void IWeapon.ShootBullet()
-        {
-            if (_combator == null && TryGetComponent(out WeaponCombatBehav combator))
-                _combator = combator;
-
-            _combator.ShootBulletOneRound();
         }
     }
 }

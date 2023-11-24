@@ -29,6 +29,7 @@ namespace Game.Instances.Player
                 };
             }
         }
+        internal bool PressingShootKey { get; set; }
 
         // combat
         internal IWeapon CurrentWeapon { get; set; }

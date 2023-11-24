@@ -11,5 +11,7 @@ namespace Game.Interfaces
         Vector3 AimingPosition { get; }
         Vector3 CenterPosition { get; }
         Func<Vector3> CurrentHandPositionGetter { get; }
+
+        bool WantToShoot { get; }
     }
 }

@@ -6,6 +6,14 @@ namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
+        private void Update()
+        {
+            if (ThisWeapon.TriggerIsPressing) 
+            {
+                ShootBulletOneRound(); // TODO: CD
+            }
+        }
+
         public void ShootBulletOneRound()
         {
             Debug.Log("a bullet will be shoot.");
