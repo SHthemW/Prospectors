@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3747248037384952958}
   - component: {fileID: 2070220154928399950}
   - component: {fileID: 515245195104489975}
+  - component: {fileID: 4708427492877560321}
   m_Layer: 0
   m_Name: Gun_RN100
   m_TagString: Untagged
@@ -89,6 +90,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1615ae4ea15b794782d3d25cc4a1b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4708427492877560321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963065606798505510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a1512456c2cc04d81102822d0c850f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1946540132854393759

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5377714702063303431}
   - component: {fileID: 5582532084107697592}
   - component: {fileID: 3557274724543046227}
+  - component: {fileID: 1125459846982765634}
   m_Layer: 0
   m_Name: Gun_Simulate
   m_TagString: Untagged
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1615ae4ea15b794782d3d25cc4a1b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1125459846982765634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341442282117732449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a1512456c2cc04d81102822d0c850f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5412184714074269358

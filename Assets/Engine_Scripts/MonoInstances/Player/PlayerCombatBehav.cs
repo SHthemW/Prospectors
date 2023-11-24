@@ -3,6 +3,7 @@ using Game.Services.Combat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Game.Instances.Player
@@ -13,7 +14,7 @@ namespace Game.Instances.Player
 
         Vector3 IWeaponMaster.CenterPosition => transform.position;
         Vector3 IWeaponMaster.AimingPosition => Components.AimPoint.transform.position;
-        IWeapon IWeaponMaster.CurrentWeapon 
+        IWeapon IWeaponMaster.CurrentWeapon
         { 
             get => this.DataHandler.CurrentWeapon; 
             set => this.DataHandler.CurrentWeapon = value; 
@@ -39,6 +40,13 @@ namespace Game.Instances.Player
             if (Input.GetKeyDown(KeyCode.F))
             {
                 _weaponSwitcher.EquipOrSwitchWeapon(DataHandler.GenerateNextTestWeapon());
+            }
+
+            if (Input.GetMouseButtonDown(button: 0))
+            {
+                if ((this as IWeaponMaster).CurrentWeapon == null)
+                    return;
+                (this as IWeaponMaster).CurrentWeapon.ShootBullet();
             }
         }
     }

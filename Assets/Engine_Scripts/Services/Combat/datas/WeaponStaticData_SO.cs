@@ -14,11 +14,30 @@ namespace Game.Services.Combat
         [SerializeField]
         private GameObject _prefeb;
         public GameObject Prefeb
-            => _prefeb.AsSafeInspectorValue(name, p => p != null && _prefeb.TryGetComponent<IWeapon>(out _));
+            => _prefeb.AsSafeInspectorValue(name, static p => p != null && p.TryGetComponent<IWeapon>(out _));
 
-        [Header("Runtime")]
+        [SerializeField] 
+        private GameObject _bulletPrefeb;
+        public GameObject BulletPrefeb
+            => _bulletPrefeb.AsSafeInspectorValue(name, static o => o != null);
+
+        [Header("Shooting")]
 
         [SerializeField]
         private int _damage;
+        public int Damage 
+            => _damage.AsSafeInspectorValue(name, static d => d > 0);
+
+        [SerializeField]
+        private bool _enableBulletGravity;
+        public bool EnableBulletGravity
+            => _enableBulletGravity;
+
+        [SerializeField]
+        private float _bulletFlySpeed;
+        public float BulletFlySpeed
+            => _bulletFlySpeed.AsSafeInspectorValue(name, static s => s > 0);
+
+        // TODO: shooting round def
     }
 }

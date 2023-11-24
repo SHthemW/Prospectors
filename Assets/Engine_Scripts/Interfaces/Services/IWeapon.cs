@@ -10,5 +10,7 @@ namespace Game.Interfaces
     public interface IWeapon
     {
         IWeaponMaster Master { get; set; }
+
+        void ShootBullet();
     }
 }
