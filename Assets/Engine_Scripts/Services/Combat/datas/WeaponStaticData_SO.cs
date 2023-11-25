@@ -16,11 +16,6 @@ namespace Game.Services.Combat
         public GameObject Prefeb
             => _prefeb.AsSafeInspectorValue(name, static p => p != null && p.TryGetComponent<IWeapon>(out _));
 
-        [SerializeField] 
-        private GameObject _bulletPrefeb;
-        public GameObject BulletPrefeb
-            => _bulletPrefeb.AsSafeInspectorValue(name, static o => o != null);
-
         [Header("Shooting")]
 
         [SerializeField]
@@ -43,6 +38,9 @@ namespace Game.Services.Combat
         public float BulletFlySpeed
             => _bulletFlySpeed.AsSafeInspectorValue(name, static s => s > 0);
 
-        // TODO: shooting round def
+        [SerializeField]
+        private List<ShootingRound> _shootingLoopRound;
+        public List<ShootingRound> ShootingLoopRound 
+            => _shootingLoopRound.AsSafeInspectorValue(name, static r => r != null && r.Count > 0);
     }
 }
