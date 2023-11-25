@@ -8,15 +8,38 @@ namespace Game.Instances.Combat
     {
         private void Update()
         {
+            UpdateShootingCd();
+
             if (ThisWeapon.TriggerIsPressing) 
             {
-                ShootBulletOneRound(); // TODO: CD
+                TryShootBullet(); // TODO: CD
             }
         }
 
-        public void ShootBulletOneRound()
+        // shooting cd
+
+        private float _currentShootingCd = 0;
+        private bool InShootingCd 
+            => _currentShootingCd > 0;
+        private void ResetShootingCd()
         {
+            _currentShootingCd = ThisWeapon.ShootingCdSec;
+        }
+        private void UpdateShootingCd()
+        {
+            if (_currentShootingCd > 0)
+                _currentShootingCd -= Time.deltaTime;
+        }
+
+        // weapon action
+
+        private void TryShootBullet()
+        {
+            if (InShootingCd)
+                return;
+
             Debug.Log("a bullet will be shoot.");
+            ResetShootingCd();
         }
 
     }

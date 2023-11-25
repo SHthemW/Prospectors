@@ -18,6 +18,8 @@ namespace Game.Instances.Combat
         public Vector3 MasterPosition => _master.CenterPosition;
         public Vector3 HandlePosition => _master.CurrentHandPositionGetter.Invoke();
 
+        public float ShootingCdSec => _staticData.ShootingCd_Sec;
+
         IWeaponMaster IWeapon.Master
         {
             get => _master;
