@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefeb: {fileID: 2963065606798505510, guid: 48cd26f2e640aee44957fb5b2d84b425, type: 3}
   _damage: 10
+  _shootingCd_Sec: 0
+  _enableBulletGravity: 0
+  _bulletFlySpeed: 0
+  _shootingLoopRound:
+  - _bullet: {fileID: 0}
+    _shootingAngleOffset: 0

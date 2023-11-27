@@ -1,3 +1,4 @@
+using Game.Services.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,15 @@ namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
+        private BulletShooter _bulletShooter;
+
+        private void Awake()
+        {
+            _bulletShooter = new(
+                bulletParent: transform, 
+                muzzle:       ThisWeapon.Muzzle);
+        }
+
         private void Update()
         {
             UpdateShootingCd();
@@ -31,6 +41,20 @@ namespace Game.Instances.Combat
                 _currentShootingCd -= Time.deltaTime;
         }
 
+        // shooting round
+
+        private int _currentShootingRoundIndex = 0;
+        private ShootingRound GetCurrentShootingRound()
+        {
+            if (_currentShootingRoundIndex >= ThisWeapon.ShootingLoopRound.Length)
+                _currentShootingRoundIndex = 0;
+
+            var currentRound = ThisWeapon.ShootingLoopRound[_currentShootingRoundIndex];
+            _currentShootingRoundIndex++;
+
+            return currentRound;
+        }
+
         // weapon action
 
         private void TryShootBullet()
@@ -38,7 +62,12 @@ namespace Game.Instances.Combat
             if (InShootingCd)
                 return;
 
-            Debug.Log("a bullet will be shoot.");
+            var currentRound = GetCurrentShootingRound();
+
+            _bulletShooter.Shoot(
+                bulletObj: currentRound.Bullet, 
+                direction: ThisWeapon.AimingDirection, 
+                speed:     ThisWeapon.BulletStartSpeed);
             ResetShootingCd();
         }
 

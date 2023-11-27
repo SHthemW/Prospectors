@@ -39,8 +39,8 @@ namespace Game.Services.Combat
             => _bulletFlySpeed.AsSafeInspectorValue(name, static s => s > 0);
 
         [SerializeField]
-        private List<ShootingRound> _shootingLoopRound;
-        public List<ShootingRound> ShootingLoopRound 
-            => _shootingLoopRound.AsSafeInspectorValue(name, static r => r != null && r.Count > 0);
+        private ShootingRound[] _shootingLoopRound;
+        public ShootingRound[] ShootingLoopRound 
+            => _shootingLoopRound.AsSafeInspectorValue(name, static r => r != null && r.Length > 0);
     }
 }
