@@ -1,5 +1,6 @@
 ﻿using Game.Interfaces;
 using Game.Services.Combat;
+using Game.Services.Physics;
 using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace Game.Instances.Combat
         public Transform Muzzle 
             => _muzzle.AsSafeInspectorValue(name, m => m != null);
 
-
         private IWeaponMaster _master;
 
         // from master
@@ -31,6 +31,8 @@ namespace Game.Instances.Combat
         public Vector3 AimingDirection => AimingPosition - MasterPosition;
         public float BulletStartSpeed => _staticData.BulletFlySpeed;
         public float ShootingCdSec => _staticData.ShootingCd_Sec;
+
+        public SingletonComponent<Transform> BulletParent = new("@Bullets");
 
         IWeaponMaster IWeapon.Master
         {

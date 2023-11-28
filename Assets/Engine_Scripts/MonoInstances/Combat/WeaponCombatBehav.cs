@@ -1,4 +1,5 @@
 using Game.Services.Combat;
+using Game.Services.Physics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Game.Instances.Combat
         private void Awake()
         {
             _bulletShooter = new(
-                bulletParent: transform, 
+                bulletParent: ThisWeapon.BulletParent.Get(), 
                 muzzle:       ThisWeapon.Muzzle);
         }
 
