@@ -15,7 +15,7 @@ namespace Game.Services.Physics
         {
             this._name = name ?? throw new ArgumentNullException(nameof(name));
 
-            if (!this._name.Contains(CHECK_CHAR))
+            if (!this._name.StartsWith(CHECK_CHAR))
                 Debug.LogWarning($"[obj] you're trying to init a singleton object, but it should named by prefix {CHECK_CHAR}.");
         }
         public TComponent Get()
