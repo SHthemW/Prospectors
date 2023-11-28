@@ -30,6 +30,7 @@ namespace Game.Instances.Combat
         public ShootingRound[] ShootingLoopRound => _staticData.ShootingLoopRound;
         public Vector3 AimingDirection => AimingPosition - MasterPosition;
         public float BulletStartSpeed => _staticData.BulletFlySpeed;
+        public float BulletExistTimeSec => _staticData.BulletExistingTime_Sec;
         public float ShootingCdSec => _staticData.ShootingCd_Sec;
 
         public SingletonComponent<Transform> BulletParent = new("@Bullets");

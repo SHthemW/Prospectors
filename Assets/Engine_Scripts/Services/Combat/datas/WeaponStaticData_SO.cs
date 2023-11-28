@@ -39,6 +39,11 @@ namespace Game.Services.Combat
             => _bulletFlySpeed.AsSafeInspectorValue(name, static s => s > 0);
 
         [SerializeField]
+        private float _bulletExistingTime_Sec;
+        public float BulletExistingTime_Sec
+            => _bulletExistingTime_Sec.AsSafeInspectorValue(name, t => t > 0);
+
+        [SerializeField]
         private ShootingRound[] _shootingLoopRound;
         public ShootingRound[] ShootingLoopRound 
             => _shootingLoopRound.AsSafeInspectorValue(name, static r => r != null && r.Length > 0);

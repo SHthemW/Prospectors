@@ -66,9 +66,11 @@ namespace Game.Instances.Combat
             var currentRound = GetCurrentShootingRound();
 
             _bulletShooter.Shoot(
-                bulletObj: currentRound.Bullet, 
-                direction: ThisWeapon.AimingDirection, 
-                speed:     ThisWeapon.BulletStartSpeed);
+                bulletObj: currentRound.Bullet,
+                direction: ThisWeapon.AimingDirection,
+                existSecs: ThisWeapon.BulletExistTimeSec,
+                speed:     ThisWeapon.BulletStartSpeed
+                );
             ResetShootingCd();
         }
 
