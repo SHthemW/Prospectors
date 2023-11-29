@@ -1,5 +1,6 @@
 using Game.Services.Combat;
 using Game.Services.Physics;
+using Game.Utils.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,10 +63,14 @@ namespace Game.Instances.Combat
             foreach (ShootingUnit unit in CurrentShootingRound)
             {
                 _bulletShooter.Shoot(
-                bulletObj: unit.Bullet,
-                direction: ThisWeapon.AimingDirection,
-                existSecs: ThisWeapon.BulletExistTimeSec,
-                speed: ThisWeapon.BulletStartSpeed
+                bulletObj: 
+                    unit.Bullet,
+                direction: 
+                    ThisWeapon.AimingDirection.RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset),
+                existSecs: 
+                    ThisWeapon.BulletExistTimeSec,
+                speed: 
+                    ThisWeapon.BulletStartSpeed
                 );
             }
 

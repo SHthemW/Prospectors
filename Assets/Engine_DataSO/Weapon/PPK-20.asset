@@ -17,8 +17,10 @@ MonoBehaviour:
   _shootingCd_Sec: 0.1
   _enableBulletGravity: 0
   _bulletFlySpeed: 100
-  _bulletExistingTime_Sec: 3
+  _bulletExistingTime_Sec: 2
   _shootingLoopRound:
-  - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
-      type: 3}
-    _shootingAngleOffset: 0
+  - _units:
+    - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
+        type: 3}
+      _shootingAngleOffset: 0
+      _shootingDelaySecond: 0
