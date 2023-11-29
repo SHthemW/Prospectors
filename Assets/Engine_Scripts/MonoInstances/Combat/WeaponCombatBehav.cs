@@ -45,16 +45,12 @@ namespace Game.Instances.Combat
         // shooting round
 
         private int _currentShootingRoundIndex = 0;
-        private ShootingRound GetCurrentShootingRound()
-        {
-            if (_currentShootingRoundIndex >= ThisWeapon.ShootingLoopRound.Length)
-                _currentShootingRoundIndex = 0;
-
-            var currentRound = ThisWeapon.ShootingLoopRound[_currentShootingRoundIndex];
-            _currentShootingRoundIndex++;
-
-            return currentRound;
-        }
+        private ShootingRound CurrentShootingRound
+            => ShootingRound.GetCurrentRound
+            (
+                ref _currentShootingRoundIndex,
+                ThisWeapon.ShootingLoopRound
+            );
 
         // weapon action
 
@@ -63,14 +59,16 @@ namespace Game.Instances.Combat
             if (InShootingCd)
                 return;
 
-            var currentRound = GetCurrentShootingRound();
-
-            _bulletShooter.Shoot(
-                bulletObj: currentRound.Bullet,
+            foreach (ShootingUnit unit in CurrentShootingRound)
+            {
+                _bulletShooter.Shoot(
+                bulletObj: unit.Bullet,
                 direction: ThisWeapon.AimingDirection,
                 existSecs: ThisWeapon.BulletExistTimeSec,
-                speed:     ThisWeapon.BulletStartSpeed
+                speed: ThisWeapon.BulletStartSpeed
                 );
+            }
+
             ResetShootingCd();
         }
 
