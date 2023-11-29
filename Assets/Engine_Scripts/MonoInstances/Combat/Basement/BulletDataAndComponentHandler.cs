@@ -1,6 +1,6 @@
 ﻿using Game.Interfaces;
+using Game.Utils.Attributes;
 using Game.Utils.Extensions;
-using System.Collections;
 using UnityEngine;
 
 namespace Game.Instances.Combat
@@ -12,6 +12,8 @@ namespace Game.Instances.Combat
 
         public Rigidbody Rigidbody 
             => _bulletRb.AsSafeInspectorValue(name, rb => rb != null);
+
+        [field: SerializeField, ReadOnly]
         public float MaxExistingSeconds { get; set; }
 
         // TODO: move to "bullet" folder
