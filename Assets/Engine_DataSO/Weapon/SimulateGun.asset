@@ -14,3 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefeb: {fileID: 5341442282117732449, guid: 756cdf2258899d648a439b296bab04a4, type: 3}
   _damage: 15
+  _shootingCd_Sec: 0.6
+  _enableBulletGravity: 0
+  _bulletFlySpeed: 100
+  _bulletExistingTime_Sec: 2
+  _shootingLoopRound:
+  - _units:
+    - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
+        type: 3}
+      _shootingAngleOffset: 0
+      _shootingDelaySecond: 0.05
+    - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
+        type: 3}
+      _shootingAngleOffset: 0
+      _shootingDelaySecond: 0.1
+    - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
+        type: 3}
+      _shootingAngleOffset: 0
+      _shootingDelaySecond: 0.15
