@@ -26,6 +26,9 @@ namespace Game.Services.Combat
             if (bulletObj == null || direction == default || speed == 0) 
                 throw new ArgumentException();
 
+            if (direction != direction.normalized)
+                throw new ArgumentException();
+
             GameObject bulletObjInstance = UnityEngine.Object.Instantiate
             (
                 original: bulletObj,

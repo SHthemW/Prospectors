@@ -66,7 +66,10 @@ namespace Game.Instances.Combat
                 bulletObj: 
                     unit.Bullet,
                 direction: 
-                    ThisWeapon.AimingDirection.RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset),
+                    ThisWeapon
+                    .AimingDirection
+                    .RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset)
+                    .normalized,
                 existSecs: 
                     ThisWeapon.BulletExistTimeSec,
                 speed: 
