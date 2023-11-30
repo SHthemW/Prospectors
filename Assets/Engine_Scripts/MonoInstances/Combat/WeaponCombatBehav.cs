@@ -15,7 +15,8 @@ namespace Game.Instances.Combat
         {
             _bulletShooter = new(
                 bulletParent: ThisWeapon.BulletParent.Get(), 
-                muzzle:       ThisWeapon.Muzzle);
+                muzzle:       ThisWeapon.Muzzle,
+                coroutineMaster: this);
         }
 
         private void Update()
@@ -70,6 +71,8 @@ namespace Game.Instances.Combat
                     .AimingDirection
                     .RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset)
                     .normalized,
+                delaySec:
+                    unit.ShootingDelaySecond,
                 existSecs: 
                     ThisWeapon.BulletExistTimeSec,
                 speed: 

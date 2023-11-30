@@ -1,5 +1,6 @@
 ﻿using Game.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,18 +11,19 @@ namespace Game.Services.Combat
         // TODO: require following component:
 
         // object pool service
+        private readonly Transform     _muzzle;
+        private readonly Transform     _bulletParent;
+        private readonly MonoBehaviour _coroutineMaster;
 
-        private readonly Transform _bulletParent;
-        private readonly Transform _muzzle;
-
-        public BulletShooter(Transform bulletParent, Transform muzzle)
+        public BulletShooter(Transform bulletParent, Transform muzzle, MonoBehaviour coroutineMaster)
         {
-            _bulletParent  = bulletParent  != null ? bulletParent  : throw new ArgumentNullException(nameof(bulletParent));
             _muzzle = muzzle != null ? muzzle : throw new ArgumentNullException(nameof(muzzle));
+            _bulletParent = bulletParent != null ? bulletParent : throw new ArgumentNullException(nameof(bulletParent));
+            _coroutineMaster = coroutineMaster != null ? coroutineMaster : throw new ArgumentNullException(nameof(coroutineMaster));
             _bulletDataCache = new();
         }
 
-        public void Shoot(in GameObject bulletObj, Vector3 direction, float speed, float existSecs)
+        public void ShootImmediately(in GameObject bulletObj, Vector3 direction, float speed, float existSecs)
         {
             if (bulletObj == null || direction == default || speed == 0) 
                 throw new ArgumentException();
@@ -41,6 +43,25 @@ namespace Game.Services.Combat
 
             bullet.Rigidbody.velocity = direction * speed;
             bullet.MaxExistingSeconds = existSecs;
+        }
+        public void Shoot(GameObject bulletObj, Vector3 direction, float speed, float existSecs, float delaySec)
+        {
+            if (delaySec == 0)
+            {
+                ShootImmediately(bulletObj, direction, speed, existSecs);
+                return;
+            }
+            else
+            {
+                _coroutineMaster.StartCoroutine(DelayShootingCoroutine());
+                return;
+            }
+
+            IEnumerator DelayShootingCoroutine()
+            {
+                yield return new WaitForSeconds(delaySec);
+                ShootImmediately(bulletObj, direction, speed, existSecs);
+            }
         }
 
         private readonly Dictionary<GameObject, IBullet> _bulletDataCache;
