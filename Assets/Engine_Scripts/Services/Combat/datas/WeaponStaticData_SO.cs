@@ -19,16 +19,6 @@ namespace Game.Services.Combat
         [Header("Shooting")]
 
         [SerializeField]
-        private float _shootingCd_Sec;
-        public float ShootingCd_Sec
-            => _shootingCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
-
-        [SerializeField]
-        private float _shootingOffsetAngle;
-        public float ShootingOffsetAngle 
-            => _shootingOffsetAngle;
-
-        [SerializeField]
         private float _bulletSpeed;
         public float BulletSpeed
             => _bulletSpeed.AsSafeInspectorValue(name, static s => s > 0);
@@ -37,6 +27,20 @@ namespace Game.Services.Combat
         private float _bulletExistingTime_Sec;
         public float BulletExistingTime_Sec
             => _bulletExistingTime_Sec.AsSafeInspectorValue(name, t => t > 0);
+
+        [Space]
+
+        [SerializeField]
+        private float _shootingCd_Sec;
+        public float ShootingCd_Sec
+            => _shootingCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
+
+        [SerializeField]
+        private float _shootingOffsetAngle;
+        public float ShootingOffsetAngle
+            => _shootingOffsetAngle;
+
+        [Space]
 
         [SerializeField]
         private ShootingRound[] _shootingLoopRound;
