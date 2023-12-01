@@ -19,24 +19,14 @@ namespace Game.Services.Combat
         [Header("Shooting")]
 
         [SerializeField]
-        private int _damage;
-        public int Damage 
-            => _damage.AsSafeInspectorValue(name, static d => d > 0);
-
-        [SerializeField]
         private float _shootingCd_Sec;
         public float ShootingCd_Sec
             => _shootingCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
 
         [SerializeField]
-        private bool _enableBulletGravity;
-        public bool EnableBulletGravity
-            => _enableBulletGravity;
-
-        [SerializeField]
-        private float _bulletFlySpeed;
-        public float BulletFlySpeed
-            => _bulletFlySpeed.AsSafeInspectorValue(name, static s => s > 0);
+        private float _bulletSpeed;
+        public float BulletSpeed
+            => _bulletSpeed.AsSafeInspectorValue(name, static s => s > 0);
 
         [SerializeField]
         private float _bulletExistingTime_Sec;
