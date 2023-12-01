@@ -24,6 +24,11 @@ namespace Game.Services.Combat
             => _shootingCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
 
         [SerializeField]
+        private float _shootingOffsetAngle;
+        public float ShootingOffsetAngle 
+            => _shootingOffsetAngle;
+
+        [SerializeField]
         private float _bulletSpeed;
         public float BulletSpeed
             => _bulletSpeed.AsSafeInspectorValue(name, static s => s > 0);

@@ -70,6 +70,7 @@ namespace Game.Instances.Combat
                     ThisWeapon
                     .AimingDirection
                     .RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset)
+                    .RotateAloneAxisY(clockwiseAngle: ThisWeapon.BulletAccuracyOffsetAngle)
                     .normalized,
                 delaySec:
                     unit.ShootingDelaySecond,
