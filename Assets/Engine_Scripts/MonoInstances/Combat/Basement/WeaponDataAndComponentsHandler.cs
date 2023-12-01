@@ -30,10 +30,10 @@ namespace Game.Instances.Combat
         public ShootingRound[] ShootingLoopRound => _staticData.ShootingLoopRound;
         public Vector3 AimingDirection => AimingPosition - MasterPosition;
         public float BulletAccuracyOffsetAngle 
-            => UnityEngine.Random.Range(-_staticData.ShootingOffsetAngle, _staticData.ShootingOffsetAngle);
+            => UnityEngine.Random.Range(-_staticData.ShootingAccuracyOffsetAngle, _staticData.ShootingAccuracyOffsetAngle);
         public float BulletStartSpeed => _staticData.BulletSpeed;
         public float BulletExistTimeSec => _staticData.BulletExistingTime_Sec;
-        public float ShootingCdSec => _staticData.ShootingCd_Sec;
+        public float ShootingCdSec => _staticData.ShootingRoundCd_Sec;
 
         public SingletonComponent<Transform> BulletParent = new("@Bullets");
 

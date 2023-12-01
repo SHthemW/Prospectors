@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: RN100
   m_EditorClassIdentifier: 
   _prefeb: {fileID: 2963065606798505510, guid: 48cd26f2e640aee44957fb5b2d84b425, type: 3}
-  _damage: 10
-  _shootingCd_Sec: 1
-  _enableBulletGravity: 0
-  _bulletFlySpeed: 100
+  _bulletSpeed: 100
   _bulletExistingTime_Sec: 2
+  _shootingRoundCd_Sec: 1
+  _shootingAccuracyOffsetAngle: 0
   _shootingLoopRound:
   - _units:
     - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,

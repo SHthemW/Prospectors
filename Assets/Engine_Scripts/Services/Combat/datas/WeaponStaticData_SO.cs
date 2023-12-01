@@ -1,7 +1,5 @@
 ﻿using Game.Interfaces;
 using Game.Utils.Extensions;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Services.Combat
@@ -31,14 +29,14 @@ namespace Game.Services.Combat
         [Space]
 
         [SerializeField]
-        private float _shootingCd_Sec;
-        public float ShootingCd_Sec
-            => _shootingCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
+        private float _shootingRoundCd_Sec;
+        public float ShootingRoundCd_Sec
+            => _shootingRoundCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
 
         [SerializeField]
-        private float _shootingOffsetAngle;
-        public float ShootingOffsetAngle
-            => _shootingOffsetAngle;
+        private float _shootingAccuracyOffsetAngle;
+        public float ShootingAccuracyOffsetAngle
+            => _shootingAccuracyOffsetAngle;
 
         [Space]
 

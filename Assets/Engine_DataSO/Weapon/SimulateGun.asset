@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: SimulateGun
   m_EditorClassIdentifier: 
   _prefeb: {fileID: 5341442282117732449, guid: 756cdf2258899d648a439b296bab04a4, type: 3}
-  _damage: 15
-  _shootingCd_Sec: 0.6
-  _enableBulletGravity: 0
-  _bulletFlySpeed: 100
+  _bulletSpeed: 100
   _bulletExistingTime_Sec: 2
+  _shootingRoundCd_Sec: 0.6
+  _shootingAccuracyOffsetAngle: 5
   _shootingLoopRound:
   - _units:
     - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
