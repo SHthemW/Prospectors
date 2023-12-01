@@ -63,7 +63,7 @@ namespace Game.Instances.Combat
         private void TryReloadBullet()
         {
             Debug.Log("magazine is run out.");
-            ThisWeapon.Magazine.Reload(reloadNum: ThisWeapon.TryGetBulletFromMaster());
+            ThisWeapon.Magazine.Reload(reloadNum: ThisWeapon.MaxBulletNumberFromMaster);
         }
 
         // weapon action

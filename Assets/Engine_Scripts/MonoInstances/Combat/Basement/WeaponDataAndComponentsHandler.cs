@@ -3,8 +3,6 @@ using Game.Services.Combat;
 using Game.Services.Physics;
 using Game.Utils.Attributes;
 using Game.Utils.Extensions;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Instances.Combat
@@ -14,21 +12,42 @@ namespace Game.Instances.Combat
         [SerializeField]
         private WeaponStaticData_SO _staticData;
 
+        /*
+         *  Weapon part objects
+         */
+
         [SerializeField]
         private Transform _muzzle;
         public Transform Muzzle 
             => _muzzle.AsSafeInspectorValue(name, m => m != null);
 
+        [field: SerializeField, ReadOnly]
+        public Magazine Magazine { get; set; }
+
+        public SingletonComponent<Transform> BulletParent { get; set; } = new("@Bullets");
+
+        /*
+         *  Master properties
+         */
+
         private IWeaponMaster _master;
 
-        // from master
+        IWeaponMaster IWeapon.Master
+        {
+            get => _master;
+            set => _master = value;
+        }
         public bool TriggerIsPressing => _master.WantToShoot;
         public Vector3 AimingPosition => _master.AimingPosition;
         public Vector3 MasterPosition => _master.CenterPosition;
         public Vector3 HandlePosition => _master.CurrentHandPositionGetter.Invoke();
-        public int TryGetBulletFromMaster() => _master.TryGetBulletFromInventory(MaxMagazineCapacity);
+        public int MaxBulletNumberFromMaster => _master.TryGetBulletFromInventory(MaxMagazineCapacity);
 
-        // shoot
+
+        /*
+         *  Shooting runtimes
+         */
+
         public ShootingRound[] ShootingLoopRound => _staticData.ShootingLoopRound;
         public Vector3 AimingDirection => AimingPosition - MasterPosition;
         public float BulletAccuracyOffsetAngle 
@@ -36,19 +55,6 @@ namespace Game.Instances.Combat
         public float BulletStartSpeed => _staticData.BulletSpeed;
         public float BulletExistTimeSec => _staticData.BulletExistingTime_Sec;
         public float ShootingCdSec => _staticData.ShootingRoundCd_Sec;
-
         public int MaxMagazineCapacity => _staticData.MagazineCapacity;
-
-        [field: SerializeField, ReadOnly]
-        public Magazine Magazine { get; set; }
-
-
-        public SingletonComponent<Transform> BulletParent = new("@Bullets");
-
-        IWeaponMaster IWeapon.Master
-        {
-            get => _master;
-            set => _master = value;
-        }
     }
 }
