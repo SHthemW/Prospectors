@@ -15,6 +15,8 @@ MonoBehaviour:
   _prefeb: {fileID: 5341442282117732449, guid: a91107830854ce34ea994e23f6be8c0c, type: 3}
   _bulletSpeed: 100
   _bulletExistingTime_Sec: 2
+  _magazineCapacity: 20
+  _inventoryCapacity: 80
   _shootingRoundCd_Sec: 0.1
   _shootingAccuracyOffsetAngle: 5
   _shootingLoopRound:

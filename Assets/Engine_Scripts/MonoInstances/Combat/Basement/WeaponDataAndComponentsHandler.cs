@@ -1,6 +1,7 @@
 ﻿using Game.Interfaces;
 using Game.Services.Combat;
 using Game.Services.Physics;
+using Game.Utils.Attributes;
 using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,12 @@ namespace Game.Instances.Combat
         public float BulletStartSpeed => _staticData.BulletSpeed;
         public float BulletExistTimeSec => _staticData.BulletExistingTime_Sec;
         public float ShootingCdSec => _staticData.ShootingRoundCd_Sec;
+
+        public int MaxMagazineCapacity => _staticData.MagazineCapacity;
+
+        [field: SerializeField, ReadOnly]
+        public Magazine Magazine { get; set; }
+
 
         public SingletonComponent<Transform> BulletParent = new("@Bullets");
 

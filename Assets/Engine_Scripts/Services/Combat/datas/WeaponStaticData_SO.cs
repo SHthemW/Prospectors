@@ -26,6 +26,16 @@ namespace Game.Services.Combat
         public float BulletExistingTime_Sec
             => _bulletExistingTime_Sec.AsSafeInspectorValue(name, t => t > 0);
 
+        [SerializeField]
+        private int _magazineCapacity;
+        public int MagazineCapacity
+            => _magazineCapacity.AsSafeInspectorValue(name, c => c > 0);
+
+        [SerializeField]
+        private int _inventoryCapacity;
+        public int InventoryCapacity
+            => _inventoryCapacity.AsSafeInspectorValue("name", c => c > 0);
+
         [Space]
 
         [SerializeField]
