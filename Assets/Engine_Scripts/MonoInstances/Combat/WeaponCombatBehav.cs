@@ -18,7 +18,10 @@ namespace Game.Instances.Combat
                 muzzle:       ThisWeapon.Muzzle,
                 coroutineMaster: this);
 
-            ThisWeapon.Magazine = new Magazine(ThisWeapon.MaxMagazineCapacity);
+            ThisWeapon.Magazine = new Magazine(
+                maxCapacity: ThisWeapon.MaxMagazineCapacity,
+                actAfterReload: static num => Debug.Log($"reload finished, get {num}.")
+                );
         }
 
         private void Update()
@@ -57,11 +60,11 @@ namespace Game.Instances.Combat
             );
 
         // reload & inventory
-        private void ShowMagzineRunOutLog()
+        private void TryReloadBullet()
         {
             Debug.Log("magazine is run out.");
+            ThisWeapon.Magazine.Reload(reloadNum: ThisWeapon.TryGetBulletFromMaster());
         }
-
 
         // weapon action
 
@@ -72,7 +75,7 @@ namespace Game.Instances.Combat
 
             if (!ThisWeapon.Magazine.TryUse())
             {
-                ShowMagzineRunOutLog();
+                TryReloadBullet();
                 return;
             }
 

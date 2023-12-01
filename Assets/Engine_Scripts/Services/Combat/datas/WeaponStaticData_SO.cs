@@ -31,11 +31,6 @@ namespace Game.Services.Combat
         public int MagazineCapacity
             => _magazineCapacity.AsSafeInspectorValue(name, c => c > 0);
 
-        [SerializeField]
-        private int _inventoryCapacity;
-        public int InventoryCapacity
-            => _inventoryCapacity.AsSafeInspectorValue("name", c => c > 0);
-
         [Space]
 
         [SerializeField]

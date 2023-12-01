@@ -45,5 +45,9 @@ namespace Game.Instances.Player
                 : _currentTestWeaponIndex + 1;
             return result;
         }
+
+        // inventory (preview)
+        [field: SerializeField]
+        internal int CurrentInventoryBulletCount { get; set; } // TODO: use Dictionary to storage different type of bullet.
     }
 }

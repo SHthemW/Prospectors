@@ -5,18 +5,21 @@ using UnityEngine;
 
 namespace Game.Services.Combat
 {
+# nullable enable
     [Serializable]
     public sealed class Magazine
     {
         private readonly int _maxCapacity;
 
+        private readonly Action<int>? _actionAfterReload;
+
         [SerializeField, ReadOnly]
         private int _currentCapacity;
 
-        public Magazine(int maxCapacity)
+        public Magazine(int maxCapacity, Action<int>? actAfterReload = null)
         {
             _maxCapacity = maxCapacity;
-            _currentCapacity = _maxCapacity;
+            _actionAfterReload = actAfterReload;
         }
         public bool TryUse(int useNum = 1)
         {
@@ -26,9 +29,15 @@ namespace Game.Services.Combat
             _currentCapacity -= useNum;
             return true;
         }
-        public void Reload()
+        public void Reload(int reloadNum)
         {
-            _currentCapacity = _maxCapacity;
+            if (reloadNum > _maxCapacity)
+                throw new ArgumentException();
+
+            _currentCapacity = reloadNum;
+            _actionAfterReload?.Invoke(reloadNum);
+
         }
     }
+# nullable disable
 }

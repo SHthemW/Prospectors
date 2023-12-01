@@ -1,9 +1,7 @@
 ﻿using Game.Interfaces;
 using Game.Services.Combat;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Game.Instances.Player
@@ -27,7 +25,26 @@ namespace Game.Instances.Player
             () => Components.CharModels.First(i => i.Tag == "Front").Item.activeInHierarchy
                 ? Components.CharHands.First(i => i.Tag == "Front").Item.position
                 : Components.CharHands.First(i => i.Tag == "Back") .Item.position;
-        
+
+        int IWeaponMaster.TryGetBulletFromInventory(int require)
+        {
+            if (require == 0)
+                throw new ArgumentException();
+
+            // inventory number is enough
+            if (DataHandler.CurrentInventoryBulletCount >= require)
+            {
+                DataHandler.CurrentInventoryBulletCount -= require;
+                return require;
+            }
+            // not enough
+            else
+            {
+                int remain = DataHandler.CurrentInventoryBulletCount;
+                DataHandler.CurrentInventoryBulletCount = 0;
+                return remain;
+            }
+        }
 
         private void Awake()
         {

@@ -39820,6 +39820,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3c834147092fc8f43afb012cc8a689fd,
         type: 2}
+    - target: {fileID: 2630632268396808693, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
+        type: 3}
+      propertyPath: <CurrentInventoryBulletCount>k__BackingField
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2709375991612389706, guid: 28c72e1a1b1561d46bf8735ecc8c5bba,
         type: 3}
       propertyPath: m_Mesh
