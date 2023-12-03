@@ -16,12 +16,13 @@ MonoBehaviour:
   _bulletSpeed: 100
   _bulletExistingTime_Sec: 2
   _magazineCapacity: 20
-  _inventoryCapacity: 80
   _shootingRoundCd_Sec: 0.1
   _shootingAccuracyOffsetAngle: 5
   _shootingLoopRound:
   - _units:
     - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
         type: 3}
+      _unitAction: {fileID: 0}
       _shootingAngleOffset: 0
       _shootingDelaySecond: 0
+    _roundAction: {fileID: 11400000, guid: 879fbe3e5c446df46b063268b312aa0c, type: 2}

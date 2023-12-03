@@ -4,6 +4,7 @@ using Game.Utils.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace Game.Instances.Combat
 {
@@ -97,7 +98,13 @@ namespace Game.Instances.Combat
                 speed: 
                     ThisWeapon.BulletStartSpeed
                 );
+
+                if (unit.UnitAction != null)
+                    unit.UnitAction.Execute(null);
             }
+
+            if (CurrentShootingRound.RoundAction != null)
+                CurrentShootingRound.RoundAction.Execute(null);
 
             ResetShootingCd();
         }

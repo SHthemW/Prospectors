@@ -1,4 +1,5 @@
-﻿using Game.Utils.Extensions;
+﻿using Game.Interfaces;
+using Game.Utils.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace Game.Services.Combat
     {
         [SerializeField]
         private ShootingUnit[] _units;
+
+        [SerializeField]
+        private ExecutableAction _roundAction;
+        public readonly ExecutableAction RoundAction
+            => _roundAction;
 
         public readonly IEnumerator<ShootingUnit> GetEnumerator()
         {
@@ -48,6 +54,11 @@ namespace Game.Services.Combat
         private GameObject _bullet;
         public readonly GameObject Bullet
             => _bullet.AsSafeInspectorValue(nameof(ShootingRound), static b => b != null);
+
+        [SerializeField]
+        private ExecutableAction _unitAction;
+        public readonly ExecutableAction UnitAction
+            => _unitAction;
 
         [SerializeField, Tooltip("子弹实际发射出的角度与瞄准角度的偏移量. 默认为0.")]
         private float _shootingAngleOffset;
