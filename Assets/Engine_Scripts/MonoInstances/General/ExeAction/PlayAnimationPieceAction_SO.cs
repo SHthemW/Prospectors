@@ -15,7 +15,9 @@ namespace Game.Instances.General
         [SerializeField]
         private int _layerIndex = 0;
 
-        public override void Execute(in object caster)
+        protected override ActionType ActionType 
+            => ActionType.RequireAnimator;
+        protected override void Execute(in object caster)
         {
             if (caster == null)
                 throw new ArgumentNullException();

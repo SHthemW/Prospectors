@@ -1,3 +1,4 @@
+using Game.Interfaces;
 using Game.Services.Combat;
 using Game.Services.Physics;
 using Game.Utils.Extensions;
@@ -100,11 +101,11 @@ namespace Game.Instances.Combat
                 );
 
                 if (unit.UnitAction != null)
-                    unit.UnitAction.Execute(null);
+                    unit.UnitAction.Implement(animator: null);
             }
 
             if (CurrentShootingRound.RoundAction != null)
-                CurrentShootingRound.RoundAction.Execute(null);
+                CurrentShootingRound.RoundAction.Implement(animator: null);
 
             ResetShootingCd();
         }
