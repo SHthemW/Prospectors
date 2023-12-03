@@ -5,6 +5,6 @@ namespace Game.Interfaces
 {
     public abstract class ExecutableAction : ScriptableObject
     {
-        public abstract void Execute(object caster);
+        public abstract void Execute(in object caster);
     }
 }
