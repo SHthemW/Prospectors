@@ -17,10 +17,17 @@ namespace Game.Services.Combat
         [SerializeField]
         private ShootingUnit[] _units;
 
+        [Header("Action")]
+
         [SerializeField]
-        private ExecutableAction _roundAction;
-        public readonly ExecutableAction RoundAction
-            => _roundAction;
+        private ExecutableAction[] _roundGunActions;
+        public readonly ExecutableAction[] GunActions
+            => _roundGunActions;
+
+        [SerializeField]
+        private ExecutableAction[] _roundMasterActions;
+        public readonly ExecutableAction[] MasterActions
+            => _roundMasterActions;
 
         public readonly IEnumerator<ShootingUnit> GetEnumerator()
         {
@@ -55,10 +62,19 @@ namespace Game.Services.Combat
         public readonly GameObject Bullet
             => _bullet.AsSafeInspectorValue(nameof(ShootingRound), static b => b != null);
 
+        [Header("Action")]
+
         [SerializeField]
-        private ExecutableAction _unitAction;
-        public readonly ExecutableAction UnitAction
-            => _unitAction;
+        private ExecutableAction[] _unitGunActions;
+        public readonly ExecutableAction[] GunActions
+            => _unitGunActions;
+
+        [SerializeField]
+        private ExecutableAction[] _unitMasterActions;
+        public readonly ExecutableAction[] MasterActions
+            => _unitMasterActions;
+
+        [Header("Property")]
 
         [SerializeField, Tooltip("子弹实际发射出的角度与瞄准角度的偏移量. 默认为0.")]
         private float _shootingAngleOffset;

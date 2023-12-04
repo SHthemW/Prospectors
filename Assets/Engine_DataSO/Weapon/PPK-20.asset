@@ -22,7 +22,10 @@ MonoBehaviour:
   - _units:
     - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
         type: 3}
-      _unitAction: {fileID: 0}
+      _unitGunActions: []
+      _unitMasterActions: []
       _shootingAngleOffset: 0
       _shootingDelaySecond: 0
-    _roundAction: {fileID: 11400000, guid: 879fbe3e5c446df46b063268b312aa0c, type: 2}
+    _roundGunActions:
+    - {fileID: 11400000, guid: 879fbe3e5c446df46b063268b312aa0c, type: 2}
+    _roundMasterActions: []

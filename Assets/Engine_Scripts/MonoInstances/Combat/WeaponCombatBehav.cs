@@ -2,6 +2,7 @@ using Game.Interfaces;
 using Game.Services.Combat;
 using Game.Services.Physics;
 using Game.Utils.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -100,12 +101,12 @@ namespace Game.Instances.Combat
                     ThisWeapon.BulletStartSpeed
                 );
 
-                if (unit.UnitAction != null)
-                    unit.UnitAction.Implement(animator: null);
+                Array.ForEach(unit.GunActions, a => a.Implement(animator: null));
+                Array.ForEach(unit.MasterActions, a => a.Implement(animator: null));
             }
 
-            if (CurrentShootingRound.RoundAction != null)
-                CurrentShootingRound.RoundAction.Implement(animator: null);
+            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(animator: null));
+            Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(animator: null));
 
             ResetShootingCd();
         }
