@@ -101,12 +101,20 @@ namespace Game.Instances.Combat
                     ThisWeapon.BulletStartSpeed
                 );
 
-                Array.ForEach(unit.GunActions, a => a.Implement(animator: null));
-                Array.ForEach(unit.MasterActions, a => a.Implement(animator: null));
+                Array.ForEach(unit.GunActions, a => a.Implement(
+                    animators: null
+                ));
+                Array.ForEach(unit.MasterActions, a => a.Implement(
+                    animators: ThisWeapon.MasterAnimators
+                ));
             }
 
-            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(animator: null));
-            Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(animator: null));
+            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(
+                animators: null
+            ));
+            Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(
+                animators: ThisWeapon.MasterAnimators
+            ));
 
             ResetShootingCd();
         }

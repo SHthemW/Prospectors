@@ -25,6 +25,7 @@ namespace Game.Instances.Player
             () => Components.CharModels.First(i => i.Tag == "Front").Item.activeInHierarchy
                 ? Components.CharHands.First(i => i.Tag == "Front").Item.position
                 : Components.CharHands.First(i => i.Tag == "Back") .Item.position;
+        Animator[] IWeaponMaster.CharacterAnimators => Components.CharAnimators;
 
         int IWeaponMaster.TryGetBulletFromInventory(int require)
         {

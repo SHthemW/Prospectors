@@ -41,6 +41,7 @@ namespace Game.Instances.Combat
         public Vector3 AimingPosition => _master.AimingPosition;
         public Vector3 MasterPosition => _master.CenterPosition;
         public Vector3 HandlePosition => _master.CurrentHandPositionGetter.Invoke();
+        public Animator[] MasterAnimators => _master.CharacterAnimators;
         public int MaxBulletNumberFromMaster => _master.TryGetBulletFromInventory(MaxMagazineCapacity);
 
 

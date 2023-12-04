@@ -28,4 +28,5 @@ MonoBehaviour:
       _shootingDelaySecond: 0
     _roundGunActions:
     - {fileID: 11400000, guid: 879fbe3e5c446df46b063268b312aa0c, type: 2}
-    _roundMasterActions: []
+    _roundMasterActions:
+    - {fileID: 11400000, guid: 18f2cba72f07d6e4ab8274b720e7a86d, type: 2}

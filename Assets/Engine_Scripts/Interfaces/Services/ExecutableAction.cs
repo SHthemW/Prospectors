@@ -18,7 +18,7 @@ namespace Game.Interfaces
 
         public void Implement
         (
-            in Animator animator = null
+            in Animator[] animators = null
         )
         {
             switch (ActionType)
@@ -28,7 +28,12 @@ namespace Game.Interfaces
                     break;
 
                 case ActionType.RequireAnimator:
-                    Execute(animator.AsSafeInspectorValue(name, a => a != null));
+                    if (animators == null)
+                        throw new ArgumentNullException();
+
+                    foreach (var animator in animators)
+                        if (animator.gameObject.activeInHierarchy && animator.enabled) 
+                            Execute(animator);
                     break;
 
                 default:

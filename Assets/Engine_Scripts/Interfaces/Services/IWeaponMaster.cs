@@ -7,11 +7,14 @@ namespace Game.Interfaces
 {
     public interface IWeaponMaster
     {
+        // properties
         IWeapon CurrentWeapon { get; set; }
         Vector3 AimingPosition { get; }
         Vector3 CenterPosition { get; }
         Func<Vector3> CurrentHandPositionGetter { get; }
+        Animator[] CharacterAnimators { get; }
 
+        // status
         bool WantToShoot { get; }
 
         /// <summary>
