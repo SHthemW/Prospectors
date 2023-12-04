@@ -20,14 +20,14 @@ namespace Game.Services.Combat
         [Header("Action")]
 
         [SerializeField]
-        private ExecutableAction[] _roundGunActions;
+        private ExecutableAction[] _gunActions;
         public readonly ExecutableAction[] GunActions
-            => _roundGunActions;
+            => _gunActions;
 
         [SerializeField]
-        private ExecutableAction[] _roundMasterActions;
+        private ExecutableAction[] _masterActions;
         public readonly ExecutableAction[] MasterActions
-            => _roundMasterActions;
+            => _masterActions;
 
         public readonly IEnumerator<ShootingUnit> GetEnumerator()
         {
@@ -65,14 +65,14 @@ namespace Game.Services.Combat
         [Header("Action")]
 
         [SerializeField]
-        private ExecutableAction[] _unitGunActions;
+        private ExecutableAction[] _gunActions;
         public readonly ExecutableAction[] GunActions
-            => _unitGunActions;
+            => _gunActions;
 
         [SerializeField]
-        private ExecutableAction[] _unitMasterActions;
+        private ExecutableAction[] _masterActions;
         public readonly ExecutableAction[] MasterActions
-            => _unitMasterActions;
+            => _masterActions;
 
         [Header("Property")]
 

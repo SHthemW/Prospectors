@@ -22,11 +22,11 @@ MonoBehaviour:
   - _units:
     - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
         type: 3}
-      _unitGunActions: []
-      _unitMasterActions: []
+      _gunActions: []
+      _masterActions: []
       _shootingAngleOffset: 0
       _shootingDelaySecond: 0
-    _roundGunActions:
+    _gunActions:
     - {fileID: 11400000, guid: 879fbe3e5c446df46b063268b312aa0c, type: 2}
-    _roundMasterActions:
+    _masterActions:
     - {fileID: 11400000, guid: 18f2cba72f07d6e4ab8274b720e7a86d, type: 2}
