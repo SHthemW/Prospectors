@@ -15,17 +15,20 @@ namespace Game.Instances.General
         [SerializeField]
         private int _layerIndex = 0;
 
-        protected override ActionType ActionType 
-            => ActionType.RequireAnimator;
-        protected override void Execute(in object caster)
+        protected override bool RequireArgument => true;
+        protected override void Execute(in object animComponent)
         {
-            if (caster == null)
+            if (animComponent == null)
                 throw new ArgumentNullException();
 
-            if (caster is not Animator animator)
-                throw new ArgumentException();
+            else if (animComponent is Animator animator)
+                animator.Play(_pieceName, _layerIndex);
 
-            animator.Play(_pieceName, _layerIndex);
+            else if (animComponent is Animator[] animators)
+                Array.ForEach(animators, a => a.Play(_pieceName, _layerIndex));
+
+            else
+                throw new InvalidOperationException();
         }
     }
 }

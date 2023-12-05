@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c4d5c7844778243a0b03c73498f14b, type: 3}
   m_Name: play gun shoot anim
   m_EditorClassIdentifier: 
+  _effectiveTags:
+  - anim1
   _pieceName: fire
   _layerIndex: 0

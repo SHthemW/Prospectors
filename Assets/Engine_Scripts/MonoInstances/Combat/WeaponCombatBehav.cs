@@ -5,6 +5,7 @@ using Game.Utils.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using static UnityEngine.UI.CanvasScaler;
 
@@ -101,20 +102,24 @@ namespace Game.Instances.Combat
                     ThisWeapon.BulletStartSpeed
                 );
 
-                Array.ForEach(unit.GunActions, a => a.Implement(
-                    animators: new Animator[] { ThisWeapon.Animator }
-                ));
-                Array.ForEach(unit.MasterActions, a => a.Implement(
-                    animators: ThisWeapon.MasterAnimators
-                ));
+                Array.ForEach(unit.GunActions, a => a.Implement(new() 
+                { 
+                    ["anim1"] = ThisWeapon.Animator
+                }));
+                Array.ForEach(unit.MasterActions, a => a.Implement(new()
+                {
+                    ["anim1"] = ThisWeapon.MasterAnimators
+                }));
             }
 
-            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(
-                animators: new Animator[] { ThisWeapon.Animator }
-            ));
-            Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(
-                animators: ThisWeapon.MasterAnimators
-            ));
+            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(new()
+            {
+                ["anim1"] = ThisWeapon.Animator
+            }));
+            Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(new()
+            {
+                ["anim1"] = ThisWeapon.MasterAnimators
+            }));
 
             ResetShootingCd();
         }

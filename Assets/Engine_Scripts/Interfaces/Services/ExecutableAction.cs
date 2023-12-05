@@ -1,44 +1,33 @@
 ﻿using Game.Utils.Extensions;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 
 namespace Game.Interfaces
 {
-    public enum ActionType
-    {
-        RequireNothing, RequireAnimator
-    }
-
     public abstract class ExecutableAction : ScriptableObject
     {
-        protected abstract ActionType ActionType { get; }
+        [SerializeField]
+        private string[] _effectiveTags;
+
+        protected abstract bool RequireArgument { get; }
         protected abstract void Execute(in object caster = null);
 
-        public void Implement
-        (
-            in Animator[] animators = null
-        )
+        public void Implement(in Dictionary<string, object> kwargs = null)
         {
-            switch (ActionType)
+            if (_effectiveTags.Length == 0 || kwargs.Count == 0)
             {
-                case ActionType.RequireNothing:
+                if (RequireArgument)
+                    throw new ArgumentException();
+                else
                     Execute();
-                    break;
-
-                case ActionType.RequireAnimator:
-                    if (animators == null)
-                        throw new ArgumentNullException();
-
-                    foreach (var animator in animators)
-                        if (animator.gameObject.activeInHierarchy && animator.enabled) 
-                            Execute(animator);
-                    break;
-
-                default:
-                    throw new NotImplementedException();
             }
+            else 
+                foreach (var tag in _effectiveTags)
+                    Execute(kwargs[tag]);
         }
     }
 }

@@ -12,8 +12,7 @@ namespace Game.Instances.General
         [SerializeField]
         private string _logContent;
 
-        protected override ActionType ActionType 
-            => ActionType.RequireNothing;
+        protected override bool RequireArgument => false;
         protected override void Execute(in object caster = null)
         {
             Debug.Log("[Action test]: " + _logContent);
