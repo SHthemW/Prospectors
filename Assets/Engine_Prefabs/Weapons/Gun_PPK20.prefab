@@ -167,6 +167,7 @@ MonoBehaviour:
   _muzzle: {fileID: 6824569375224005546}
   <Magazine>k__BackingField:
     _currentCapacity: 0
+  _animator: {fileID: 2418563937010531441}
 --- !u!114 &3557274724543046227
 MonoBehaviour:
   m_ObjectHideFlags: 0

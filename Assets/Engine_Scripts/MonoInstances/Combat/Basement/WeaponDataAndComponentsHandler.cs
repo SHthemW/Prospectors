@@ -24,6 +24,11 @@ namespace Game.Instances.Combat
         [field: SerializeField, ReadOnly]
         public Magazine Magazine { get; set; }
 
+        [SerializeField]
+        private Animator _animator;
+        public Animator Animator
+            => _animator.AsSafeInspectorValue(name, a => a != null);
+
         public SingletonComponent<Transform> BulletParent { get; set; } = new("@Bullets");
 
         /*

@@ -85,9 +85,9 @@ namespace Game.Instances.Combat
             foreach (ShootingUnit unit in CurrentShootingRound)
             {
                 _bulletShooter.Shoot(
-                bulletObj: 
+                bulletObj:
                     unit.Bullet,
-                direction: 
+                direction:
                     ThisWeapon
                     .AimingDirection
                     .RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset)
@@ -95,14 +95,14 @@ namespace Game.Instances.Combat
                     .normalized,
                 delaySec:
                     unit.ShootingDelaySecond,
-                existSecs: 
+                existSecs:
                     ThisWeapon.BulletExistTimeSec,
-                speed: 
+                speed:
                     ThisWeapon.BulletStartSpeed
                 );
 
                 Array.ForEach(unit.GunActions, a => a.Implement(
-                    animators: null
+                    animators: new Animator[] { ThisWeapon.Animator }
                 ));
                 Array.ForEach(unit.MasterActions, a => a.Implement(
                     animators: ThisWeapon.MasterAnimators
@@ -110,7 +110,7 @@ namespace Game.Instances.Combat
             }
 
             Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(
-                animators: null
+                animators: new Animator[] { ThisWeapon.Animator }
             ));
             Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(
                 animators: ThisWeapon.MasterAnimators
