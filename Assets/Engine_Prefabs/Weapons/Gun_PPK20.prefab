@@ -112,7 +112,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6824569375224005546}
+  - {fileID: 6776410670200844202}
   m_Father: {fileID: 5377714702063303431}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4941279346823520494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6776410670200844202}
+  m_Layer: 0
+  m_Name: Shell Throwing Window
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6776410670200844202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941279346823520494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.335, y: 0.405, z: 0.728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1021047039135411373}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5341442282117732449
@@ -165,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: 714388ae53beef44ea9bcc684c66d309, type: 2}
   _muzzle: {fileID: 6824569375224005546}
+  _shellThrowingWindow: {fileID: 6776410670200844202}
   <Magazine>k__BackingField:
     _currentCapacity: 0
   _animator: {fileID: 2418563937010531441}

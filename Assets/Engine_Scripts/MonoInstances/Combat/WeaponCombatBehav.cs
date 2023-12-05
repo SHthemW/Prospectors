@@ -104,7 +104,11 @@ namespace Game.Instances.Combat
 
                 Array.ForEach(unit.GunActions, a => a.Implement(new() 
                 { 
-                    ["anim1"] = ThisWeapon.Animator
+                    ["anim1"] = ThisWeapon.Animator,
+
+                    ["shellSpawnInfo"] = new Transform[2] { 
+                            ThisWeapon.ShellParent.Get(),
+                            ThisWeapon.ShellThrowingWindow }
                 }));
                 Array.ForEach(unit.MasterActions, a => a.Implement(new()
                 {
@@ -114,7 +118,11 @@ namespace Game.Instances.Combat
 
             Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(new()
             {
-                ["anim1"] = ThisWeapon.Animator
+                ["anim1"] = ThisWeapon.Animator,
+
+                ["shellSpawnInfo"] = new Transform[2] {
+                        ThisWeapon.ShellParent.Get(),
+                        ThisWeapon.ShellThrowingWindow }
             }));
             Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(new()
             {

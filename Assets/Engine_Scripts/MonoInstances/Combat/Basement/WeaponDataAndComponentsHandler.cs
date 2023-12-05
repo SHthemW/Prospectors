@@ -21,6 +21,11 @@ namespace Game.Instances.Combat
         public Transform Muzzle 
             => _muzzle.AsSafeInspectorValue(name, m => m != null);
 
+        [SerializeField]
+        private Transform _shellThrowingWindow;
+        public Transform ShellThrowingWindow
+            => _shellThrowingWindow.AsSafeInspectorValue(name, m => m != null);
+
         [field: SerializeField, ReadOnly]
         public Magazine Magazine { get; set; }
 
@@ -30,6 +35,7 @@ namespace Game.Instances.Combat
             => _animator.AsSafeInspectorValue(name, a => a != null);
 
         public SingletonComponent<Transform> BulletParent { get; set; } = new("@Bullets");
+        public SingletonComponent<Transform> ShellParent { get; set; } = new("@Shells");
 
         /*
          *  Master properties
