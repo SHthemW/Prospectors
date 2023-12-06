@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -27,13 +28,10 @@ namespace Game.Instances.General
                     position: _overridePosition,
                     rotation: Quaternion.identity);
             }
-            else if (arg is Transform[] info && info.Length == 2)
+            else if (arg is (Transform parent, Vector3 position))
             {
                 if (_overridePosition != default)
                     Debug.LogWarning($"[action] in {name}, if {nameof(_overridePosition)} not default, argument will be ignored.");
-
-                var parent   = info[0];
-                var position = info[1].position;
 
                 Instantiate(
                     original: _objToSpawn, 

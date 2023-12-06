@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.UI.CanvasScaler;
 
 namespace Game.Instances.Combat
@@ -106,9 +107,9 @@ namespace Game.Instances.Combat
                 { 
                     ["anim1"] = ThisWeapon.Animator,
 
-                    ["shellSpawnInfo"] = new Transform[2] { 
-                            ThisWeapon.ShellParent.Get(),
-                            ThisWeapon.ShellThrowingWindow }
+                    ["shellSpawnInfo"] = (
+                            parent: ThisWeapon.ShellParent.Get(),
+                            pos:    ThisWeapon.ShellThrowingWindow.position)
                 }));
                 Array.ForEach(unit.MasterActions, a => a.Implement(new()
                 {
@@ -120,9 +121,9 @@ namespace Game.Instances.Combat
             {
                 ["anim1"] = ThisWeapon.Animator,
 
-                ["shellSpawnInfo"] = new Transform[2] {
-                        ThisWeapon.ShellParent.Get(),
-                        ThisWeapon.ShellThrowingWindow }
+                ["shellSpawnInfo"] = (
+                        parent: ThisWeapon.ShellParent.Get(),
+                        pos:    ThisWeapon.ShellThrowingWindow.position)
             }));
             Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(new()
             {
