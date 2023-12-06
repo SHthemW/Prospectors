@@ -24,6 +24,7 @@ MonoBehaviour:
         type: 3}
       _gunActions:
       - {fileID: 11400000, guid: 59e7f4a44c196764b8e328d1a521b7fc, type: 2}
+      - {fileID: 11400000, guid: 0b0c3909797da854e9e2a912a0e1669d, type: 2}
       _masterActions: []
       _shootingAngleOffset: 0
       _shootingDelaySecond: 0

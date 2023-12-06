@@ -33,8 +33,13 @@ namespace Game.Instances.Combat
                 ["anim1"] = ThisWeapon.Animator,
 
                 ["shellSpawnInfo"] = (
-                            parent: ThisWeapon.ShellParent.Get(),
-                            caster: ThisWeapon.ShellThrowingWindow)
+                    parent: ThisWeapon.ShellParent.Get(),
+                    caster: ThisWeapon.ShellThrowingWindow
+                ),
+                ["gunFireSpawnInfo"] = (
+                    parent: ThisWeapon.Muzzle,
+                    caster: ThisWeapon.Muzzle
+                ),
             };
 
             _masterActionImpl = new()
