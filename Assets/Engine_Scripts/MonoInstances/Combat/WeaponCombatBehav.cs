@@ -1,20 +1,16 @@
-using Game.Interfaces;
 using Game.Services.Combat;
-using Game.Services.Physics;
 using Game.Utils.Extensions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
         private BulletShooter _bulletShooter;
+
+        private Dictionary<string, object> _gunActionImpl;
 
         private void Awake()
         {
@@ -27,6 +23,18 @@ namespace Game.Instances.Combat
                 maxCapacity: ThisWeapon.MaxMagazineCapacity,
                 actAfterReload: static num => Debug.Log($"reload finished, get {num}.")
                 );
+        }
+
+        private void Start()
+        {
+            _gunActionImpl = new()
+            {
+                ["anim1"] = ThisWeapon.Animator,
+
+                ["shellSpawnInfo"] = (
+                            parent: ThisWeapon.ShellParent.Get(),
+                            caster: ThisWeapon.ShellThrowingWindow)
+            };
         }
 
         private void Update()
@@ -73,6 +81,8 @@ namespace Game.Instances.Combat
 
         // weapon action
 
+        
+
         private void TryShootBullet()
         {
             if (InShootingCd)
@@ -103,28 +113,16 @@ namespace Game.Instances.Combat
                     ThisWeapon.BulletStartSpeed
                 );
 
-                Array.ForEach(unit.GunActions, a => a.Implement(new() 
-                { 
-                    ["anim1"] = ThisWeapon.Animator,
+                Array.ForEach(unit.GunActions, a => a.Implement(_gunActionImpl));
 
-                    ["shellSpawnInfo"] = (
-                            parent: ThisWeapon.ShellParent.Get(),
-                            pos:    ThisWeapon.ShellThrowingWindow.position)
-                }));
                 Array.ForEach(unit.MasterActions, a => a.Implement(new()
                 {
                     ["anim1"] = ThisWeapon.MasterAnimators
                 }));
             }
 
-            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(new()
-            {
-                ["anim1"] = ThisWeapon.Animator,
+            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(_gunActionImpl));
 
-                ["shellSpawnInfo"] = (
-                        parent: ThisWeapon.ShellParent.Get(),
-                        pos:    ThisWeapon.ShellThrowingWindow.position)
-            }));
             Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(new()
             {
                 ["anim1"] = ThisWeapon.MasterAnimators

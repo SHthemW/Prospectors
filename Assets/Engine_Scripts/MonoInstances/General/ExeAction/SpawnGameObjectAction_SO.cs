@@ -28,7 +28,7 @@ namespace Game.Instances.General
                     position: _overridePosition,
                     rotation: Quaternion.identity);
             }
-            else if (arg is (Transform parent, Vector3 position))
+            else if (arg is (Transform parent, Transform caster))
             {
                 if (_overridePosition != default)
                     Debug.LogWarning($"[action] in {name}, if {nameof(_overridePosition)} not default, argument will be ignored.");
@@ -36,7 +36,7 @@ namespace Game.Instances.General
                 Instantiate(
                     original: _objToSpawn, 
                     parent:   parent, 
-                    position: position, 
+                    position: caster.position, 
                     rotation: Quaternion.identity);
             }
             else 
