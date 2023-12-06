@@ -22,10 +22,17 @@ namespace Game.Instances.General
                 throw new ArgumentNullException();
 
             else if (animComponent is Animator animator)
-                animator.Play(_pieceName, _layerIndex);
+            {
+                if (animator.gameObject.activeInHierarchy)
+                    animator.Play(_pieceName, _layerIndex);
+            }
 
             else if (animComponent is Animator[] animators)
-                Array.ForEach(animators, a => a.Play(_pieceName, _layerIndex));
+            {
+                foreach (Animator each in animators)
+                    if (each.gameObject.activeInHierarchy)
+                        each.Play(_pieceName, _layerIndex);
+            }
 
             else
                 throw new InvalidOperationException();
