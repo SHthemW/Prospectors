@@ -15,7 +15,7 @@ namespace Game.Instances.General
         [SerializeField]
         private int _layerIndex = 0;
 
-        protected override bool RequireArgument => true;
+        protected override bool MustHaveArgument => true;
         protected override void Execute(in object animComponent)
         {
             if (animComponent == null)

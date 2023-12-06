@@ -16,7 +16,7 @@ namespace Game.Instances.General
         [SerializeField]
         private Vector3 _overridePosition;
 
-        protected override sealed bool RequireArgument => false;
+        protected override sealed bool MustHaveArgument => false;
         protected override sealed void Execute(in object arg = null)
         {
             if (arg == null || _overridePosition != default)

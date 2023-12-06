@@ -13,14 +13,14 @@ namespace Game.Interfaces
         [SerializeField]
         private string[] _effectiveTags;
 
-        protected abstract bool RequireArgument { get; }
+        protected abstract bool MustHaveArgument { get; }
         protected abstract void Execute(in object caster = null);
 
         public void Implement(in Dictionary<string, object> kwargs = null)
         {
             if (_effectiveTags.Length == 0 || kwargs.Count == 0)
             {
-                if (RequireArgument)
+                if (MustHaveArgument)
                     throw new ArgumentException();
                 else
                     Execute();
