@@ -10,8 +10,6 @@ namespace Game.Instances.Combat
     {
         private BulletShooter _bulletShooter;
 
-        private Dictionary<string, object> _gunActionImpl;
-
         private void Awake()
         {
             _bulletShooter = new(
@@ -25,6 +23,9 @@ namespace Game.Instances.Combat
                 );
         }
 
+        private Dictionary<string, object> _gunActionImpl;
+        private Dictionary<string, object> _masterActionImpl;
+
         private void Start()
         {
             _gunActionImpl = new()
@@ -34,6 +35,11 @@ namespace Game.Instances.Combat
                 ["shellSpawnInfo"] = (
                             parent: ThisWeapon.ShellParent.Get(),
                             caster: ThisWeapon.ShellThrowingWindow)
+            };
+
+            _masterActionImpl = new()
+            {
+                ["anim1"] = ThisWeapon.MasterAnimators
             };
         }
 
@@ -113,20 +119,11 @@ namespace Game.Instances.Combat
                     ThisWeapon.BulletStartSpeed
                 );
 
-                Array.ForEach(unit.GunActions, a => a.Implement(_gunActionImpl));
-
-                Array.ForEach(unit.MasterActions, a => a.Implement(new()
-                {
-                    ["anim1"] = ThisWeapon.MasterAnimators
-                }));
+                Array.ForEach(unit.GunActions,    act => act.Implement(_gunActionImpl));
+                Array.ForEach(unit.MasterActions, act => act.Implement(_masterActionImpl));
             }
-
-            Array.ForEach(CurrentShootingRound.GunActions, a => a.Implement(_gunActionImpl));
-
-            Array.ForEach(CurrentShootingRound.MasterActions, a => a.Implement(new()
-            {
-                ["anim1"] = ThisWeapon.MasterAnimators
-            }));
+            Array.ForEach(CurrentShootingRound.GunActions,    act => act.Implement(_gunActionImpl));
+            Array.ForEach(CurrentShootingRound.MasterActions, act => act.Implement(_masterActionImpl));
 
             ResetShootingCd();
         }
