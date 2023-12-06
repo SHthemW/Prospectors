@@ -86,9 +86,6 @@ namespace Game.Instances.Combat
         }
 
         // weapon action
-
-        
-
         private void TryShootBullet()
         {
             if (InShootingCd)
@@ -122,6 +119,7 @@ namespace Game.Instances.Combat
                 Array.ForEach(unit.GunActions,    act => act.Implement(_gunActionImpl));
                 Array.ForEach(unit.MasterActions, act => act.Implement(_masterActionImpl));
             }
+
             Array.ForEach(CurrentShootingRound.GunActions,    act => act.Implement(_gunActionImpl));
             Array.ForEach(CurrentShootingRound.MasterActions, act => act.Implement(_masterActionImpl));
 
