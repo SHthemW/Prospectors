@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Game.Instances.General
 {
@@ -12,35 +11,41 @@ namespace Game.Instances.General
     internal sealed class SpawnGameObjectAction_SO : ExecutableAction
     {
         [SerializeField] 
-        private GameObject _objToSpawn;
+        private GameObject _spawn;
 
         [SerializeField]
         private Vector3 _overridePosition;
 
+        [SerializeField]
+        private Vector3 _overrideRotation;
+
+        private bool _hasOverrideProperty => 
+            _overridePosition != default || _overrideRotation != default;
+
         protected override sealed bool MustHaveArgument => false;
         protected override sealed void Execute(in object arg = null)
         {
-            if (arg == null || _overridePosition != default)
+            if (arg == null || _hasOverrideProperty)
             {
                 // use override position
                 Instantiate(
-                    original: _objToSpawn,
+                    original: _spawn,
                     position: _overridePosition,
-                    rotation: Quaternion.identity);
+                    rotation: Quaternion.Euler(_overrideRotation));
             }
             else if (arg is (Transform parent, Transform caster))
             {
-                if (_overridePosition != default)
+                if (_hasOverrideProperty)
                     Debug.LogWarning($"[action] in {name}, if {nameof(_overridePosition)} not default, argument will be ignored.");
 
                 Instantiate(
-                    original: _objToSpawn, 
+                    original: _spawn, 
                     parent:   parent, 
                     position: caster.position, 
-                    rotation: Quaternion.identity);
+                    rotation: _spawn.transform.rotation);
             }
             else 
-                throw new System.InvalidOperationException();
+                throw new InvalidOperationException();
         }
     }
 }
