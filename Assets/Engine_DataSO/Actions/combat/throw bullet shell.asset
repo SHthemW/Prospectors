@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectiveTags:
   - shellSpawnInfo
-  _objToSpawn: {fileID: 1367265255530156543, guid: 35886e38ec640d44089c15b3499d24a2,
-    type: 3}
+  _spawn: {fileID: 1367265255530156543, guid: 35886e38ec640d44089c15b3499d24a2, type: 3}
   _overridePosition: {x: 0, y: 0, z: 0}
+  _overrideRotation: {x: 0, y: 0, z: 0}
