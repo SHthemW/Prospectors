@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectiveTags:
   - gunFireSpawnInfo
-  _spawn: {fileID: 1793820343460008394, guid: ee815957877f57a4b93a62728533f971, type: 3}
+  _spawn: {fileID: 4153021328485329472, guid: de804dd785977f04db1920f6aad5cf9d, type: 3}
   _overridePosition: {x: 0, y: 0, z: 0}
   _overrideRotation: {x: 0, y: 0, z: 0}

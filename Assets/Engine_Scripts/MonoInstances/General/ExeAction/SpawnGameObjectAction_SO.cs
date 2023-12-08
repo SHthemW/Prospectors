@@ -42,7 +42,7 @@ namespace Game.Instances.General
                     original: _spawn, 
                     parent:   parent, 
                     position: caster.position, 
-                    rotation: _spawn.transform.rotation);
+                    rotation: caster.rotation);
             }
             else 
                 throw new InvalidOperationException();
