@@ -7,6 +7,9 @@ namespace Game.Interfaces
     {
         Rigidbody Rigidbody { get; }
         float MaxExistingSeconds { get; set; }
+
+        int MaxHitTimes { get; set; }
+        int CurrentHitTimes { get; set; }
     }
 }
 

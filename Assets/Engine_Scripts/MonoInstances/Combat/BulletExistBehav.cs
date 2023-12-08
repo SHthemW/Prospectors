@@ -9,5 +9,11 @@ namespace Game.Instances.Combat
         {
             Destroy(gameObject, ThisBullet.MaxExistingSeconds);
         }
+
+        private void Update()
+        {
+            if (ThisBullet.CurrentHitTimes >= ThisBullet.MaxHitTimes)
+                Destroy(gameObject);
+        }
     }
 }

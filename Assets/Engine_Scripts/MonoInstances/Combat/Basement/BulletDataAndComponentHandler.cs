@@ -16,6 +16,10 @@ namespace Game.Instances.Combat
         [field: SerializeField, ReadOnly]
         public float MaxExistingSeconds { get; set; }
 
+        [field: SerializeField, ReadOnly]
+        public int CurrentHitTimes { get; set; }
+        public int MaxHitTimes { get; set; } = 1;
+
         // TODO: move to "bullet" folder
     }
 }
