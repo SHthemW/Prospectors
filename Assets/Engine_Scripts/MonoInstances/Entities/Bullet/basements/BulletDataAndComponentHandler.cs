@@ -1,6 +1,8 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.GameObj;
 using Game.Utils.Attributes;
 using Game.Utils.Extensions;
+using System;
 using UnityEngine;
 
 namespace Game.Instances.Combat
@@ -10,16 +12,22 @@ namespace Game.Instances.Combat
         [SerializeField]
         private Rigidbody _bulletRb;
 
+        [SerializeField]
+        private Transform _bulletTransform;
+
         public Rigidbody Rigidbody 
             => _bulletRb.AsSafeInspectorValue(name, rb => rb != null);
+        public Transform Transform 
+            => _bulletTransform.AsSafeInspectorValue(name, t => t != null);
 
         [field: SerializeField, ReadOnly]
+        public float CurrentExistingSeconds { get; set; }
         public float MaxExistingSeconds { get; set; }
 
         [field: SerializeField, ReadOnly]
         public int CurrentHitTimes { get; set; }
         public int MaxHitTimes { get; set; } = 1;
 
-        // TODO: move to "bullet" folder
+        public Action<GameObject> DeactiveAction { get; set; }
     }
 }

@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletRb: {fileID: 3532617064447642451}
+  _bulletTransform: {fileID: 6476086722261934086}
   <MaxExistingSeconds>k__BackingField: 0
   <CurrentHitTimes>k__BackingField: 0
 --- !u!114 &8345218708569397138
