@@ -4974,7 +4974,7 @@ Transform:
   - {fileID: 6010125295890389541}
   - {fileID: 670885678706882120}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &443424828751648024
 ParticleSystem:
@@ -9637,7 +9637,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4091017566166773120}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 00d12135f994a6447942206317b055b4, type: 3}
