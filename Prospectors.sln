@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProPixelizer", "ProPixelizer.csproj", "{B1E3F686-FF27-9AFF-3C75-643AB90D6700}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Game_Instances", "_Game_Instances.csproj", "{427EFC16-8F3D-D8CD-87D4-40F004956D64}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine-unity-editor.csproj", "{90BD6783-A06A-D312-8490-695CAEBF9F31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity", "spine-unity.csproj", "{356FF19A-989D-4516-8ED5-968D28801882}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Game_Instances", "_Game_Instances.csproj", "{427EFC16-8F3D-D8CD-87D4-40F004956D64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-examples", "spine-unity-examples.csproj", "{53E019E9-AEBF-EC7B-F974-E8BFFB5E19AF}"
 EndProject
@@ -33,6 +33,10 @@ Global
 		{B1E3F686-FF27-9AFF-3C75-643AB90D6700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E3F686-FF27-9AFF-3C75-643AB90D6700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E3F686-FF27-9AFF-3C75-643AB90D6700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90BD6783-A06A-D312-8490-695CAEBF9F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90BD6783-A06A-D312-8490-695CAEBF9F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90BD6783-A06A-D312-8490-695CAEBF9F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,10 +45,6 @@ Global
 		{356FF19A-989D-4516-8ED5-968D28801882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356FF19A-989D-4516-8ED5-968D28801882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{356FF19A-989D-4516-8ED5-968D28801882}.Release|Any CPU.Build.0 = Release|Any CPU
-		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{427EFC16-8F3D-D8CD-87D4-40F004956D64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53E019E9-AEBF-EC7B-F974-E8BFFB5E19AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53E019E9-AEBF-EC7B-F974-E8BFFB5E19AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53E019E9-AEBF-EC7B-F974-E8BFFB5E19AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
