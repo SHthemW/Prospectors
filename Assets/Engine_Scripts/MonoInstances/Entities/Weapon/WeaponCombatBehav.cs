@@ -3,12 +3,16 @@ using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
-        private BulletShooter _bulletShooter;
+        private BulletShooter          _bulletShooter;
+
+        private ObjectPool<GameObject> _shellPool;
+        private ObjectPool<GameObject> _gunFirePool;
 
         private void Awake()
         {
@@ -19,8 +23,7 @@ namespace Game.Instances.Combat
 
             ThisWeapon.Magazine = new Magazine(
                 maxCapacity: ThisWeapon.MaxMagazineCapacity,
-                actAfterReload: static num => Debug.Log($"reload finished, get {num}.")
-                );
+                actAfterReload: static num => Debug.Log($"reload finished, get {num}."));
         }
 
         private Dictionary<string, object> _gunActionImpl;
@@ -34,14 +37,17 @@ namespace Game.Instances.Combat
 
                 ["shellSpawnInfo"] = (
                     parent: ThisWeapon.ShellParent.Get(),
-                    caster: ThisWeapon.ShellThrowingWindow
+                    caster: ThisWeapon.ShellThrowingWindow,
+                    poolGt: (Func<ObjectPool<GameObject>>) (() => _shellPool),
+                    poolSt: (Action<ObjectPool<GameObject>>)(p => _shellPool = p)
                 ),
                 ["gunFireSpawnInfo"] = (
                     parent: ThisWeapon.Muzzle,
-                    caster: ThisWeapon.Muzzle
+                    caster: ThisWeapon.Muzzle,
+                    poolGt: (Func<ObjectPool<GameObject>>) (() => _gunFirePool),
+                    poolSt: (Action<ObjectPool<GameObject>>)(p => _gunFirePool = p)
                 ),
             };
-
             _masterActionImpl = new()
             {
                 ["anim1"] = ThisWeapon.MasterAnimators
