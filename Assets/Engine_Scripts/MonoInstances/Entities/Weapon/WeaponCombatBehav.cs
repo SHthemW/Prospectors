@@ -10,8 +10,6 @@ namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
-        private ObjectPool<GameObject> _shellPool;
-        private ObjectPool<GameObject> _gunFirePool;
         private ObjectSpawner<IBullet> _bulletShooter;
 
         private void Awake()
@@ -34,15 +32,11 @@ namespace Game.Instances.Combat
 
                 ["shellSpawnInfo"] = (
                     parent: ThisWeapon.ShellParent.Get(),
-                    caster: ThisWeapon.ShellThrowingWindow,
-                    poolGt: (Func<ObjectPool<GameObject>>) (() => _shellPool),
-                    poolSt: (Action<ObjectPool<GameObject>>)(p => _shellPool = p)
+                    caster: ThisWeapon.ShellThrowingWindow
                 ),
                 ["gunFireSpawnInfo"] = (
                     parent: ThisWeapon.Muzzle,
-                    caster: ThisWeapon.Muzzle,
-                    poolGt: (Func<ObjectPool<GameObject>>) (() => _gunFirePool),
-                    poolSt: (Action<ObjectPool<GameObject>>)(p => _gunFirePool = p)
+                    caster: ThisWeapon.Muzzle
                 ),
             };
             _masterActionImpl = new()
