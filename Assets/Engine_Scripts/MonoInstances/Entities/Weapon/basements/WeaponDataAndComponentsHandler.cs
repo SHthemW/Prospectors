@@ -24,7 +24,7 @@ namespace Game.Instances.Combat
         [SerializeField]
         private Transform _shellThrowingWindow;
         public Transform ShellThrowingWindow
-            => _shellThrowingWindow.AsSafeInspectorValue(name, m => m != null);
+            => _shellThrowingWindow.AsSafeInspectorValue(name, m => m != null, justWarning: true);
 
         [field: SerializeField, ReadOnly]
         public Magazine Magazine { get; set; }
@@ -32,7 +32,7 @@ namespace Game.Instances.Combat
         [SerializeField]
         private Animator _animator;
         public Animator Animator
-            => _animator.AsSafeInspectorValue(name, a => a != null);
+            => _animator.AsSafeInspectorValue(name, a => a != null, justWarning: true);
 
         public SingletonComponent<Transform> BulletParent { get; set; } = new("@Bullets");
         public SingletonComponent<Transform> ShellParent { get; set; } = new("@Shells");
