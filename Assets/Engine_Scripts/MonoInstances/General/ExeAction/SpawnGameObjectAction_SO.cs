@@ -1,4 +1,6 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.GameObj;
+using Game.Services.Combat;
 using System;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -47,22 +49,16 @@ namespace Game.Instances.General
                     break;
 
                 // generate on pool
-                case (Transform parent, Transform caster, Func<ObjectPool<GameObject>> poolGetter, Action<ObjectPool<GameObject>> poolSetter):
+                case (Transform parent, Transform caster, ObjectSpawner<IDestoryManagedObject> pool):
                     if (HasOverrideProperty)
                         Debug.LogWarning($"[action] in {name}, if have any override property, argument will be ignored.");
 
-                    var pool = poolGetter.Invoke();
+                    var obj = pool.Spawn(_spawn);
 
-                    if (pool == null) poolSetter.Invoke(new
-                    (
-                        createFunc:      () => Instantiate(_spawn, parent),
-                        actionOnGet:     go => go.SetActive(true),
-                        actionOnRelease: go => go.SetActive(false),
-                        actionOnDestroy: go => Destroy(go)
-                    ));
+                    obj.transform.position = caster.position;
+                    obj.transform.rotation = caster.rotation;
+                    obj.transform.parent   = parent;
 
-                    pool?.Get().transform
-                        .SetPositionAndRotation(caster.position, caster.rotation);
                     break;
 
                 // invalid argument

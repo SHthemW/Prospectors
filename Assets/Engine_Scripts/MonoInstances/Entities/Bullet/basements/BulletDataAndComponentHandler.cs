@@ -12,13 +12,8 @@ namespace Game.Instances.Combat
         [SerializeField]
         private Rigidbody _bulletRb;
 
-        [SerializeField]
-        private Transform _bulletTransform;
-
         public Rigidbody Rigidbody 
             => _bulletRb.AsSafeInspectorValue(name, rb => rb != null);
-        public Transform Transform 
-            => _bulletTransform.AsSafeInspectorValue(name, t => t != null);
 
         [field: SerializeField, ReadOnly]
         public float CurrentExistingSeconds { get; set; }

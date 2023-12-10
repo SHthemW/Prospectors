@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Interfaces.GameObj
 {
-    public interface IDestoryManagedObject
+    public interface IDestoryManagedObject : IGameObject
     {
         Action<GameObject> DeactiveAction { get; set; }
     }

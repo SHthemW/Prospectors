@@ -1,20 +1,24 @@
 using Game.Interfaces;
+using Game.Interfaces.GameObj;
 using Game.Services.Combat;
 using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
-        private ObjectSpawner<IBullet> _bulletShooter;
+        private ObjectSpawner<IBullet>               _bulletShooter;
+        private ObjectSpawner<IDestoryManagedObject> _gunFireSpawner;
+        private ObjectSpawner<IDestoryManagedObject> _bulletShellSpawner;
 
         private void Awake()
         {
-            _bulletShooter = new();
+            _bulletShooter      = new();
+            _gunFireSpawner     = new();
+            _bulletShellSpawner = new();
 
             ThisWeapon.Magazine = new Magazine(
                 maxCapacity: ThisWeapon.MaxMagazineCapacity,
@@ -32,11 +36,13 @@ namespace Game.Instances.Combat
 
                 ["shellSpawnInfo"] = (
                     parent: ThisWeapon.ShellParent.Get(),
-                    caster: ThisWeapon.ShellThrowingWindow
+                    caster: ThisWeapon.ShellThrowingWindow,
+                    pool:   _bulletShellSpawner
                 ),
                 ["gunFireSpawnInfo"] = (
                     parent: ThisWeapon.Muzzle,
-                    caster: ThisWeapon.Muzzle
+                    caster: ThisWeapon.Muzzle,
+                    pool:   _gunFireSpawner
                 ),
             };
             _masterActionImpl = new()
@@ -114,8 +120,8 @@ namespace Game.Instances.Combat
                     // init bullet
                     bullet.MaxExistingSeconds = ThisWeapon.BulletExistTimeSec;
                     bullet.Rigidbody.velocity = ThisWeapon.BulletStartSpeed * direction;
-                    bullet.Transform.position = ThisWeapon.Muzzle.position;
-                    bullet.Transform.SetParent(ThisWeapon.BulletParent.Get());
+                    bullet.transform.position = ThisWeapon.Muzzle.position;
+                    bullet.transform.SetParent(ThisWeapon.BulletParent.Get());
 
                     Array.ForEach(unit.GunActions, act => act.Implement(_gunActionImpl));
                     Array.ForEach(unit.MasterActions, act => act.Implement(_masterActionImpl));

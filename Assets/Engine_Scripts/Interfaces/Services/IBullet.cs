@@ -8,7 +8,6 @@ namespace Game.Interfaces
     public interface IBullet : IDestoryManagedObject
     {
         Rigidbody Rigidbody { get; }
-        Transform Transform { get; }
 
         float CurrentExistingSeconds { get; set; }
         float MaxExistingSeconds { get; set; }

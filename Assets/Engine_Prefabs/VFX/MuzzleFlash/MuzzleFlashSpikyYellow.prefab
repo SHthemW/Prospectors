@@ -4802,6 +4802,7 @@ GameObject:
   - component: {fileID: 6008710220460823078}
   - component: {fileID: 5530330738695148198}
   - component: {fileID: -763990373213397334}
+  - component: {fileID: 8797092604742646465}
   m_Layer: 0
   m_Name: MuzzleFlashSpikyYellow
   m_TagString: Untagged
@@ -4837,7 +4838,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.2
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 3
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -9635,6 +9636,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8797092604742646465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153021328485329472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075037ec509dc704b9a3df9c985f586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5390753965113367919
 GameObject:
   m_ObjectHideFlags: 0
