@@ -10,10 +10,9 @@ namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
-        private ObjectSpawner<IBullet> _bulletShooter;
-
         private ObjectPool<GameObject> _shellPool;
         private ObjectPool<GameObject> _gunFirePool;
+        private ObjectSpawner<IBullet> _bulletShooter;
 
         private void Awake()
         {
@@ -108,22 +107,27 @@ namespace Game.Instances.Combat
 
             foreach (ShootingUnit unit in CurrentShootingRound)
             {
-                IBullet bullet = _bulletShooter.Spawn(unit.Bullet);
+                Delay.Do(action: () =>
+                {
+                    IBullet bullet = _bulletShooter.Spawn(unit.Bullet);
 
-                var direction = ThisWeapon
-                    .AimingDirection
-                    .RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset)
-                    .RotateAloneAxisY(clockwiseAngle: ThisWeapon.BulletAccuracyOffsetAngle)
-                    .normalized;
+                    var direction = ThisWeapon
+                        .AimingDirection
+                        .RotateAloneAxisY(clockwiseAngle: unit.ShootingAngleOffset)
+                        .RotateAloneAxisY(clockwiseAngle: ThisWeapon.BulletAccuracyOffsetAngle)
+                        .normalized;
 
-                // init bullet
-                bullet.MaxExistingSeconds = ThisWeapon.BulletExistTimeSec;
-                bullet.Rigidbody.velocity = ThisWeapon.BulletStartSpeed * direction;
-                bullet.Transform.position = ThisWeapon.Muzzle.position;
-                bullet.Transform.SetParent( ThisWeapon.BulletParent.Get());
+                    // init bullet
+                    bullet.MaxExistingSeconds = ThisWeapon.BulletExistTimeSec;
+                    bullet.Rigidbody.velocity = ThisWeapon.BulletStartSpeed * direction;
+                    bullet.Transform.position = ThisWeapon.Muzzle.position;
+                    bullet.Transform.SetParent(ThisWeapon.BulletParent.Get());
 
-                Array.ForEach(unit.GunActions,    act => act.Implement(_gunActionImpl));
-                Array.ForEach(unit.MasterActions, act => act.Implement(_masterActionImpl));
+                    Array.ForEach(unit.GunActions, act => act.Implement(_gunActionImpl));
+                    Array.ForEach(unit.MasterActions, act => act.Implement(_masterActionImpl));
+                },  
+                delayTimeSec: unit.ShootingDelaySecond, 
+                coroutineMgr: this);
             }
 
             Array.ForEach(CurrentShootingRound.GunActions,    act => act.Implement(_gunActionImpl));
