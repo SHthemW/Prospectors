@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2481817579048146193}
   m_Layer: 0
   m_Name: Bullet_1
-  m_TagString: Untagged
+  m_TagString: Unhitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletRb: {fileID: 3532617064447642451}
   _bulletTransform: {fileID: 6476086722261934086}
-  <MaxExistingSeconds>k__BackingField: 0
+  <CurrentExistingSeconds>k__BackingField: 0
   <CurrentHitTimes>k__BackingField: 0
 --- !u!114 &8345218708569397138
 MonoBehaviour:
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f00f86292fceab4aa0a644be4c6383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enableHitDebug: 1
 --- !u!1 &8720303613389829782
 GameObject:
   m_ObjectHideFlags: 0
