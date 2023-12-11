@@ -1,4 +1,4 @@
-﻿using Game.Utils;
+﻿using Game.Utils.Extensions;
 using System.Collections;
 using UnityEngine;
 
@@ -10,6 +10,6 @@ namespace Game.Services.Animation
         [SerializeField]
         private string _currentVelocity;
         public string CurrentVelocity 
-            => _currentVelocity.TryGetIf(name, p => p != default);
+            => _currentVelocity.AsSafeInspectorValue(name, p => p != default);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Game.Utils;
+﻿using Game.Utils.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
