@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cast hitted effect
   m_EditorClassIdentifier: 
   _effectiveTags:
-  - bullet
+  - hitEffectSpawnInfo
   _spawn: {fileID: 4976700907685403352, guid: b754921f640ea1846af06e8db60fa93b, type: 3}
   _overridePosition: {x: 0, y: 0, z: 0}
   _overrideRotation: {x: 0, y: 0, z: 0}
