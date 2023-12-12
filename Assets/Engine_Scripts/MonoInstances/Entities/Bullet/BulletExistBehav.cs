@@ -10,10 +10,12 @@ namespace Game.Instances.Combat
     {
         private Dictionary<string, object>           _bulletActionImpl;
         private ObjectSpawner<IDestoryManagedObject> _hitEffectSpawner;
+        private ObjectSpawner<IDestoryManagedObject> _hitHoleSpawner;
 
         private void Awake()
         {
-            _hitEffectSpawner = new();    
+            _hitEffectSpawner = new();
+            _hitHoleSpawner = new();
         }
         private void Start()
         {
@@ -23,6 +25,11 @@ namespace Game.Instances.Combat
                 parent: ThisBullet.HitEffectParent.Get(),
                 caster: transform,
                 pool: _hitEffectSpawner
+                ),
+                ["hitHoleSpawnInfo"] = (
+                parent: ThisBullet.HitHoleParent.Get(),
+                caster: transform,
+                pool: _hitHoleSpawner
                 )
             };
         }

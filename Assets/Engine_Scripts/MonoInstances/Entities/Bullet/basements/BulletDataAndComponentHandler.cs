@@ -30,5 +30,6 @@ namespace Game.Instances.Combat
         public Action<GameObject> DeactiveAction { get; set; }
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
+        public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
     }
 }
