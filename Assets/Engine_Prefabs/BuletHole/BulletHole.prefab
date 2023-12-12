@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5458000370715713130}
   m_LocalRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 428652268793262923}
@@ -74,7 +74,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eeac1c8a924f34248ba1a4c4f66042b1, type: 2}
   atlas: {fileID: 0}
   atlasRegionIndex: 0
-  maxDistance: 3
+  maxDistance: 1
   projectionDistance: 1
   smoothNormals: 0
   normalSmoothFactor: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   surfaceRotation: 0
-  quality: 4
+  quality: 1
   sharedMesh: {fileID: 0}
   instanceID: 40494
 --- !u!114 &-935860915616249927
