@@ -79,7 +79,7 @@ MonoBehaviour:
   smoothNormals: 0
   normalSmoothFactor: 0
   normalSmoothThreshold: 0
-  resolution: 16
+  resolution: 1
   multiMeshEnabled: 0
   cullInvisible: 0
   cullUnreachable: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   surfaceRotation: 0
-  quality: 4
+  quality: 1
   sharedMesh: {fileID: 0}
   instanceID: 40494
 --- !u!114 &-935860915616249927
