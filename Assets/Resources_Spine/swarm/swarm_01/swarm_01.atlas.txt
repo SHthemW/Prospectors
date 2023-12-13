@@ -1,0 +1,15 @@
+swarm_01.png
+size:518,366
+filter:Linear,Linear
+pma:true
+Leg_L1
+bounds:246,186,154,178
+Leg_L2
+bounds:246,14,146,170
+Leg_R1
+bounds:394,22,122,162
+Leg_R2
+bounds:402,202,114,162
+swarm_01
+bounds:2,2,362,242
+rotate:90
