@@ -35,24 +35,23 @@ namespace Game.Instances.General
                     break;
 
                 // generate on world
-                case (Transform parent, Transform caster):
+                case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation):
 
                     Instantiate(
                         original: _spawn,
                         parent:   parent,
-                        position: _overridePosition == default ? caster.position : _overridePosition,
-                        rotation: _overrideRotation == default ? caster.rotation : Quaternion.Euler(_overrideRotation));
+                        position: _overridePosition == default ? position() : _overridePosition,
+                        rotation: _overrideRotation == default ? rotation() : Quaternion.Euler(_overrideRotation));
                     break;
 
                 // generate on pool
-                case (Transform parent, Transform caster, ObjectSpawner<IDestoryManagedObject> pool):
+                case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation, ObjectSpawner<IDestoryManagedObject> pool):
 
                     var obj = pool.Spawn(_spawn);
 
-                    obj.transform.position = _overridePosition == default ? caster.position : _overridePosition;
-                    obj.transform.rotation = _overrideRotation == default ? caster.rotation : Quaternion.Euler(_overrideRotation);
+                    obj.transform.position = _overridePosition == default ? position() : _overridePosition;
+                    obj.transform.rotation = _overrideRotation == default ? rotation() : Quaternion.Euler(_overrideRotation);
                     obj.transform.parent   = parent;
-
                     break;
 
                 // invalid argument

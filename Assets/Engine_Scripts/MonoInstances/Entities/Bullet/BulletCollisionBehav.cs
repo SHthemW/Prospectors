@@ -29,7 +29,7 @@ namespace Game.Instances.Combat
             if (!collision.gameObject.TryGetComponent(out IBulletHitable hitable))
                 throw new ArgumentException();
 
-            hitable.Hit(ThisBullet);
+            hitable.Hit(ThisBullet, transform.position);
             ThisBullet.CurrentHitTimes += hitable.HitTimesConsumption;
         }
     }

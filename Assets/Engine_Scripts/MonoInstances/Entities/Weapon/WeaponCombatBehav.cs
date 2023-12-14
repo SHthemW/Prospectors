@@ -35,14 +35,16 @@ namespace Game.Instances.Combat
                 ["anim1"] = ThisWeapon.Animator,
 
                 ["shellSpawnInfo"] = (
-                    parent: ThisWeapon.ShellParent.Get(),
-                    caster: ThisWeapon.ShellThrowingWindow,
-                    pool:   _bulletShellSpawner
+                    parent:   ThisWeapon.ShellParent.Get(),
+                    position: (Func<Vector3>)   (() => ThisWeapon.ShellThrowingWindow.position),
+                    rotation: (Func<Quaternion>)(() => ThisWeapon.ShellThrowingWindow.rotation),
+                    pool:     _bulletShellSpawner
                 ),
                 ["gunFireSpawnInfo"] = (
-                    parent: ThisWeapon.Muzzle,
-                    caster: ThisWeapon.Muzzle,
-                    pool:   _gunFireSpawner
+                    parent:   ThisWeapon.Muzzle,
+                    position: (Func<Vector3>)   (() => ThisWeapon.Muzzle.position),
+                    rotation: (Func<Quaternion>)(() => ThisWeapon.Muzzle.rotation),
+                    pool:     _gunFireSpawner
                 ),
             };
             _masterActionImpl = new()

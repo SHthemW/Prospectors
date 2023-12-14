@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Interfaces
 {
@@ -7,6 +8,6 @@ namespace Game.Interfaces
     {
         int HitTimesConsumption { get; }
 
-        void Hit(IBullet bullet);
+        void Hit(IBullet bullet, Vector3 position);
     }
 }

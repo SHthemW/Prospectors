@@ -6,7 +6,7 @@ using UnityEngine;
 public sealed class BulletHitTest : MonoBehaviour, IBulletHitable
 {
     int IBulletHitable.HitTimesConsumption => 1;
-    void IBulletHitable.Hit(IBullet bullet)
+    void IBulletHitable.Hit(IBullet bullet, Vector3 position)
     {
         Debug.Log($"hitted by {bullet}");
     }
