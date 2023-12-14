@@ -78,9 +78,7 @@ MonoBehaviour:
   _bulletRb: {fileID: 3532617064447642451}
   <CurrentExistingSeconds>k__BackingField: 0
   <CurrentHitTimes>k__BackingField: 0
-  <OnBulletDisableActions>k__BackingField:
-  - {fileID: 11400000, guid: b29d586187babaa4ca1b81a5a6e7419e, type: 2}
-  - {fileID: 11400000, guid: 97770fc47d4681e4896de3ca072e4866, type: 2}
+  <OnBulletDisableActions>k__BackingField: []
 --- !u!114 &8345218708569397138
 MonoBehaviour:
   m_ObjectHideFlags: 0
