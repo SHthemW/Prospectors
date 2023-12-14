@@ -4910,8 +4910,8 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.2
+      minMaxState: 0
+      scalar: 0.4
       minScalar: 0.13
       maxCurve:
         serializedVersion: 2

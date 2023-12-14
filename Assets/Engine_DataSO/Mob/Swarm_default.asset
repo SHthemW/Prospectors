@@ -15,4 +15,4 @@ MonoBehaviour:
   _hitTimesConsumption: 1
   _onHittedActions:
   - {fileID: 11400000, guid: 2326b37a81cca194aa08d99b2e4a6800, type: 2}
-  _overrideHitActions: 1
+  _overrideHitActions: 0
