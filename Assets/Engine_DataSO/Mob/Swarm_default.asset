@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitTimesConsumption: 1
   <OnHittedActions>k__BackingField:
-  - {fileID: 11400000, guid: b29d586187babaa4ca1b81a5a6e7419e, type: 2}
+  - {fileID: 11400000, guid: 2326b37a81cca194aa08d99b2e4a6800, type: 2}
   - {fileID: 11400000, guid: 97770fc47d4681e4896de3ca072e4866, type: 2}
