@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Services.Physics;
 using Game.Utils.Attributes;
 using Game.Utils.Extensions;
 using System;
@@ -22,6 +23,11 @@ namespace Game.Instances.Combat
         public int CurrentHitTimes { get; set; }
         public int MaxHitTimes { get; set; } = 1;
 
+        [field: SerializeField]
+        internal ExecutableAction[] OnHitActions { get; private set; }
         public Action<GameObject> DeactiveAction { get; set; }
+
+        public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
+        public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
     }
 }

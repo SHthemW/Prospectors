@@ -41,6 +41,8 @@ namespace Game.Instances.Mob
         }
 
         int IBulletHitable.HitTimesConsumption => ThisMob.HitTimesConsumption;
+        bool IBulletHitable.OverrideHitActions => ThisMob.OverrideHitActions;
+
         void IBulletHitable.Hit(IBullet bullet, Vector3 position)
         {
             _currentHittedPosition = position;

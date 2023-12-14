@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Utils.Extensions;
 using System.Collections;
 using UnityEngine;
 
@@ -9,9 +10,19 @@ namespace Game.Instances.Mob
     {
         [SerializeField]
         private int _hitTimesConsumption;
-        public int HitTimesConsumption => _hitTimesConsumption;
+        internal int HitTimesConsumption 
+            => _hitTimesConsumption;
 
-        [field: SerializeField]
-        public ExecutableAction[] OnHittedActions { get; set; }
+        [Header("Action")]
+
+        [SerializeField]
+        private ExecutableAction[] _onHittedActions;
+        internal ExecutableAction[] OnHittedActions 
+            => _onHittedActions.AsSafeInspectorValue(name, p => p != null);
+
+        [SerializeField]
+        private bool _overrideHitActions;
+        internal bool OverrideHitActions 
+            => _overrideHitActions;
     }
 }

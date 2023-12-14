@@ -14,6 +14,7 @@ namespace Game.Instances.Mob
         private MobStaticData_SO _staticData;
 
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
+        internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
 
         // components ref
