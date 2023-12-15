@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Interfaces
 {
-    public interface IMob
+    public interface IMob : IGameObject
     {
         int CurrentHealth { get; set; }
         int MaxHealth { get; }

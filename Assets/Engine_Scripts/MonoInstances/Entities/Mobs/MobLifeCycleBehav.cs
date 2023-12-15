@@ -13,7 +13,7 @@ namespace Game.Instances.Mob
         private void Update()
         {
             if (ThisMob.CurrentHealth <= 0)
-                ThisMob.gameObject.SetActive(false);
+                ThisMob.Brain.Die(ThisMob);
         }
     }
 }

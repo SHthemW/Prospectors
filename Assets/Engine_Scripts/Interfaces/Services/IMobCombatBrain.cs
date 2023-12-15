@@ -7,5 +7,6 @@ namespace Game.Interfaces
     {
         void Init(IMob mob);
         void Hit(IMob mob, int damage);
+        void Die(IMob mob);
     }
 }

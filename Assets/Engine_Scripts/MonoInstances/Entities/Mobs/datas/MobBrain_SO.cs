@@ -23,5 +23,10 @@ namespace Game.Instances.Mob
 
             mob.Animator.SetTrigger(mob.AnimNames.OnHit);
         }
+
+        public void Die(IMob mob)
+        {
+            mob.gameObject.SetActive(false);
+        }
     }
 }
