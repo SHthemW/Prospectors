@@ -1,24 +1,46 @@
 ﻿using Game.Interfaces;
+using Game.Services.Animation;
 using Game.Services.Physics;
+using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobDataAndComponentHandler : MonoBehaviour
+    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob
     {
         // static datas
 
         [SerializeField]
         private MobStaticData_SO _staticData;
 
+        [SerializeField]
+        private MobBrain_SO _brain;
+        internal IMobBrain Brain 
+            => _brain.AsSafeInspectorValue(name, b => b != null);
+
+        [SerializeField]
+        private AnimPropertyNameData_SO _animPropertyName;
+
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
         internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
 
         // components ref
+        [Header("Components")]
+
+        [SerializeField]
+        private Animator _animator;
+
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
+
+        // implements
+        int IMob.CurrentHealth { get; set; }
+        Animator IMob.Animator 
+            => _animator.AsSafeInspectorValue(name, a => a != null);
+        IAnimationStateName IMob.AnimNames 
+            => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
     }
 }

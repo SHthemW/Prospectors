@@ -48,9 +48,9 @@ namespace Game.Instances.Mob
             _currentHittedPosition = position;
 
             foreach (var action in ThisMob.OnHittedActions)
-            {
                 action.Implement(_mobActionImpl);
-            }
+
+            ThisMob.Brain.Hit(ThisMob, 1);
         }
     }
 }
