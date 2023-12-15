@@ -14,7 +14,13 @@ namespace Game.Instances.Mob
 
         public virtual void Hit(IMob mob, int damage)
         {
-            mob.CurrentHealth -= damage;
+            if (mob.CurrentHealth <= 0)
+                throw new System.ArgumentException();
+
+            mob.CurrentHealth -= damage <= mob.CurrentHealth 
+                ? damage 
+                : mob.CurrentHealth;
+
             mob.Animator.SetTrigger(mob.AnimNames.OnHit);
         }
     }

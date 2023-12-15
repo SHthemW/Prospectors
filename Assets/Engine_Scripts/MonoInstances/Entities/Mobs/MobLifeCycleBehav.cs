@@ -9,5 +9,11 @@ namespace Game.Instances.Mob
         {
             ThisMob.Brain.Init(ThisMob);
         }
+
+        private void Update()
+        {
+            if (ThisMob.CurrentHealth <= 0)
+                ThisMob.gameObject.SetActive(false);
+        }
     }
 }
