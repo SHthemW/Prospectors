@@ -14,6 +14,13 @@ namespace Game.Services.Combat
         public GameObject Prefeb
             => _prefeb.AsSafeInspectorValue(name, static p => p != null && p.TryGetComponent<IWeapon>(out _));
 
+        [Header("Property")]
+
+        [SerializeField]
+        private int _damage;
+        public int BulletDamage 
+            => _damage.AsSafeInspectorValue(name, d => d > 0);
+
         [Header("Shooting")]
 
         [SerializeField]

@@ -68,5 +68,6 @@ namespace Game.Instances.Combat
         public float BulletExistTimeSec => _staticData.BulletExistingTime_Sec;
         public float ShootingCdSec => _staticData.ShootingRoundCd_Sec;
         public int MaxMagazineCapacity => _staticData.MagazineCapacity;
+        public int BulletDamage => _staticData.BulletDamage;
     }
 }

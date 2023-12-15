@@ -49,7 +49,7 @@ namespace Game.Instances.Mob
             foreach (var action in ThisMob.OnHittedActions)
                 action.Implement(_mobActionImpl);
 
-            ThisMob.Brain.Hit(ThisMob, 1);
+            ThisMob.Brain.Hit(ThisMob, bullet.Damage);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Game.Interfaces
 
         int MaxHitTimes { get; set; }
         int CurrentHitTimes { get; set; }
+
+        int Damage { get; set; }
     }
 }
 

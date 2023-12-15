@@ -120,6 +120,7 @@ namespace Game.Instances.Combat
                         .normalized;
 
                     // init bullet
+                    bullet.Damage             = ThisWeapon.BulletDamage;
                     bullet.MaxExistingSeconds = ThisWeapon.BulletExistTimeSec;
                     bullet.Rigidbody.velocity = ThisWeapon.BulletStartSpeed * direction;
                     bullet.transform.position = ThisWeapon.Muzzle.position;

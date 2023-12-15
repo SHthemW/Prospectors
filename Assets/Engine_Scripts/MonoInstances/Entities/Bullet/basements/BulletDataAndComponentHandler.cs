@@ -23,11 +23,15 @@ namespace Game.Instances.Combat
         public int CurrentHitTimes { get; set; }
         public int MaxHitTimes { get; set; } = 1;
 
+        [field: SerializeField, ReadOnly]
+        public int Damage { get; set; }
+
         [field: SerializeField]
         internal ExecutableAction[] OnHitActions { get; private set; }
         public Action<GameObject> DeactiveAction { get; set; }
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
+        
     }
 }
