@@ -1,9 +1,11 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
 using Game.Services.Physics;
+using Game.Utils.Attributes;
 using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace Game.Instances.Mob
@@ -17,7 +19,7 @@ namespace Game.Instances.Mob
 
         [SerializeField]
         private MobBrain_SO _brain;
-        internal IMobBrain Brain 
+        internal IMobCombatBrain Brain 
             => _brain.AsSafeInspectorValue(name, b => b != null);
 
         [SerializeField]
@@ -37,7 +39,13 @@ namespace Game.Instances.Mob
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
 
         // implements
-        int IMob.CurrentHealth { get; set; }
+
+        [field: Header("Datas")]
+
+        [field: SerializeField, Utils.Attributes.ReadOnly]
+        public int CurrentHealth { get; set; }
+
+        int IMob.MaxHealth => _staticData.MaxHealth;
         Animator IMob.Animator 
             => _animator.AsSafeInspectorValue(name, a => a != null);
         IAnimationStateName IMob.AnimNames 

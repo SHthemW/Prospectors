@@ -8,10 +8,17 @@ namespace Game.Instances.Mob
     [CreateAssetMenu(fileName = "MobData", menuName = "Data/Mob")]
     internal sealed class MobStaticData_SO : ScriptableObject
     {
+        [Header("Combat")]
+
         [SerializeField]
         private int _hitTimesConsumption;
         internal int HitTimesConsumption 
             => _hitTimesConsumption;
+
+        [SerializeField]
+        private int _maxHealth;
+        internal int MaxHealth 
+            => _maxHealth.AsSafeInspectorValue(name, hp => hp > 0);
 
         [Header("Action")]
 

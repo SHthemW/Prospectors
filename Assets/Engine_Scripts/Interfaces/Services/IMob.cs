@@ -7,6 +7,7 @@ namespace Game.Interfaces
     public interface IMob
     {
         int CurrentHealth { get; set; }
+        int MaxHealth { get; }
 
         Animator Animator { get; }
         IAnimationStateName AnimNames { get; }

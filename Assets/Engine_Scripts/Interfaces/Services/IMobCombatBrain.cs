@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace Game.Interfaces
 {
-    public interface IMobBrain
+    public interface IMobCombatBrain
     {
+        void Init(IMob mob);
         void Hit(IMob mob, int damage);
     }
 }
