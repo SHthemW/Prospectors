@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Swarm Warrior
+  m_Controller: {fileID: 9100000, guid: 56c0139b257bcca4bb950ff5b2bd31c4, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3fe7b55538c96d5459fb25635b1bbe89, type: 2}
+    m_OverrideClip: {fileID: 418804779094298906, guid: b9733a68ebe4ae241a11a811893743a1,
+      type: 2}
