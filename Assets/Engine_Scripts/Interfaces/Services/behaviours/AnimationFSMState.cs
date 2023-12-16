@@ -9,9 +9,15 @@ namespace Game.Interfaces
         protected IAnimationStateName _stateName { get; private set; }
         protected Animator _animator { get; private set; }
 
+        private bool _isInited = false;
+
         public override sealed void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            TryInitComponent(animator);
+            if (!_isInited)
+            {
+                Init(animator);
+                _isInited = true;
+            }
 
             base.OnStateEnter(animator, stateInfo, layerIndex);
             EnterStateAction();
@@ -29,29 +35,22 @@ namespace Game.Interfaces
             ExitStateAction();
         }
 
-        protected virtual void EnterStateAction() { }
-        protected virtual void UpdateStateAction() { }
-        protected virtual void ExitStateAction() { }
-
-        private bool _isInited = false;
-        private void TryInitComponent(Animator animator)
+        protected virtual void Init(Animator animator)
         {
-            if (_isInited)
-                return;
-
             Debug.Log("init: " + animator.gameObject.name);
 
             _stateName = (animator
-                 . GetComponentInParent<IDataHolder<IAnimationStateName>>()
+                 .GetComponentInParent<IDataHolder<IAnimationStateName>>()
                 ?? throw new MissingComponentException(nameof(_stateName)))
-                 . Data;
+                 .Data;
 
             _animator = (animator
-                 . GetComponentInParent<IDataHolder<Animator>>()
+                 .GetComponentInParent<IDataHolder<Animator>>()
                 ?? throw new MissingComponentException(nameof(_animator)))
-                 . Data;
-
-            _isInited = true;
+                 .Data;
         }
+        protected virtual void EnterStateAction() { }
+        protected virtual void UpdateStateAction() { }
+        protected virtual void ExitStateAction() { }
     }
 }

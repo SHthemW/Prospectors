@@ -141,3 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ceb63596b7a5a74b9533f9fecd993f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enableStateEnterLog: 1
+  _enableStateUpdateLog: 0
