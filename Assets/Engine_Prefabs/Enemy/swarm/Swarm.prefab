@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: 1350600939e1b224ab1f00dbb7510cf9, type: 2}
   _brain: {fileID: 11400000, guid: 0b9b0fb39dec27340acbdcd09ea97222, type: 2}
-  _animPropertyName: {fileID: 11400000, guid: 83e6740f5d4161c498aabbf58f2a6203, type: 2}
+  _animPropertyName: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _animator: {fileID: 5162503043448231751}
   <CurrentHealth>k__BackingField: 0
 --- !u!114 &6499651309505189434
@@ -178,6 +178,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: swarm_01
       objectReference: {fileID: 0}
+    - target: {fileID: 6644207545462685518, guid: fb6cf88228bf7ce4786b073bab4fc094,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: f23765dd48dabaf47804bdf29b0c000c,
+        type: 2}
     - target: {fileID: 8858200221295127372, guid: fb6cf88228bf7ce4786b073bab4fc094,
         type: 3}
       propertyPath: m_RootOrder
