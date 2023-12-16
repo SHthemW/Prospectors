@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob
+    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob, IDataHolder<IAnimationStateName>
     {
         // static datas
 
@@ -24,6 +24,8 @@ namespace Game.Instances.Mob
 
         [SerializeField]
         private AnimPropertyNameData_SO _animPropertyName;
+        IAnimationStateName IDataHolder<IAnimationStateName>.Data 
+            => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
 
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
         internal bool OverrideHitActions => _staticData.OverrideHitActions;
