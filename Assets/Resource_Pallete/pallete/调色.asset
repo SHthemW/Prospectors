@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a3723b335e7004992e0a3ddfd87702, type: 3}
   m_Name: "\u8C03\u8272"
   m_EditorClassIdentifier: 
-  Source: {fileID: 2800000, guid: 672ae03f04c51bd4cad076cd2684e5a7, type: 3}
+  Source: {fileID: 2800000, guid: 16152d9358c0e4b4d8a6ef207f911b10, type: 3}
   Method: 0
   Weights: {x: 1, y: 2, z: 1}
   VConversionCurve:
@@ -41,5 +41,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   UseDitherPattern: 1
   DitherPattern: {fileID: 11400000, guid: 218fec54e28fcca42abd36f468ac506a, type: 2}
-  GeneratedFileName: "\u673A\u7532_07_4x4"
+  GeneratedFileName: swarm_pallete
   AutoGenerateFileName: 0
