@@ -14,6 +14,12 @@ namespace Game.Services.Animation
 
         [SerializeField]
         private string _onHit;
-        string IAnimationStateName.OnHit => _onHit;
+        string IAnimationStateName.OnHit 
+            => _onHit.AsSafeInspectorValue(name, p => p != default);
+
+        [SerializeField]
+        private string _idleOrPatrol;
+        string IAnimationStateName.IdleOrPatrol 
+            => _idleOrPatrol.AsSafeInspectorValue(name, p => p != default);
     }
 }
