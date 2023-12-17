@@ -21,7 +21,7 @@ namespace Game.Instances.General.FSM
             _remainIdleTime -= Time.deltaTime;
 
             if (_remainIdleTime <= 0)
-                _animator.SetBool(_stateName.IdleOrPatrol, false);
+                _animator.SetBool(_stateName.IdleNotPatrol, false);
         }
 
     }

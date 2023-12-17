@@ -8,6 +8,6 @@ namespace Game.Interfaces
         string CurrentVelocity { get; }
         string OnHit { get; }
 
-        string IdleOrPatrol { get; }
+        string IdleNotPatrol { get; }
     }
 }

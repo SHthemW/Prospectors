@@ -18,8 +18,8 @@ namespace Game.Services.Animation
             => _onHit.AsSafeInspectorValue(name, p => p != default);
 
         [SerializeField]
-        private string _idleOrPatrol;
-        string IAnimationStateName.IdleOrPatrol 
-            => _idleOrPatrol.AsSafeInspectorValue(name, p => p != default);
+        private string _idleNotPatrol;
+        string IAnimationStateName.IdleNotPatrol 
+            => _idleNotPatrol.AsSafeInspectorValue(name, p => p != default);
     }
 }

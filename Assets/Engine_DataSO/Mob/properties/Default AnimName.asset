@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentVelocity: 
   _onHit: 
-  _idleOrPatrol: _idleNotPatrol
+  _idleNotPatrol: _idleNotPatrol

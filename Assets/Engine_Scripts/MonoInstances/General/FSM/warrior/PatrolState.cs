@@ -37,7 +37,7 @@ namespace Game.Instances.General.FSM
 
             _patrolTime -= Time.deltaTime;
             if (_patrolTime < 0)
-                _animator.SetBool(_stateName.IdleOrPatrol, true);
+                _animator.SetBool(_stateName.IdleNotPatrol, true);
         }
     }
 }
