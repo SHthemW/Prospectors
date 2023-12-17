@@ -46,7 +46,7 @@ namespace Game.Interfaces
         protected virtual void UpdateStateAction() { }
         protected virtual void ExitStateAction() { }
 
-        protected TData GetDataByHolder<TData>(Animator obj, bool must = true)
+        protected static TData GetDataByHolder<TData>(Animator obj, bool must = true)
         {
             var holder = obj.GetComponentInParent<IDataHolder<TData>>();
 
