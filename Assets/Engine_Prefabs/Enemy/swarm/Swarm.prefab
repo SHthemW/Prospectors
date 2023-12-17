@@ -79,6 +79,7 @@ MonoBehaviour:
   _brain: {fileID: 11400000, guid: 0b9b0fb39dec27340acbdcd09ea97222, type: 2}
   _animPropertyName: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _animator: {fileID: 5162503043448231751}
+  _rigidbody: {fileID: 7880027440252663570}
   <CurrentHealth>k__BackingField: 0
 --- !u!114 &6499651309505189434
 MonoBehaviour:

@@ -8,7 +8,8 @@ namespace Game.Instances.Mob
 {
     internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob, 
         IDataHolder<IAnimationStateName>, 
-        IDataHolder<Animator>
+        IDataHolder<Animator>,
+        IDataHolder<Rigidbody>
     {
         // static datas
 
@@ -23,7 +24,6 @@ namespace Game.Instances.Mob
         [SerializeField]
         private AnimPropertyNameData_SO _animPropertyName;
         
-
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
         internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
@@ -33,7 +33,9 @@ namespace Game.Instances.Mob
 
         [SerializeField]
         private Animator _animator;
-       
+
+        [SerializeField]
+        private Rigidbody _rigidbody;
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
@@ -54,5 +56,8 @@ namespace Game.Instances.Mob
             => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
         IAnimationStateName IDataHolder<IAnimationStateName>.Data
             => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
+
+        Rigidbody IDataHolder<Rigidbody>.Data 
+            => _rigidbody.AsSafeInspectorValue(name, rb => rb != null);
     }
 }

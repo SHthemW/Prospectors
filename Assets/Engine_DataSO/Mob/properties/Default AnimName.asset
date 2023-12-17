@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8b125f822aa8f4e9d7f77266124ad5, type: 3}
   m_Name: Default AnimName
   m_EditorClassIdentifier: 
-  _currentVelocity: v
-  _onHit: hit
+  _currentVelocity: 
+  _onHit: 
+  _idleOrPatrol: _idleNotPatrol
