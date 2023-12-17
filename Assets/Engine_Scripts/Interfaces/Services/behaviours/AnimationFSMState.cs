@@ -35,22 +35,25 @@ namespace Game.Interfaces
             ExitStateAction();
         }
 
-        protected virtual void Init(Animator animator)
+        protected virtual void Init(Animator obj)
         {
-            Debug.Log("init: " + animator.gameObject.name);
+            Debug.Log("init: " + obj.gameObject.name);
 
-            _stateName = (animator
-                 .GetComponentInParent<IDataHolder<IAnimationStateName>>()
-                ?? throw new MissingComponentException(nameof(_stateName)))
-                 .Data;
-
-            _animator = (animator
-                 .GetComponentInParent<IDataHolder<Animator>>()
-                ?? throw new MissingComponentException(nameof(_animator)))
-                 .Data;
+            _stateName = GetDataByHolder<IAnimationStateName>(obj);
+            _animator = GetDataByHolder<Animator>(obj);
         }
         protected virtual void EnterStateAction() { }
         protected virtual void UpdateStateAction() { }
         protected virtual void ExitStateAction() { }
+
+        protected TData GetDataByHolder<TData>(Animator obj, bool must = true)
+        {
+            var holder = obj.GetComponentInParent<IDataHolder<TData>>();
+
+            if (holder == null && must)
+                throw new MissingComponentException(typeof(TData).Name);
+
+            return holder.Data;
+        }
     }
 }
