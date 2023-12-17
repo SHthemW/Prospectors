@@ -9,15 +9,27 @@ namespace Game.Interfaces
         protected IAnimationStateName _stateName { get; private set; }
         protected Animator _animator { get; private set; }
 
-        private bool _isInited = false;
+        private bool _isInited   = false;
+        private bool _InitFailed = false;
 
         public override sealed void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if (!_isInited)
             {
-                Init(animator);
+                try
+                {
+                    Init(animator);
+                }
+                catch (Exception e) 
+                {
+                    _InitFailed = true;
+                    throw e;
+                }
                 _isInited = true;
             }
+
+            if (_InitFailed)
+                return;
 
             base.OnStateEnter(animator, stateInfo, layerIndex);
             EnterStateAction();
@@ -25,12 +37,18 @@ namespace Game.Interfaces
 
         public override sealed void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (_InitFailed)
+                return;
+
             base.OnStateUpdate(animator, stateInfo, layerIndex);
             UpdateStateAction();
         }
 
         public override sealed void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (_InitFailed)
+                return;
+
             base.OnStateExit(animator, stateInfo, layerIndex);
             ExitStateAction();
         }
