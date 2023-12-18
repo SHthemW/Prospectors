@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Game.Interfaces
 {
-    public interface IDataHolder<TData>
+    public interface IDataHolder
     {
-        TData Data { get; }
+        // only used as generic-type constraintion
     }
 }

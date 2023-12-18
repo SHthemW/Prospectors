@@ -57,21 +57,21 @@ namespace Game.Interfaces
         {
             Debug.Log("init: " + obj.gameObject.name);
 
-            _stateName = GetDataByHolder<IAnimationStateName>(obj);
-            _animator = GetDataByHolder<Animator>(obj);
+            _stateName = GetHolderOnParent<IHoldAnimStateName>(obj).StateName;
+            _animator  = GetHolderOnParent<IHoldCharAnimator>(obj).Animator;
         }
         protected virtual void EnterStateAction() { }
         protected virtual void UpdateStateAction() { }
         protected virtual void ExitStateAction() { }
 
-        protected static TData GetDataByHolder<TData>(Animator obj, bool must = true)
+        protected static THold GetHolderOnParent<THold>(Animator obj, bool must = true) where THold : IDataHolder
         {
-            var holder = obj.GetComponentInParent<IDataHolder<TData>>();
+            var component = obj.GetComponentInParent<THold>();
 
-            if (holder == null && must)
-                throw new MissingComponentException(typeof(TData).Name);
+            if (component == null && must)
+                throw new MissingComponentException(typeof(THold).Name);
 
-            return holder.Data;
-        }
+            return component;
+        } 
     }
 }

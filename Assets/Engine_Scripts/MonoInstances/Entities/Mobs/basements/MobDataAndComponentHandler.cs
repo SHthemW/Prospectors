@@ -6,10 +6,11 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob, 
-        IDataHolder<IAnimationStateName>, 
-        IDataHolder<Animator>,
-        IDataHolder<Rigidbody>
+    internal sealed class MobDataAndComponentHandler : MonoBehaviour, 
+        // identity
+        IMob, 
+        // holders
+        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator
     {
         // static datas
 
@@ -48,16 +49,18 @@ namespace Game.Instances.Mob
         public int CurrentHealth { get; set; }
 
         int IMob.MaxHealth => _staticData.MaxHealth;
+
         Animator IMob.Animator 
             => _animator.AsSafeInspectorValue(name, a => a != null);
-        Animator IDataHolder<Animator>.Data 
+        Animator IHoldCharAnimator.Animator 
             => _animator.AsSafeInspectorValue(name, a => a != null);
+
         IAnimationStateName IMob.AnimNames 
             => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
-        IAnimationStateName IDataHolder<IAnimationStateName>.Data
+        IAnimationStateName IHoldAnimStateName.StateName
             => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
 
-        Rigidbody IDataHolder<Rigidbody>.Data 
+        Rigidbody IHoldCharRigidbody.Rigidbody 
             => _rigidbody.AsSafeInspectorValue(name, rb => rb != null);
     }
 }

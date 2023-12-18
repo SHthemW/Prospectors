@@ -16,7 +16,7 @@ namespace Game.Instances.General.FSM
         {
             base.Init(obj);
 
-            _rigidbody = GetDataByHolder<Rigidbody>(obj);
+            _rigidbody = GetHolderOnParent<IHoldCharRigidbody>(obj).Rigidbody;
         }
 
         protected override sealed void EnterStateAction()
