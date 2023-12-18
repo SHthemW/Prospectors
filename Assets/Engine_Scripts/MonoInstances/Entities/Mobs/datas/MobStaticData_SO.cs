@@ -8,6 +8,13 @@ namespace Game.Instances.Mob
     [CreateAssetMenu(fileName = "MobData", menuName = "Data/Mob")]
     internal sealed class MobStaticData_SO : ScriptableObject
     {
+        [Header("Basic")]
+
+        [SerializeField]
+        private float _moveSpeed;
+        internal float MoveSpped 
+            => _moveSpeed;
+
         [Header("Combat")]
 
         [SerializeField]
