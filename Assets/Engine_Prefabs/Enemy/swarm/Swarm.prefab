@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8421677013100890187}
   - component: {fileID: 6499651309505189434}
   - component: {fileID: 3814471394102011251}
+  - component: {fileID: 2263207410418370473}
   m_Layer: 0
   m_Name: Swarm
   m_TagString: Hitable
@@ -78,8 +79,9 @@ MonoBehaviour:
   _staticData: {fileID: 11400000, guid: 1350600939e1b224ab1f00dbb7510cf9, type: 2}
   _brain: {fileID: 11400000, guid: 0b9b0fb39dec27340acbdcd09ea97222, type: 2}
   _animPropertyName: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
-  _animator: {fileID: 0}
+  _animator: {fileID: 6682971457670015636}
   _rigidbody: {fileID: 7880027440252663570}
+  _rootTransform: {fileID: 8600817203158024051}
   <CurrentHealth>k__BackingField: 0
 --- !u!114 &6499651309505189434
 MonoBehaviour:
@@ -103,6 +105,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5f7492e2dedce49b5c887c462e78e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2263207410418370473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210639238161841983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca697a4375f4c3e458f051f6dfb5f847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6458964568296160449
@@ -242,6 +256,12 @@ PrefabInstance:
 --- !u!4 &5906063602954191632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8645164891203971715, guid: df58025a11dc4564482ed67a44cbb99d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2742487819566377363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6682971457670015636 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8841103756497519367, guid: df58025a11dc4564482ed67a44cbb99d,
     type: 3}
   m_PrefabInstance: {fileID: 2742487819566377363}
   m_PrefabAsset: {fileID: 0}

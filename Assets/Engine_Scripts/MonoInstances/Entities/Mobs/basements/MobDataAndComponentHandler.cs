@@ -38,6 +38,11 @@ namespace Game.Instances.Mob
         [SerializeField]
         private Rigidbody _rigidbody;
 
+        [SerializeField]
+        private Transform _rootTransform;
+        internal Transform RootTransform 
+            => _rootTransform.AsSafeInspectorValue(name, t => t != null);
+
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
 
@@ -60,9 +65,8 @@ namespace Game.Instances.Mob
         IAnimationStateName IHoldAnimStateName.StateName
             => _animPropertyName.AsSafeInspectorValue(name, a => a != null);
 
-        Rigidbody IHoldCharRigidbody.Rigidbody 
-            => _rigidbody.AsSafeInspectorValue(name, rb => rb != null);
-
+        public Rigidbody Rigidbody => 
+            _rigidbody.AsSafeInspectorValue(name, rb => rb != null);
         float IHoldCharMoveSpeed.MoveSpeed 
             => _staticData.MoveSpped;
     }
