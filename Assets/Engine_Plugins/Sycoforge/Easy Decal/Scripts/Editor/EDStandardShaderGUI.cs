@@ -8,6 +8,7 @@ namespace UnityEditor
         //------------------------------------
         // Fields
         //------------------------------------
+        [Obsolete]
         private ColorPickerHDRConfig m_ColorPickerHDRConfig = new ColorPickerHDRConfig(0.0f, 99f, 1.0f / 99.0f, 3f);
         private bool m_FirstTimeApply = true;
         private MaterialProperty blendMode;
@@ -179,7 +180,7 @@ namespace UnityEditor
             bool flag1 = !this.HasValidEmissiveKeyword(material);
             bool flag2 = (double)maxColorComponent > 0.0;
             bool flag3 = (UnityEngine.Object)this.emissionMap.textureValue != (UnityEngine.Object)null;
-            this.m_MaterialEditor.TexturePropertyWithHDRColor(EDStandardShaderGUI.Styles.emissionText, this.emissionMap, this.emissionColorForRendering, this.m_ColorPickerHDRConfig, false);
+            this.m_MaterialEditor.TexturePropertyWithHDRColor(EDStandardShaderGUI.Styles.emissionText, this.emissionMap, this.emissionColorForRendering, false);
             if ((UnityEngine.Object)this.emissionMap.textureValue != (UnityEngine.Object)null && !flag3 && (double)maxColorComponent <= 0.0)
                 this.emissionColorForRendering.colorValue = Color.white;
             if (flag2)

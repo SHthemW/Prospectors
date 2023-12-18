@@ -121,7 +121,7 @@ namespace ch.sycoforge.Decal.Demo
 
                         Vector3[] points = BezierUtil.InterpolatePath(this.path, 10, Radius, AngleThreshold).ToArray();
 
-                        lineRenderer.SetVertexCount(points.Length);
+                        lineRenderer.positionCount = points.Length;
                         #if UNITY_5_2
                         for (int i = 0; i < points.Length; i++ )
                         {
