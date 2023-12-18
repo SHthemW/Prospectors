@@ -12,7 +12,7 @@ namespace Game.Services.Physics
         {
             _transform = transform != null ? transform : throw new ArgumentNullException(nameof(transform));
         }
-        public void SetFlipState(bool leftCond, bool rightCond = false)
+        public void SetFlipState(bool leftCond, bool rightCond = true)
         {
             float flipX = _transform.localScale.x;
 
