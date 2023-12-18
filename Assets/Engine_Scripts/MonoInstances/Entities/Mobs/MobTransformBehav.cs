@@ -15,7 +15,9 @@ namespace Game.Instances.Mob
 
         private void Update()
         {
-            _faceFlipCtrller.SetFlipState(dirIsLeft: ThisMob.Rigidbody.velocity.x > 1);
+            _faceFlipCtrller.SetFlipState(
+                leftCond:  ThisMob.Rigidbody.velocity.x > 1,
+                rightCond: ThisMob.Rigidbody.velocity.x < -1);
         }
     }
 }

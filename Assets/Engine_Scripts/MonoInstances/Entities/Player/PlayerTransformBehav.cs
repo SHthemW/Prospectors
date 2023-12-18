@@ -27,7 +27,7 @@ namespace Game.Instances.Player
                 this.DataHandler.MoveSpeed.UpdateCurrentAndGet());
 
             _faceFlipCtrller.SetFlipState(
-                dirIsLeft: CurrentAimingPosIsInLeft());
+                leftCond: CurrentAimingPosIsInLeft());
 
             _modelDirCtrller.EnableActiveOfObjectExclusively(
                 key: CurrentFacingDirectionIsDown()
