@@ -8,6 +8,7 @@ namespace Game.Instances.General.FSM
     internal sealed class PatrolState : AnimationFSMState
     {
         private Rigidbody _rigidbody;
+        private float _staticMoveSpeed;
 
         private float   _patrolTime;
         private Vector3 _patrolDirection;
@@ -17,6 +18,7 @@ namespace Game.Instances.General.FSM
             base.Init(obj);
 
             _rigidbody = GetHolderOnParent<IHoldCharRigidbody>(obj).Rigidbody;
+            _staticMoveSpeed = GetHolderOnParent<IHoldCharMoveSpeed>(obj).MoveSpeed;
         }
 
         protected override sealed void EnterStateAction()
@@ -33,7 +35,7 @@ namespace Game.Instances.General.FSM
         protected override sealed void UpdateStateAction()
         {
             // set dir
-            _rigidbody.velocity = 4 * _patrolDirection;
+            _rigidbody.velocity = _staticMoveSpeed * _patrolDirection;
 
             _patrolTime -= Time.deltaTime;
             if (_patrolTime < 0)

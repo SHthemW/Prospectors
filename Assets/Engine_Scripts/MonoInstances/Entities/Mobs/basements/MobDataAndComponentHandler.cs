@@ -10,7 +10,7 @@ namespace Game.Instances.Mob
         // identity
         IMob, 
         // holders
-        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator
+        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator, IHoldCharMoveSpeed
     {
         // static datas
 
@@ -62,5 +62,8 @@ namespace Game.Instances.Mob
 
         Rigidbody IHoldCharRigidbody.Rigidbody 
             => _rigidbody.AsSafeInspectorValue(name, rb => rb != null);
+
+        float IHoldCharMoveSpeed.MoveSpeed 
+            => _staticData.MoveSpped;
     }
 }
