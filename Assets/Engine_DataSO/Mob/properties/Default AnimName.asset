@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Default AnimName
   m_EditorClassIdentifier: 
   _currentVelocity: 
-  _onHit: _getHit
+  _onHit:
+  - _getHit_1
+  - _getHit_2
   _idleNotPatrol: _idleNotPatrol

@@ -21,7 +21,7 @@ namespace Game.Instances.Mob
                 ? damage 
                 : mob.CurrentHealth;
 
-            mob.Animator.SetTrigger(mob.AnimNames.OnHit);
+            mob.Animator.SetTrigger(mob.AnimNames.OnHit[Random.Range(0, mob.AnimNames.OnHit.Length - 1)]);
         }
 
         public void Die(IMob mob)

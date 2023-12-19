@@ -13,8 +13,8 @@ namespace Game.Services.Animation
             => _currentVelocity.AsSafeInspectorValue(name, p => p != default);
 
         [SerializeField]
-        private string _onHit;
-        string IAnimationStateName.OnHit 
+        private string[] _onHit;
+        string[] IAnimationStateName.OnHit
             => _onHit.AsSafeInspectorValue(name, p => p != default);
 
         [SerializeField]

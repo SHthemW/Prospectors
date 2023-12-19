@@ -6,7 +6,7 @@ namespace Game.Interfaces
     public interface IAnimationStateName
     {
         string CurrentVelocity { get; }
-        string OnHit { get; }
+        string[] OnHit { get; }
 
         string IdleNotPatrol { get; }
     }
