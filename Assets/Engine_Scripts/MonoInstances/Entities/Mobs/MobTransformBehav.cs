@@ -11,6 +11,8 @@ namespace Game.Instances.Mob
          *  datas
          */
 
+        [field: Header("Datas")]
+
         [field: SerializeField, Utils.Attributes.ReadOnly]
         public DynamicData<float> MoveSpeed { get; set; } = new(
             howToMerge: (f1, f2) => f1 * f2,
