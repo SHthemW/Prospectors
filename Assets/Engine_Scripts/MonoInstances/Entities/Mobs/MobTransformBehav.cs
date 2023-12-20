@@ -22,7 +22,6 @@ namespace Game.Instances.Mob
                 leftCond:  ThisMob.Rigidbody.velocity.x > 1,
                 rightCond: ThisMob.Rigidbody.velocity.x < -1);
 
-            Debug.Log(ThisMob.MoveSpeed.UpdateCurrentAndGet());
             _movementCtrller.MoveInDirection(
                 direction: ThisMob.MoveDirection, 
                 speed:     ThisMob.MoveSpeed.UpdateCurrentAndGet());
