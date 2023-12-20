@@ -5,6 +5,6 @@ namespace Game.Interfaces
 {
     public interface IHoldAnimStateName : IDataHolder
     {
-        IAnimationStateName StateName { get; }
+        IAnimationStateName AnimStateNames { get; }
     }
 }

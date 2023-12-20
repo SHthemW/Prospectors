@@ -7,11 +7,7 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobDataAndComponentHandler : MonoBehaviour,
-        // identity
-        IMob,
-        // holders
-        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator
+    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob, IHoldCharAnimator, IHoldAnimStateName
     {
         // static datas
 
@@ -27,8 +23,6 @@ namespace Game.Instances.Mob
         private AnimPropertyNameData_SO _animStateNames;
         public IAnimationStateName AnimStateNames
             => _animStateNames.AsSafeInspectorValue(name, a => a != null);
-        IAnimationStateName IHoldAnimStateName.StateName
-            => _animStateNames.AsSafeInspectorValue(name, a => a != null);
 
         // components ref
         [Header("Components")]
@@ -36,8 +30,6 @@ namespace Game.Instances.Mob
         [SerializeField]
         private Animator _animator;
         public Animator Animator
-            => _animator.AsSafeInspectorValue(name, a => a != null);
-        Animator IHoldCharAnimator.Animator
             => _animator.AsSafeInspectorValue(name, a => a != null);
 
         [SerializeField]
