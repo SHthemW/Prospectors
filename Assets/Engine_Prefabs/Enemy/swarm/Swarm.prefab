@@ -46,8 +46,8 @@ Rigidbody:
   m_GameObject: {fileID: 2210639238161841983}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 5
+  m_AngularDrag: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -83,6 +83,11 @@ MonoBehaviour:
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
   <CurrentHealth>k__BackingField: 0
+  <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
+  <MoveSpeed>k__BackingField:
+    _baseValue: 0
+    _currentValue: 0
+    _factorList: []
 --- !u!114 &6499651309505189434
 MonoBehaviour:
   m_ObjectHideFlags: 0

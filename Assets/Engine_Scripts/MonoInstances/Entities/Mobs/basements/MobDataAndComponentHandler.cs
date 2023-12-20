@@ -1,6 +1,7 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
 using Game.Services.Physics;
+using Game.Utils.Collections;
 using Game.Utils.Extensions;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace Game.Instances.Mob
         // identity
         IMob, 
         // holders
-        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator, IHoldCharMoveSpeed
+        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator, IHoldCharMoveSpeed, IHoldCharMovement
     {
         // static datas
 
@@ -19,6 +20,7 @@ namespace Game.Instances.Mob
         int IMob.MaxHealth => _staticData.MaxHealth;
         float IHoldCharMoveSpeed.MoveSpeed
             => _staticData.MoveSpped;
+        internal float BaseMoveSpeed => _staticData.MoveSpped;
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
         internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
@@ -62,6 +64,15 @@ namespace Game.Instances.Mob
         [field: Header("Datas")]
 
         [field: SerializeField, Utils.Attributes.ReadOnly]
-        public int CurrentHealth { get; set; }   
+        public int CurrentHealth { get; set; }
+
+        [field: SerializeField, Utils.Attributes.ReadOnly]
+        public Vector3 MoveDirection { get; set; }
+
+        [field: SerializeField, Utils.Attributes.ReadOnly]
+        public DynamicData<float> MoveSpeed { get; set; } = new(
+            howToMerge: (f1, f2) => f1 * f2,
+            factorBase: 1f
+            );
     }
 }

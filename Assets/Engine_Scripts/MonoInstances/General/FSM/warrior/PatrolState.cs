@@ -7,39 +7,42 @@ namespace Game.Instances.General.FSM
 {
     internal sealed class PatrolState : AnimationFSMState
     {
-        private Rigidbody _rigidbody;
-        private float _staticMoveSpeed;
-
+        private bool    _isInPatrol = false;
         private float   _patrolTime;
-        private Vector3 _patrolDirection;
+
+        private IHoldCharMovement _charMovement;
 
         protected override sealed void Init(Animator obj)
         {
             base.Init(obj);
 
-            _rigidbody = GetHolderOnParent<IHoldCharRigidbody>(obj).Rigidbody;
-            _staticMoveSpeed = GetHolderOnParent<IHoldCharMoveSpeed>(obj).MoveSpeed;
+            _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
+
+            _charMovement.MoveSpeed.AddFactor(() => _isInPatrol ? 1 : 0, "patrol");
         }
 
         protected override sealed void EnterStateAction()
         {
-            _patrolDirection = new Vector3(
-                UnityEngine.Random.Range(-1f, 1f), 
-                0, 
+            _isInPatrol = true;
+            _patrolTime = UnityEngine.Random.Range(1f, 2.5f);
+
+            _charMovement.MoveDirection = new Vector3(
+                UnityEngine.Random.Range(-1f, 1f),
+                0,
                 UnityEngine.Random.Range(-1f, 1f)
                 ).normalized;
-
-            _patrolTime = UnityEngine.Random.Range(1f, 2.5f);
         }
 
         protected override sealed void UpdateStateAction()
         {
-            // set dir
-            _rigidbody.velocity = _staticMoveSpeed * _patrolDirection;
-
             _patrolTime -= Time.deltaTime;
             if (_patrolTime < 0)
                 _animator.SetBool(_stateName.IdleNotPatrol, true);
+        }
+
+        protected override sealed void ExitStateAction()
+        {
+            _isInPatrol = false;
         }
     }
 }
