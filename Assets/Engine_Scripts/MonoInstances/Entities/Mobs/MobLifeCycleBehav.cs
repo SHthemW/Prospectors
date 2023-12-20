@@ -1,19 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Game.Interfaces;
+using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobLifeCycleBehav : MobBehaviour
+    internal sealed class MobLifeCycleBehav : MobBehaviour, IHoldCharHealth
     {
+        /*
+         *  datas
+         */
+
+        [field: Header("Datas")]
+
+        [field: SerializeField, Utils.Attributes.ReadOnly]
+        public int CurrentHealth { get; set; }
+
+        /*
+         *  behaviours
+         */
+
         private void Start()
         {
-            ThisMob.Brain.Init(ThisMob);
+            CurrentHealth = ThisMob.MaxHealth;
         }
 
         private void Update()
         {
-            if (ThisMob.CurrentHealth <= 0)
-                ThisMob.Brain.Die(ThisMob);
+            if (CurrentHealth <= 0)
+                CombatUtil.Die(ThisMob);
         }
     }
 }

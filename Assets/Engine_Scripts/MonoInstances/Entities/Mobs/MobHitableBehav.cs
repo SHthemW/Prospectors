@@ -49,7 +49,10 @@ namespace Game.Instances.Mob
             foreach (var action in ThisMob.OnHittedActions)
                 action.Implement(_mobActionImpl);
 
-            ThisMob.Brain.Hit(ThisMob, bullet.Damage);
+            CombatUtil.Hit(
+                who:    GetComponent<IHoldCharHealth>(),
+                damage: bullet.Damage,
+                anim:   (animator: ThisMob.Animator, name: ThisMob.AnimStateNames));
         }
     }
 }

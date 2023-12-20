@@ -77,17 +77,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: 1350600939e1b224ab1f00dbb7510cf9, type: 2}
-  _brain: {fileID: 11400000, guid: 0b9b0fb39dec27340acbdcd09ea97222, type: 2}
-  _animPropertyName: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
+  _animStateNames: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _animator: {fileID: 6682971457670015636}
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
-  <CurrentHealth>k__BackingField: 0
-  <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  <MoveSpeed>k__BackingField:
-    _baseValue: 0
-    _currentValue: 0
-    _factorList: []
 --- !u!114 &6499651309505189434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e342b33654c424880dece210d3ee22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 0
 --- !u!114 &3814471394102011251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca697a4375f4c3e458f051f6dfb5f847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MoveSpeed>k__BackingField:
+    _baseValue: 0
+    _currentValue: 0
+    _factorList: []
+  <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!1 &6458964568296160449
 GameObject:
   m_ObjectHideFlags: 0
