@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Game.Services.Physics
+namespace Game.Utils.Collections
 {
     public sealed class SingletonComponent<TComponent> where TComponent : UnityEngine.Component
     {
