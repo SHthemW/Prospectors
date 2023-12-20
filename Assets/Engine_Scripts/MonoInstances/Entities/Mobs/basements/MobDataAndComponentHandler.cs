@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobDataAndComponentHandler : MonoBehaviour, 
+    internal sealed class MobDataAndComponentHandler : MonoBehaviour,
         // identity
-        IMob, 
+        IMob,
         // holders
-        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator, IHoldCharMoveSpeed, IHoldCharMovement
+        IHoldAnimStateName, IHoldCharRigidbody, IHoldCharAnimator, IHoldCharMoveSpeed
     {
         // static datas
 
@@ -27,7 +27,7 @@ namespace Game.Instances.Mob
 
         [SerializeField]
         private MobBrain_SO _brain;
-        internal IMobCombatBrain Brain 
+        internal IMobCombatBrain Brain
             => _brain.AsSafeInspectorValue(name, b => b != null);
 
         [SerializeField]
@@ -54,7 +54,7 @@ namespace Game.Instances.Mob
 
         [SerializeField]
         private Transform _rootTransform;
-        internal Transform RootTransform 
+        internal Transform RootTransform
             => _rootTransform.AsSafeInspectorValue(name, t => t != null);
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
@@ -65,14 +65,5 @@ namespace Game.Instances.Mob
 
         [field: SerializeField, Utils.Attributes.ReadOnly]
         public int CurrentHealth { get; set; }
-
-        [field: SerializeField, Utils.Attributes.ReadOnly]
-        public Vector3 MoveDirection { get; set; }
-
-        [field: SerializeField, Utils.Attributes.ReadOnly]
-        public DynamicData<float> MoveSpeed { get; set; } = new(
-            howToMerge: (f1, f2) => f1 * f2,
-            factorBase: 1f
-            );
     }
 }

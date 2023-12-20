@@ -1,16 +1,35 @@
-﻿using Game.Services.Physics;
+﻿using Game.Interfaces;
+using Game.Services.Physics;
+using Game.Utils.Collections;
 using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobTransformBehav : MobBehaviour
+    internal sealed class MobTransformBehav : MobBehaviour, IHoldCharMovement
     {
+        /*
+         *  datas
+         */
+
+        [field: SerializeField, Utils.Attributes.ReadOnly]
+        public DynamicData<float> MoveSpeed { get; set; } = new(
+            howToMerge: (f1, f2) => f1 * f2,
+            factorBase: 1
+            );
+        
+        [field: SerializeField, Utils.Attributes.ReadOnly]
+        public Vector3 MoveDirection { get; set; }
+
+        /*
+         *  behaviours
+         */
+
         private ObjFlipper    _faceFlipCtrller;
         private RbTransformer _movementCtrller;
 
         private void Awake()
         {
-            ThisMob.MoveSpeed.Init(ThisMob.BaseMoveSpeed);
+            MoveSpeed.Init(ThisMob.BaseMoveSpeed);
 
             _faceFlipCtrller = new(ThisMob.RootTransform);
             _movementCtrller = new(ThisMob.Rigidbody);
@@ -23,8 +42,8 @@ namespace Game.Instances.Mob
                 rightCond: ThisMob.Rigidbody.velocity.x < -1);
 
             _movementCtrller.MoveInDirection(
-                direction: ThisMob.MoveDirection, 
-                speed:     ThisMob.MoveSpeed.UpdateCurrentAndGet());
+                direction: MoveDirection, 
+                speed:     MoveSpeed.UpdateCurrentAndGet());
         }
     }
 }
