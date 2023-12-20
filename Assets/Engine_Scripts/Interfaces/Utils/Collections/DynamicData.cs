@@ -8,7 +8,7 @@ namespace Game.Utils.Collections
 {
 # nullable enable
     [Serializable]
-    public struct DynamicData<TData>
+    public sealed class DynamicData<TData>
     {
         [SerializeField, ReadOnly]
         private TData? _baseValue;
@@ -46,7 +46,7 @@ namespace Game.Utils.Collections
             this._baseValue = baseValue;
             this._wasInited = true;
         }
-        public readonly void AddFactor(Func<TData> factorFunc, string factorName = "unnamed factor")
+        public void AddFactor(Func<TData> factorFunc, string factorName = "unnamed factor")
         {
             _factorFuncs.Add(factorFunc);
             _factorList.Add(factorName);
