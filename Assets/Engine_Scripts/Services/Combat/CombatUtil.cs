@@ -1,10 +1,9 @@
 ﻿using Game.Interfaces;
-using System.Collections;
 using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal static class CombatUtil
+    public static class CombatUtil
     {
         public static void Hit(IHoldCharHealth who, int damage, (Animator animator, IAnimationStateName name) anim = default)
         {
