@@ -81,6 +81,8 @@ MonoBehaviour:
   _animator: {fileID: 6682971457670015636}
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
+  <Health>k__BackingField:
+    _object: {fileID: 2210639238161841983}
 --- !u!114 &6499651309505189434
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ namespace Game.Instances.Mob
                 action.Implement(_mobActionImpl);
 
             CombatUtil.Hit(
-                who:    GetComponent<IHoldCharHealth>(),
+                who:    ThisMob.Health.Get(),
                 damage: bullet.Damage,
                 anim:   (animator: ThisMob.Animator, name: ThisMob.AnimStateNames));
         }

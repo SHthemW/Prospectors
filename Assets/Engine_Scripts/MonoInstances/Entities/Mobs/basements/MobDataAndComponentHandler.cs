@@ -42,6 +42,9 @@ namespace Game.Instances.Mob
         internal Transform RootTransform
             => _rootTransform.AsSafeInspectorValue(name, t => t != null);
 
+        [field: SerializeField]
+        internal ObjectComponent<IHoldCharHealth> Health { get; set; }
+
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
     }
