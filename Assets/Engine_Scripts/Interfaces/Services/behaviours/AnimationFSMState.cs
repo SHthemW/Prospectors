@@ -55,8 +55,6 @@ namespace Game.Interfaces
 
         protected virtual void Init(Animator obj)
         {
-            Debug.Log("init: " + obj.gameObject.name);
-
             _stateName = GetHolderOnParent<IHoldAnimStateName>(obj).AnimStateNames;
             _animator  = GetHolderOnParent<IHoldCharAnimator>(obj).Animator;
         }
