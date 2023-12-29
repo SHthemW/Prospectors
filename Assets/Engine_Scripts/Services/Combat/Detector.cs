@@ -25,16 +25,21 @@ namespace Game.Services.Combat
             if (_filterTags.Length > 0 && !_filterTags.Any(tag => obj.CompareTag(tag)))
                 return;
 
-            OnCollisionEnter.Invoke(other);
+            OnCollisionEnter?.Invoke(other);
 
             InScopes.Add(obj);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            OnCollisionExit.Invoke(other);
+            var obj = other.gameObject;
 
-            InScopes.Remove(other.gameObject);
+            if (_filterTags.Length > 0 && !_filterTags.Any(tag => obj.CompareTag(tag)))
+                return;
+
+            OnCollisionExit?.Invoke(other);
+
+            InScopes.Remove(obj);
         }
     }
 }
