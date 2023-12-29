@@ -1,5 +1,6 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
+using Game.Services.Combat;
 using Game.Services.Physics;
 using Game.Utils.Collections;
 using Game.Utils.Extensions;
@@ -41,6 +42,11 @@ namespace Game.Instances.Mob
         private Transform _rootTransform;
         internal Transform RootTransform
             => _rootTransform.AsSafeInspectorValue(name, t => t != null);
+
+        [SerializeField]
+        private Detector _playerDetector;
+        internal Detector PlayerDetector 
+            => _playerDetector.AsSafeInspectorValue(name, d => d != null);
 
         [field: SerializeField]
         internal ObjectComponent<IHoldCharHealth> Health { get; set; }

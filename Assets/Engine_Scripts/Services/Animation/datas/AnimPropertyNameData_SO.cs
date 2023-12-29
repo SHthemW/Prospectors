@@ -21,5 +21,15 @@ namespace Game.Services.Animation
         private string _idleNotPatrol;
         string IAnimationStateName.IdleNotPatrol 
             => _idleNotPatrol.AsSafeInspectorValue(name, p => p != default);
+
+        [SerializeField]
+        private string _foundTarget;
+        string IAnimationStateName.FoundTarget 
+            => _foundTarget.AsSafeInspectorValue(name, p => p != default);
+
+        [SerializeField]
+        private string _lostTarget;
+        string IAnimationStateName.LostTarget 
+            => _lostTarget.AsSafeInspectorValue(name, s => s != default);
     }
 }

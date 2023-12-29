@@ -13,6 +13,9 @@ namespace Game.Instances.General.FSM
         [SerializeField]
         private bool _enableStateUpdateLog;
 
+        [SerializeField]
+        private bool _enableStateExitLog;
+
         protected override sealed void EnterStateAction()
         {
             if (_enableStateEnterLog)
@@ -23,6 +26,12 @@ namespace Game.Instances.General.FSM
         {
             if (_enableStateUpdateLog)
                 Debug.Log(_animator.name + "is updating..");
+        }
+
+        protected override sealed void ExitStateAction()
+        {
+            if (_enableStateExitLog)
+                Debug.Log(_animator.name + "is exited..");
         }
     }
 }

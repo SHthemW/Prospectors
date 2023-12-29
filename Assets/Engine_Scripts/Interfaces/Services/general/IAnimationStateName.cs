@@ -9,5 +9,7 @@ namespace Game.Interfaces
         string[] OnHit { get; }
 
         string IdleNotPatrol { get; }
+        string FoundTarget { get; }
+        string LostTarget { get; }
     }
 }
