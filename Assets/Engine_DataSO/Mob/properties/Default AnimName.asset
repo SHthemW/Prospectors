@@ -18,3 +18,4 @@ MonoBehaviour:
   - _getHit_2
   _idleNotPatrol: _idleNotPatrol
   _foundTarget: _foundTarget
+  _lostTarget: _lostTarget
