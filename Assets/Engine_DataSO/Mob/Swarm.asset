@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e272bff30fcca42b03fd0c6c49a5e5, type: 3}
   m_Name: Swarm
   m_EditorClassIdentifier: 
-  _moveSpeed: 20
+  _moveSpeed: 12
   _hitTimesConsumption: 1
   _maxHealth: 100
   _onHittedActions:
