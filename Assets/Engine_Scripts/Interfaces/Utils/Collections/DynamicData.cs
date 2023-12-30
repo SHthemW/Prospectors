@@ -22,7 +22,7 @@ namespace Game.Utils.Collections
         private List<string> _factorList;
         #endregion
 
-        private readonly List<Func<TData>> _factorFuncs;
+        private readonly Dictionary<string, Func<TData>> _factors;
         private readonly Func<TData, TData, TData> _mergeFunc;
 
         public DynamicData(Func<TData, TData, TData> howToMerge, TData factorBase)
@@ -33,11 +33,12 @@ namespace Game.Utils.Collections
 
             _factorList = new();
             _mergeFunc = howToMerge;
-            _factorFuncs = new()
+            _factors = new()
             {
-                () => factorBase
+                { "base", () => factorBase }
             };
         }
+
         public void Init(TData baseValue)
         {
             if (_wasInited)
@@ -46,10 +47,17 @@ namespace Game.Utils.Collections
             this._baseValue = baseValue;
             this._wasInited = true;
         }
-        public void AddFactor(Func<TData> factorFunc, string factorName = "unnamed factor")
+
+        public void AddFactor(Func<TData> factorFunc, string factorName)
         {
-            _factorFuncs.Add(factorFunc);
+            _factors.Add(factorName, factorFunc);
             _factorList.Add(factorName);
+        }
+
+        public void RemoveFactor(string factorName)
+        {
+            _factors.Remove(factorName);
+            _factorList.Remove(factorName);
         }
 
         public TData UpdateCurrentAndGet()
@@ -59,12 +67,8 @@ namespace Game.Utils.Collections
 
             TData calcResult = _baseValue;
 
-            foreach (var func in _factorFuncs)
-            {
-                var effection = func.Invoke();
-                
-                calcResult = _mergeFunc(calcResult, effection);
-            }
+            foreach (var func in _factors)
+                calcResult = _mergeFunc(calcResult, func.Value.Invoke());
 
             // update current value (because we need it to debug in inspector)
             _currentValue = calcResult; 

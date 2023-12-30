@@ -7,8 +7,9 @@ namespace Game.Instances.General.FSM
 {
     internal sealed class PatrolState : AnimationFSMState
     {
-        private bool  _isInPatrol = false;
         private float _patrolTime;
+
+        private const string MOVE_FACTOR_NAME = "patrol";
 
         private IHoldCharMovement _charMovement;
 
@@ -17,15 +18,13 @@ namespace Game.Instances.General.FSM
             base.Init(obj);
 
             _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
-
-            _charMovement.MoveSpeed.AddFactor(() => _isInPatrol ? 1 : 0, "patrol");
         }
 
         protected override sealed void EnterStateAction()
         {
-            _isInPatrol = true;
             _patrolTime = UnityEngine.Random.Range(1f, 2.5f);
 
+            _charMovement.MoveSpeed.AddFactor(() => 1, MOVE_FACTOR_NAME);
             _charMovement.MoveDirection = new Vector3(
                 UnityEngine.Random.Range(-1f, 1f),
                 0,
@@ -42,7 +41,7 @@ namespace Game.Instances.General.FSM
 
         protected override sealed void ExitStateAction()
         {
-            _isInPatrol = false;
+            _charMovement.MoveSpeed.RemoveFactor(MOVE_FACTOR_NAME);
         }
     }
 }
