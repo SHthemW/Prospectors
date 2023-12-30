@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Game.Interfaces;
+using System;
 using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobCombatBehav : MobBehaviour
+    internal sealed class MobCombatBehav : MobBehaviour, IHoldAttackTarget
     {
+        public Transform Target { get; set; }
+
         private void OnEnable()
         {
             ThisMob.PlayerDetector.OnCollisionEnter += OnDetectedPlayer;
@@ -23,6 +25,7 @@ namespace Game.Instances.Mob
             if (player == null || !player.gameObject.CompareTag("Player"))
                 throw new ArgumentException(player.name);
 
+            Target = player.transform;
             ThisMob.Animator.SetTrigger(ThisMob.AnimStateNames.FoundTarget);
         }
 
@@ -31,6 +34,7 @@ namespace Game.Instances.Mob
             if (player == null || !player.gameObject.CompareTag("Player"))
                 throw new ArgumentException(player.name);
 
+            Target = null;
             ThisMob.Animator.SetTrigger(ThisMob.AnimStateNames.LostTarget);
         }
 
