@@ -8,21 +8,19 @@ namespace Game.Instances.General.FSM
         private IHoldAttackTarget _chase;
         private IHoldCharMovement _charMovement;
 
-        private bool _isInChasing;
+        private const string FACTOR_NAME = "chase";
 
         protected override sealed void Init(Animator obj)
         {
             base.Init(obj);
 
             _chase = GetHolderOnParent<IHoldAttackTarget>(obj);
-            _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
-
-            _charMovement.MoveSpeed.AddFactor(() => _isInChasing ? 2 : 1, "chase");
+            _charMovement = GetHolderOnParent<IHoldCharMovement>(obj); 
         }
 
         protected override sealed void EnterStateAction()
         {
-            _isInChasing = true;
+            _charMovement.MoveSpeed.AddFactor(() => 2, FACTOR_NAME);
         }
 
         protected override sealed void UpdateStateAction()
@@ -35,7 +33,7 @@ namespace Game.Instances.General.FSM
 
         protected override sealed void ExitStateAction()
         {
-            _isInChasing = false;
+            _charMovement.MoveSpeed.RemoveFactor(FACTOR_NAME);
         }
     }
 }
