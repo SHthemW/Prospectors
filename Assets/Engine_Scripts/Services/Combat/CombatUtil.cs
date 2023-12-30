@@ -1,7 +1,7 @@
 ﻿using Game.Interfaces;
 using UnityEngine;
 
-namespace Game.Instances.Mob
+namespace Game.Services.Combat
 {
     public static class CombatUtil
     {

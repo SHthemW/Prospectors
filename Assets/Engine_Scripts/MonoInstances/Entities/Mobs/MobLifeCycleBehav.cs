@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Services.Combat;
 using UnityEngine;
 
 namespace Game.Instances.Mob
