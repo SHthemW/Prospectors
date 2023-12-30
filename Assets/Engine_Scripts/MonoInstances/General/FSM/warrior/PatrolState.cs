@@ -7,8 +7,8 @@ namespace Game.Instances.General.FSM
 {
     internal sealed class PatrolState : AnimationFSMState
     {
-        private bool    _isInPatrol = false;
-        private float   _patrolTime;
+        private bool  _isInPatrol = false;
+        private float _patrolTime;
 
         private IHoldCharMovement _charMovement;
 
