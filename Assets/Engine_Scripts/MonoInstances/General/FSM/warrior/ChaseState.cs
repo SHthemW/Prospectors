@@ -10,6 +10,8 @@ namespace Game.Instances.General.FSM
 
         private const string FACTOR_NAME = "chase";
 
+        private bool _inAttack;
+
         protected override sealed void Init(Animator obj)
         {
             base.Init(obj);
@@ -20,7 +22,7 @@ namespace Game.Instances.General.FSM
 
         protected override sealed void EnterStateAction()
         {
-            _charMovement.MoveSpeed.AddFactor(() => 2, FACTOR_NAME);
+            _charMovement.MoveSpeed.AddFactor(() => _inAttack ? 0 : 2, FACTOR_NAME);
         }
 
         protected override sealed void UpdateStateAction()
@@ -38,6 +40,11 @@ namespace Game.Instances.General.FSM
             if (Vector3.Distance(targetPosition, currentPosition) <= 2)
             {
                 _attacker.Attack();
+                _inAttack = true;
+            }
+            else
+            {
+                _inAttack = false;
             }
         }
 
