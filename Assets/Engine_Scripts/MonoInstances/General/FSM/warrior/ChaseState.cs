@@ -5,7 +5,7 @@ namespace Game.Instances.General.FSM
 {
     internal sealed class ChaseState : AnimationFSMState
     {
-        private IHoldAttackTarget _chase;
+        private IHoldAttackTarget _attacker;
         private IHoldCharMovement _charMovement;
 
         private const string FACTOR_NAME = "chase";
@@ -14,8 +14,8 @@ namespace Game.Instances.General.FSM
         {
             base.Init(obj);
 
-            _chase = GetHolderOnParent<IHoldAttackTarget>(obj);
-            _charMovement = GetHolderOnParent<IHoldCharMovement>(obj); 
+            _attacker = GetHolderOnParent<IHoldAttackTarget>(obj);
+            _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
         }
 
         protected override sealed void EnterStateAction()
@@ -25,10 +25,20 @@ namespace Game.Instances.General.FSM
 
         protected override sealed void UpdateStateAction()
         {
-            if (_chase.Target == null)
+            if (_attacker.Target == null)
                 return;
 
-            _charMovement.MoveDirection = _chase.Target.position - _animator.transform.position;
+            var targetPosition = _attacker.Target.position;
+            var currentPosition = _animator.transform.position;
+
+            // chase
+            _charMovement.MoveDirection = targetPosition - currentPosition;
+
+            // try attack
+            if (Vector3.Distance(targetPosition, currentPosition) <= 2)
+            {
+                _attacker.Attack();
+            }
         }
 
         protected override sealed void ExitStateAction()

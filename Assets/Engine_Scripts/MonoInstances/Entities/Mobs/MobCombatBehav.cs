@@ -38,5 +38,12 @@ namespace Game.Instances.Mob
             ThisMob.Animator.SetTrigger(ThisMob.AnimStateNames.LostTarget);
         }
 
+        void IHoldAttackTarget.Attack()
+        {
+            if (Target == null)
+                throw new InvalidOperationException("attack target is null.");
+
+            ThisMob.Animator.SetTrigger(ThisMob.AnimStateNames.Attack);
+        }
     }
 }

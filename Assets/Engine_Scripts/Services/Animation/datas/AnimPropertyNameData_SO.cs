@@ -31,5 +31,10 @@ namespace Game.Services.Animation
         private string _lostTarget;
         string IAnimationStateName.LostTarget 
             => _lostTarget.AsSafeInspectorValue(name, s => s != default);
+
+        [SerializeField]
+        private string _attack;
+        string IAnimationStateName.Attack 
+            => _attack.AsSafeInspectorValue(name, n => n != default);
     }
 }

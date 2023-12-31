@@ -11,5 +11,6 @@ namespace Game.Interfaces
         string IdleNotPatrol { get; }
         string FoundTarget { get; }
         string LostTarget { get; }
+        string Attack { get; }
     }
 }
