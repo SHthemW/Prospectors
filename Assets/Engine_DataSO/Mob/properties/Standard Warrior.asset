@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3472969d077f4f488fa4632ba0a7baf, type: 3}
+  m_Name: Standard Warrior
+  m_EditorClassIdentifier: 
+  _minIdleTime: 0
+  _maxIdleTime: 1
+  _minPatrolTime: 1
+  _maxPatrolTime: 2
+  _moveSpeedRatio_patrol: 1
+  _moveSpeedRatio_chase: 2
+  _turnAttackDistance: 2

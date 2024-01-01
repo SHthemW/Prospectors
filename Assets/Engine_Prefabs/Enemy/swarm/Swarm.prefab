@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: 1350600939e1b224ab1f00dbb7510cf9, type: 2}
+  _ai: {fileID: 11400000, guid: e32e7e61991cd9c46af08af9626f179b, type: 2}
   _animStateNames: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _animator: {fileID: 0}
   _rigidbody: {fileID: 7880027440252663570}
@@ -342,6 +343,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5473601821898986896}
     m_Modifications:
+    - target: {fileID: 2143770186356251843, guid: 984c98df7d465f347a151529cafacde0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6226787438618123728, guid: 984c98df7d465f347a151529cafacde0,
         type: 3}
       propertyPath: m_Mesh
@@ -406,6 +412,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: swarm_01_V3.0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
+        type: 3}
+      propertyPath: translator.layerMixModes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
+        type: 3}
+      propertyPath: translator.layerBlendModes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
+        type: 3}
+      propertyPath: translator.layerMixModes.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

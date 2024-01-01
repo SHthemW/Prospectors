@@ -8,8 +8,10 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob, IHoldCharAnimator, IHoldAnimStateName
+    internal sealed class MobDataAndComponentHandler : MonoBehaviour, IMob, IHoldCharAnimator, IHoldAnimStateName, IHoldAiActionData
     {
+        private static readonly Checker safe = new(nameof(MobDataAndComponentHandler));
+
         // static datas
 
         [SerializeField]
@@ -19,6 +21,11 @@ namespace Game.Instances.Mob
         internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal float BaseMoveSpeed => _staticData.MoveSpped;
         internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
+
+        [SerializeField]
+        private FSMActionData _ai;
+        public FSMActionData AI 
+            => safe.Checked(_ai);
 
         [SerializeField]
         private AnimPropertyNameData_SO _animStateNames;
