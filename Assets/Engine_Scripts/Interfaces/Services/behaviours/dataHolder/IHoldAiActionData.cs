@@ -7,7 +7,7 @@ namespace Game.Interfaces
     {
         FSMActionData AI { get; }
 
-        T SpeceficAIData<T> () where T : FSMActionData
+        T As<T> () where T : FSMActionData
         {
             if (AI == null)
                 throw new ArgumentNullException();
