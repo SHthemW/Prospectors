@@ -13,7 +13,7 @@ namespace Game.Services.FSM
         [SerializeField]
         private float _minIdleTime;
         public float MinIdleTime
-            => safe.Checked(_minIdleTime);
+            => _minIdleTime;
 
         [SerializeField]
         private float _maxIdleTime;
@@ -25,7 +25,7 @@ namespace Game.Services.FSM
         [SerializeField]
         private float _minPatrolTime;
         public float MinPatrolTime => 
-            safe.Checked(_minPatrolTime);
+            _minPatrolTime;
 
         [SerializeField]
         private float _maxPatrolTime;

@@ -20,7 +20,7 @@ namespace Game.Interfaces
                 null => false,
                 bool => true,
                 _ when p is ValueType => !p.Equals(Activator.CreateInstance(p.GetType())),
-                _ => throw new NotImplementedException()
+                _ => true
             };
 
             if (!valid.Invoke(orignal))

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Standard Warrior
   m_EditorClassIdentifier: 
   _minIdleTime: 0
-  _maxIdleTime: 1
+  _maxIdleTime: 2
   _minPatrolTime: 1
   _maxPatrolTime: 2
   _moveSpeedRatio_patrol: 1
