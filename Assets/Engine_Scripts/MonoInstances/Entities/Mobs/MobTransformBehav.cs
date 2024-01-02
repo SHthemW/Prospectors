@@ -37,15 +37,15 @@ namespace Game.Instances.Mob
             _movementCtrller = new(ThisMob.Rigidbody);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _faceFlipCtrller.SetFlipState(
-                leftCond:  ThisMob.Rigidbody.velocity.x > 1,
+                leftCond: ThisMob.Rigidbody.velocity.x > 1,
                 rightCond: ThisMob.Rigidbody.velocity.x < -1);
 
             _movementCtrller.MoveInDirection(
-                direction: MoveDirection, 
-                speed:     MoveSpeed.UpdateCurrentAndGet());
+                direction: MoveDirection,
+                speed: MoveSpeed.UpdateCurrentAndGet());
         }
     }
 }
