@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: 1350600939e1b224ab1f00dbb7510cf9, type: 2}
-  _ai: {fileID: 11400000, guid: e32e7e61991cd9c46af08af9626f179b, type: 2}
+  _aiActionProperties: {fileID: 11400000, guid: e32e7e61991cd9c46af08af9626f179b,
+    type: 2}
   _animStateNames: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _animator: {fileID: 0}
   _rigidbody: {fileID: 7880027440252663570}

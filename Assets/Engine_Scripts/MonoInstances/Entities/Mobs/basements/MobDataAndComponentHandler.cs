@@ -25,9 +25,9 @@ namespace Game.Instances.Mob
         internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
 
         [SerializeField]
-        private FSMActionData _ai;
-        public FSMActionData AI 
-            => safe.Checked(_ai);
+        private FSMActionData _aiActionProperties;
+        public FSMActionData AIActionProperties 
+            => safe.Checked(_aiActionProperties);
 
         [SerializeField]
         private AnimPropertyNameData_SO _animStateNames;
