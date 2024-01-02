@@ -13,23 +13,10 @@ namespace Game.Services.FSM
         public IdleStateActionData Idle
             => safe.Checked(_idle);
 
-
-        [Header("patrol")]
-
         [SerializeField]
-        private float _minPatrolTime;
-        public float MinPatrolTime => 
-            _minPatrolTime;
-
-        [SerializeField]
-        private float _maxPatrolTime;
-        public float MaxPatrolTime 
-            => safe.Checked(_maxPatrolTime);
-
-        [SerializeField]
-        private float _moveSpeedRatio_patrol;
-        public float MoveSpeedRatio_patrol
-            => safe.Checked(_moveSpeedRatio_patrol);
+        private PatrolStateActionData _patrol;
+        public PatrolStateActionData Patrol
+            => safe.Checked(_patrol);
 
         [Header("chase")]
 

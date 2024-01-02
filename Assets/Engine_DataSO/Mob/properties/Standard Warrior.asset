@@ -15,8 +15,9 @@ MonoBehaviour:
   _idle:
     _minIdleTime: 0
     _maxIdleTime: 2
-  _minPatrolTime: 1
-  _maxPatrolTime: 2
-  _moveSpeedRatio_patrol: 1
+  _patrol:
+    _minPatrolTime: 1
+    _maxPatrolTime: 2.5
+    _moveSpeedRatio_patrol: 1
   _moveSpeedRatio_chase: 2
   _turnAttackDistance: 2

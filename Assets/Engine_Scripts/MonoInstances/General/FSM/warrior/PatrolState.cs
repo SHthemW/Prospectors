@@ -1,6 +1,5 @@
 ﻿using Game.Interfaces;
-using System;
-using System.Collections.Generic;
+using Game.Services.FSM;
 using UnityEngine;
 
 namespace Game.Instances.General.FSM
@@ -13,18 +12,23 @@ namespace Game.Instances.General.FSM
 
         private IHoldCharMovement _charMovement;
 
+        private PatrolStateActionData _actionData;
+
         protected override sealed void Init(Animator obj)
         {
             base.Init(obj);
 
             _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
+
+            _actionData = GetHolderOnParent<IHoldAiActionData>(obj).Get<PatrolStateActionData>();
         }
 
         protected override sealed void EnterStateAction()
         {
-            _patrolTime = UnityEngine.Random.Range(1f, 2.5f);
+            _patrolTime = UnityEngine.Random.Range(_actionData.MinPatrolTime, _actionData.MaxPatrolTime);
 
-            _charMovement.MoveSpeed.AddFactor(() => 1, MOVE_FACTOR_NAME);
+            _charMovement.MoveSpeed.AddFactor(() => _actionData.SpeedRatioOnMove, MOVE_FACTOR_NAME);
+
             _charMovement.MoveDirection = new Vector3(
                 UnityEngine.Random.Range(-1f, 1f),
                 0,
