@@ -8,17 +8,11 @@ namespace Game.Services.FSM
     {
         private static readonly Checker safe = new(nameof(WarriorActionData_SO));
 
-        [Header("idle")]
-
         [SerializeField]
-        private float _minIdleTime;
-        public float MinIdleTime
-            => _minIdleTime;
+        private IdleStateActionData _idle;
+        public IdleStateActionData Idle
+            => safe.Checked(_idle);
 
-        [SerializeField]
-        private float _maxIdleTime;
-        public float MaxIdleTime
-            => safe.Checked(_maxIdleTime);
 
         [Header("patrol")]
 

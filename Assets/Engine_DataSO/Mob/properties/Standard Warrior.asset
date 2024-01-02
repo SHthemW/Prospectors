@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3472969d077f4f488fa4632ba0a7baf, type: 3}
   m_Name: Standard Warrior
   m_EditorClassIdentifier: 
-  _minIdleTime: 0
-  _maxIdleTime: 2
+  _idle:
+    _minIdleTime: 0
+    _maxIdleTime: 2
   _minPatrolTime: 1
   _maxPatrolTime: 2
   _moveSpeedRatio_patrol: 1

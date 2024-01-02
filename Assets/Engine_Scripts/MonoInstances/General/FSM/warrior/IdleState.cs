@@ -13,22 +13,20 @@ namespace Game.Instances.General.FSM
         private IHoldCharMovement _charMovement;
         private float _remainIdleTime;
 
-        private IHoldAiActionData _actionData;
-        private WarriorActionData_SO _warrior 
-            => _actionData.As<WarriorActionData_SO>();
+        private IdleStateActionData _actionData;
 
         protected override sealed void Init(Animator obj)
         {
             base.Init(obj);
 
             _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
-            _actionData = GetHolderOnParent<IHoldAiActionData>(obj);
+            _actionData = GetHolderOnParent<IHoldAiActionData>(obj).Get<IdleStateActionData>();
         }
 
         protected override sealed void EnterStateAction()
         {
             _charMovement.MoveSpeed.AddFactor(() => 0, FACTOR_NAME);
-            _remainIdleTime = UnityEngine.Random.Range(_warrior.MinIdleTime, _warrior.MaxIdleTime);
+            _remainIdleTime = UnityEngine.Random.Range(_actionData.MinIdleTime, _actionData.MaxIdleTime);
         }
 
         protected override sealed void UpdateStateAction()
