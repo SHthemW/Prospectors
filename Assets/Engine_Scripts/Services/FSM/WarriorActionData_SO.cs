@@ -18,16 +18,9 @@ namespace Game.Services.FSM
         public PatrolStateActionData Patrol
             => safe.Checked(_patrol);
 
-        [Header("chase")]
-
         [SerializeField]
-        private float _moveSpeedRatio_chase;
-        public float MoveSpeedRatio_chase 
-            => safe.Checked(_moveSpeedRatio_chase);
-
-        [SerializeField]
-        private float _turnAttackDistance;
-        public float TurnAttackDistance
-            => safe.Checked(_turnAttackDistance);
+        private ChaseStateActionData _chase;
+        public ChaseStateActionData Chase
+            => safe.Checked(_chase);
     }
 }

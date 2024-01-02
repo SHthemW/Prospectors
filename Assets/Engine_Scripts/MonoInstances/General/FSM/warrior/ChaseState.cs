@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Services.FSM;
 using UnityEngine;
 
 namespace Game.Instances.General.FSM
@@ -7,6 +8,8 @@ namespace Game.Instances.General.FSM
     {
         private IHoldAttackTarget _attacker;
         private IHoldCharMovement _charMovement;
+
+        private ChaseStateActionData _actionData;
 
         private const string FACTOR_NAME = "chase";
 
@@ -18,11 +21,13 @@ namespace Game.Instances.General.FSM
 
             _attacker = GetHolderOnParent<IHoldAttackTarget>(obj);
             _charMovement = GetHolderOnParent<IHoldCharMovement>(obj);
+
+            _actionData = GetHolderOnParent<IHoldAiActionData>(obj).Get<ChaseStateActionData>();
         }
 
         protected override sealed void EnterStateAction()
         {
-            _charMovement.MoveSpeed.AddFactor(() => _inAttack ? 0 : 2, FACTOR_NAME);
+            _charMovement.MoveSpeed.AddFactor(() => _inAttack ? 0 : _actionData.SpeedRatioOnChase, FACTOR_NAME);
         }
 
         protected override sealed void UpdateStateAction()
@@ -37,7 +42,7 @@ namespace Game.Instances.General.FSM
             _charMovement.MoveDirection = targetPosition - currentPosition;
 
             // try attack
-            if (Vector3.Distance(targetPosition, currentPosition) <= 2)
+            if (Vector3.Distance(targetPosition, currentPosition) <= _actionData.TurnAttackDistance)
             {
                 _attacker.Attack();
                 _inAttack = true;

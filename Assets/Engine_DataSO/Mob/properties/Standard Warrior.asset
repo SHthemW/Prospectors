@@ -19,5 +19,6 @@ MonoBehaviour:
     _minPatrolTime: 1
     _maxPatrolTime: 2.5
     _moveSpeedRatio_patrol: 1
-  _moveSpeedRatio_chase: 2
-  _turnAttackDistance: 2
+  _chase:
+    _moveSpeedRatio_chase: 2
+    _turnAttackDistance: 2
