@@ -32,7 +32,7 @@ namespace Game.Instances.Mob
         [SerializeField]
         private AnimPropertyNameData_SO _animStateNames;
         public IAnimationStateName AnimStateNames
-            => _animStateNames.AsSafeInspectorValue(name, a => a != null);
+            => safe.Checked(_animStateNames);
 
         // components ref
         [Header("Components")]
@@ -40,22 +40,22 @@ namespace Game.Instances.Mob
         [SerializeField]
         private Animator _animator;
         public Animator Animator
-            => _animator.AsSafeInspectorValue(name, a => a != null);
+            => safe.Checked(_animator);
 
         [SerializeField]
         private Rigidbody _rigidbody;
         public Rigidbody Rigidbody =>
-            _rigidbody.AsSafeInspectorValue(name, rb => rb != null);
+            safe.Checked(_rigidbody);
 
         [SerializeField]
         private Transform _rootTransform;
         internal Transform RootTransform
-            => _rootTransform.AsSafeInspectorValue(name, t => t != null);
+            => safe.Checked(_rootTransform);
 
         [SerializeField]
         private Detector _playerDetector;
         internal Detector PlayerDetector 
-            => _playerDetector.AsSafeInspectorValue(name, d => d != null);
+            => safe.Checked(_playerDetector);
 
         [field: SerializeField]
         internal ObjectComponent<IHoldCharHealth> Health { get; set; }

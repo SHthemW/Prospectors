@@ -1,6 +1,4 @@
 ﻿using Game.Interfaces;
-using Game.Utils.Extensions;
-using System.Collections;
 using UnityEngine;
 
 namespace Game.Instances.Mob
@@ -8,6 +6,8 @@ namespace Game.Instances.Mob
     [CreateAssetMenu(fileName = "MobData", menuName = "Data/Mob")]
     internal sealed class MobStaticData_SO : ScriptableObject
     {
+        private readonly static Checker safe = new(nameof(MobStaticData_SO));
+
         [Header("Basic")]
 
         [SerializeField]
@@ -25,14 +25,14 @@ namespace Game.Instances.Mob
         [SerializeField]
         private int _maxHealth;
         internal int MaxHealth 
-            => _maxHealth.AsSafeInspectorValue(name, hp => hp > 0);
+            => safe.Checked(_maxHealth, static h => h > 0);
 
         [Header("Action")]
 
         [SerializeField]
         private ExecutableAction[] _onHittedActions;
         internal ExecutableAction[] OnHittedActions 
-            => _onHittedActions.AsSafeInspectorValue(name, p => p != null);
+            => safe.Checked(_onHittedActions);
 
         [SerializeField]
         private bool _overrideHitActions;

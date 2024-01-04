@@ -1,4 +1,5 @@
-﻿using Game.Interfaces;
+﻿using Game.Instances.Player;
+using Game.Interfaces;
 using Game.Services.Combat;
 using Game.Utils.Attributes;
 using Game.Utils.Collections;
@@ -9,6 +10,8 @@ namespace Game.Instances.Combat
 {
     public sealed class WeaponDataAndComponentsHandler : MonoBehaviour, IWeapon
     {
+        private readonly static Checker safe = new(nameof(WeaponDataAndComponentsHandler));
+
         [SerializeField]
         private WeaponStaticData_SO _staticData;
 
@@ -19,12 +22,12 @@ namespace Game.Instances.Combat
         [SerializeField]
         private Transform _muzzle;
         public Transform Muzzle 
-            => _muzzle.AsSafeInspectorValue(name, m => m != null);
+            => safe.Checked(_muzzle);
 
         [SerializeField]
         private Transform _shellThrowingWindow;
         public Transform ShellThrowingWindow
-            => _shellThrowingWindow.AsSafeInspectorValue(name, m => m != null, justWarning: true);
+            => safe.Checked(_shellThrowingWindow, fatal: false);
 
         [field: SerializeField, ReadOnly]
         public Magazine Magazine { get; set; }
@@ -32,7 +35,7 @@ namespace Game.Instances.Combat
         [SerializeField]
         private Animator _animator;
         public Animator Animator
-            => _animator.AsSafeInspectorValue(name, a => a != null, justWarning: true);
+            => safe.Checked(_animator, fatal: false);
 
         public SingletonComponent<Transform> BulletParent { get; set; } = new("@Bullets");
         public SingletonComponent<Transform> ShellParent { get; set; } = new("@Shells");

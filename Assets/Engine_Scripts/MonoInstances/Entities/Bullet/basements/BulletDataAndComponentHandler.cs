@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Services.Combat;
 using Game.Utils.Attributes;
 using Game.Utils.Collections;
 using Game.Utils.Extensions;
@@ -9,11 +10,13 @@ namespace Game.Instances.Combat
 {
     internal sealed class BulletDataAndComponentHandler : MonoBehaviour, IBullet
     {
+        private readonly static Checker safe = new(nameof(BulletDataAndComponentHandler));
+
         [SerializeField]
         private Rigidbody _bulletRb;
 
         public Rigidbody Rigidbody 
-            => _bulletRb.AsSafeInspectorValue(name, rb => rb != null);
+            => safe.Checked(_bulletRb);
 
         [field: SerializeField, ReadOnly]
         public float CurrentExistingSeconds { get; set; }
