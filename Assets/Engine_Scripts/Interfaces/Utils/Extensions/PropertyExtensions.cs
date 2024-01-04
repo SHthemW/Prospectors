@@ -1,11 +1,11 @@
-﻿using Game.Utils;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Game.Utils.Extensions
 {
     public static class PropertyExtensions
     {
+        [Obsolete("use Checker func instead.")]
         public static T AsSafeInspectorValue<T>(this T property, string objName, Func<T, bool> whatIsValid, bool justWarning = false)
         {
             if (!whatIsValid.Invoke(property))
