@@ -39,5 +39,10 @@ namespace Game.Services.Animation
         private string _attack;
         string IAnimationStateName.Attack 
             => safe.Checked(_attack);
+
+        [SerializeField]
+        private string _die;
+        string IAnimationStateName.Die 
+            => safe.Checked(_die);
     }
 }

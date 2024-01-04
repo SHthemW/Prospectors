@@ -21,9 +21,18 @@ namespace Game.Services.Combat
             }
         }
 
-        public static void Die(IGameObject character)
+        public static void Die(IBulletHitable hitJudgeToDisable, (Animator animator, IAnimationStateName name) anim = default)
         {
-            character.gameObject.SetActive(false);
+            if (hitJudgeToDisable == null)
+                throw new System.ArgumentNullException();
+
+            hitJudgeToDisable.Enable = false;
+
+            if (anim != default) // play animation
+            {
+                var (animator, name) = anim;
+                animator.SetTrigger(name.Die);
+            }
         }
     }
 }

@@ -12,5 +12,6 @@ namespace Game.Interfaces
         string FoundTarget { get; }
         string LostTarget { get; }
         string Attack { get; }
+        string Die { get; }
     }
 }

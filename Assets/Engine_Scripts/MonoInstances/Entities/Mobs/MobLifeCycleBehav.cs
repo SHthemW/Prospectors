@@ -27,7 +27,7 @@ namespace Game.Instances.Mob
         private void Update()
         {
             if (CurrentHealth <= 0)
-                CombatUtil.Die(ThisMob);
+                CombatUtil.Die(hitJudgeToDisable: GetComponent<IBulletHitable>(), anim: (ThisMob.Animator, ThisMob.AnimStateNames));
         }
     }
 }

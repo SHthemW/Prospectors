@@ -40,10 +40,15 @@ namespace Game.Instances.Mob
             };
         }
 
+        public bool Enable { get; set; } = true;
+
         int IBulletHitable.HitTimesConsumption => ThisMob.HitTimesConsumption;
         bool IBulletHitable.OverrideHitActions => ThisMob.OverrideHitActions;
         void IBulletHitable.Hit(IBullet bullet, Vector3 position)
         {
+            if (!this.Enable)
+                return;
+
             _currentHittedPosition = position;
 
             foreach (var action in ThisMob.OnHittedActions)
