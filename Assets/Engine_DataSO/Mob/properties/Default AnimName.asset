@@ -20,3 +20,4 @@ MonoBehaviour:
   _foundTarget: _foundTarget
   _lostTarget: _lostTarget
   _attack: _attack
+  _die: _die
