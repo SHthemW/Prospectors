@@ -19,18 +19,22 @@ namespace Game.Instances.Combat
 
             if (!collision.gameObject.CompareTag("Hitable"))
             {
-                if (_enableHitDebug)
-                    Debug.Log("[bullet] hitted: " + collision.gameObject.name);
-
                 ThisBullet.CurrentHitTimes += OBSTACLE_TIMES_COST;
+                Array.ForEach(ThisBullet.OnHitActions, a => a.Implement(_bulletActionImpl));
                 return;
             }
 
             if (!collision.gameObject.TryGetComponent(out IBulletHitable hitable))
                 throw new ArgumentException();
 
-            hitable.Hit(ThisBullet);
+            hitable.Hit(ThisBullet, transform.position);
             ThisBullet.CurrentHitTimes += hitable.HitTimesConsumption;
+
+            if (!hitable.OverrideHitActions)
+                Array.ForEach(ThisBullet.OnHitActions, a => a.Implement(_bulletActionImpl));
+
+            if (_enableHitDebug)
+                Debug.Log("[bullet] hitted: " + collision.gameObject.name);
         }
     }
 }

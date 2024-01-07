@@ -57,10 +57,12 @@ namespace Game.Services.Combat
     [Serializable]
     public struct ShootingUnit
     {
+        private readonly static Checker safe = new(nameof(ShootingUnit));
+
         [SerializeField]
         private GameObject _bullet;
         public readonly GameObject Bullet
-            => _bullet.AsSafeInspectorValue(nameof(ShootingRound), static b => b != null);
+            => safe.Checked(_bullet, valid: static b => b != null);
 
         [Header("Action")]
 

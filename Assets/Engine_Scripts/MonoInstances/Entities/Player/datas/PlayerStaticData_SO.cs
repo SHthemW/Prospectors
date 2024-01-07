@@ -1,25 +1,26 @@
-﻿using System.Collections;
+﻿using Game.Interfaces;
 using UnityEngine;
-using Game.Utils.Extensions;
 
 namespace Game.Instances.Player
 {
     [CreateAssetMenu(fileName="PlayerData", menuName="Data/Player")]
     internal sealed class PlayerStaticData_SO : ScriptableObject
     {
+        private readonly static Checker safe = new(nameof(PlayerStaticData_SO));
+
         [SerializeField]
         private float _moveSpeed;
         public float MoveSpeed
-            => _moveSpeed.AsSafeInspectorValue(name, static p => p > 0);
+            => safe.Checked(_moveSpeed, fatal: false);
 
         [SerializeField] 
         private float _aimHeight;
         public float AimHeight
-            => _aimHeight.AsSafeInspectorValue(name, static p => p > 0);
+            => safe.Checked(_aimHeight);
 
         [SerializeField]
         private Vector2 _maxFollowOffsetDuringAim;
         public Vector2 MaxFollowOffsetDuringAim 
-            => _maxFollowOffsetDuringAim.AsSafeInspectorValue(name, p => p != default);
+            => safe.Checked(_maxFollowOffsetDuringAim);
     }
 }

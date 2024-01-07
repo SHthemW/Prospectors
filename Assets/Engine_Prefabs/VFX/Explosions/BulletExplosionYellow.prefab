@@ -4799,7 +4799,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.709, b: 0, a: 1}
+  m_Color: {r: 0.8301887, g: 0.5476624, b: 0.2636762, a: 1}
   m_Intensity: 2
   m_Range: 9
   m_SpotAngle: 30
@@ -5110,7 +5110,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.6666667, b: 0, a: 0.6784314}
+      maxColor: {r: 0.8584906, g: 0.42888075, b: 0.029696116, a: 0.6784314}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9793,7 +9793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233598895455090934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14551,6 +14551,7 @@ GameObject:
   - component: {fileID: 9166572718158015627}
   - component: {fileID: 6135655225205344400}
   - component: {fileID: 2049273292889436162}
+  - component: {fileID: 2354201203767486598}
   m_Layer: 0
   m_Name: BulletExplosionYellow
   m_TagString: Untagged
@@ -14575,7 +14576,7 @@ Transform:
   - {fileID: 5759285551770197682}
   - {fileID: 4034152375889196103}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &9166572718158015627
 ParticleSystem:
@@ -14585,9 +14586,9 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976700907685403352}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -19305,7 +19306,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976700907685403352}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 90eaa29a68b4c06448f1dad1a011686a, type: 3}
@@ -19394,3 +19395,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &2354201203767486598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976700907685403352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075037ec509dc704b9a3df9c985f586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

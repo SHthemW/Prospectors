@@ -1,12 +1,14 @@
 using Game.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class BulletHitTest : MonoBehaviour, IBulletHitable
 {
+    public bool Enable { get; set; } = true;
+
     int IBulletHitable.HitTimesConsumption => 1;
-    void IBulletHitable.Hit(IBullet bullet)
+    bool IBulletHitable.OverrideHitActions => false;
+
+    void IBulletHitable.Hit(IBullet bullet, Vector3 position)
     {
         Debug.Log($"hitted by {bullet}");
     }

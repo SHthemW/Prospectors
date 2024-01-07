@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Game.Interfaces;
+using System;
 using UnityEngine;
 
 namespace Game.Services.Animation
 {
     public sealed class CharMovementAnimUpdater
     {
-        private readonly Animator[] _animators;
-        private readonly AnimPropertyNameData_SO _property;
+        private readonly Animator[]          _animators;
+        private readonly IAnimationStateName _animNames;
 
-        public CharMovementAnimUpdater(Animator animator, AnimPropertyNameData_SO property)
+        public CharMovementAnimUpdater(Animator animator, IAnimationStateName property)
         {
             if (animator == null)
                 throw new ArgumentNullException(nameof(animator));
 
             _animators = new Animator[1] { animator };
-            _property = property != null ? property : throw new ArgumentNullException(nameof(property));
+            _animNames = property != null ? property : throw new ArgumentNullException(nameof(property));
         }
-        public CharMovementAnimUpdater(Animator[] animators, AnimPropertyNameData_SO property)
+        public CharMovementAnimUpdater(Animator[] animators, IAnimationStateName property)
         {
             _animators = animators ?? throw new ArgumentNullException(nameof(animators));
-            _property = property != null ? property : throw new ArgumentNullException(nameof(property));
+            _animNames = property != null ? property : throw new ArgumentNullException(nameof(property));
         }
         public void UpdateAnim(float currentVelocity, bool isBackward = false)
         {
@@ -30,7 +30,7 @@ namespace Game.Services.Animation
                     continue;
 
                 animator.SetFloat(
-                    _property.CurrentVelocity,
+                    _animNames.CurrentVelocity,
                     currentVelocity * (isBackward ? -1 : 1));
             }
         }

@@ -366,3 +366,7 @@ FodyWeavers.xsd
 /Temp
 /UserSettings
 /Assembly-CSharp-Editor.csproj
+Assets/Engine_Plugins/Sycoforge/Easy Decal/_Demo/Object/concrete_element.obj.meta
+Assets/Engine_Plugins/Sycoforge/Shared/Scripts/ch.sycoforge.Logging.pdb.meta
+Assets/Engine_Plugins/Sycoforge/Shared/Scripts/ch.sycoforge.Unity.Runtime.pdb.meta
+Assets/Engine_Plugins/Sycoforge/Shared/Scripts/Editor/ch.sycoforge.Unity.Editor.pdb.meta
