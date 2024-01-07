@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobTransformBehav : MobBehaviour, IHoldCharMovement
+    internal sealed class MobTransformBehav : MobBehaviour, IHoldCharMovement, IEnableOnAliveOnly
     {
         /*
          *  datas
@@ -21,6 +21,8 @@ namespace Game.Instances.Mob
         
         [field: SerializeField, Utils.Attributes.ReadOnly]
         public Vector3 MoveDirection { get; set; }
+
+        public bool Enable { get; set; } = true;
 
         /*
          *  behaviours
@@ -39,6 +41,9 @@ namespace Game.Instances.Mob
 
         private void FixedUpdate()
         {
+            if (!Enable)
+                return;
+
             _faceFlipCtrller.SetFlipState(
                 leftCond: ThisMob.Rigidbody.velocity.x > 1,
                 rightCond: ThisMob.Rigidbody.velocity.x < -1);

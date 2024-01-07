@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable
+    internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly
     {
         private Dictionary<string, object>           _mobActionImpl;
         private ObjectSpawner<IDestoryManagedObject> _hitEffectSpawner;
