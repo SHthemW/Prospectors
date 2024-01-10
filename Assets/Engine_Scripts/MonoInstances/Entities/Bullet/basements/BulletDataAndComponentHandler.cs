@@ -1,6 +1,7 @@
 ﻿using Game.Interfaces;
-using Game.Interfaces.GameObj;
+using Game.Services.Combat;
 using Game.Utils.Attributes;
+using Game.Utils.Collections;
 using Game.Utils.Extensions;
 using System;
 using UnityEngine;
@@ -9,11 +10,13 @@ namespace Game.Instances.Combat
 {
     internal sealed class BulletDataAndComponentHandler : MonoBehaviour, IBullet
     {
+        private readonly static Checker safe = new(nameof(BulletDataAndComponentHandler));
+
         [SerializeField]
         private Rigidbody _bulletRb;
 
         public Rigidbody Rigidbody 
-            => _bulletRb.AsSafeInspectorValue(name, rb => rb != null);
+            => safe.Checked(_bulletRb);
 
         [field: SerializeField, ReadOnly]
         public float CurrentExistingSeconds { get; set; }
@@ -23,6 +26,15 @@ namespace Game.Instances.Combat
         public int CurrentHitTimes { get; set; }
         public int MaxHitTimes { get; set; } = 1;
 
+        [field: SerializeField, ReadOnly]
+        public int Damage { get; set; }
+
+        [field: SerializeField]
+        internal ExecutableAction[] OnHitActions { get; private set; }
         public Action<GameObject> DeactiveAction { get; set; }
+
+        public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
+        public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
+        
     }
 }

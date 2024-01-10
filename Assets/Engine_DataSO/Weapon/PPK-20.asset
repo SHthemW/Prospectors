@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PPK-20
   m_EditorClassIdentifier: 
   _prefeb: {fileID: 5341442282117732449, guid: a91107830854ce34ea994e23f6be8c0c, type: 3}
+  _damage: 3
   _bulletSpeed: 100
   _bulletExistingTime_Sec: 2
   _magazineCapacity: 20

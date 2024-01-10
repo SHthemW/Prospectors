@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e272bff30fcca42b03fd0c6c49a5e5, type: 3}
+  m_Name: Swarm
+  m_EditorClassIdentifier: 
+  _moveSpeed: 30
+  _hitTimesConsumption: 1
+  _maxHealth: 100
+  _onHittedActions:
+  - {fileID: 11400000, guid: 2326b37a81cca194aa08d99b2e4a6800, type: 2}
+  _overrideHitActions: 1

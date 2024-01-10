@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Game.Interfaces.GameObj;
+using Game.Services.Combat;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +20,7 @@ namespace Game.Instances.Combat
 
             if (ThisBullet.CurrentExistingSeconds >= ThisBullet.MaxExistingSeconds
             ||  ThisBullet.CurrentHitTimes        >= ThisBullet.MaxHitTimes)
-            { 
+            {
                 ThisBullet.DeactiveAction?.Invoke(gameObject); 
             }
         }

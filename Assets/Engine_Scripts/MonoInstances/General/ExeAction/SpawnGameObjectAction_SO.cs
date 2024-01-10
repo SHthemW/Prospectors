@@ -21,9 +21,6 @@ namespace Game.Instances.General
         [SerializeField]
         private Vector3 _overrideRotation;
 
-        private bool HasOverrideProperty => 
-            _overridePosition != default || _overrideRotation != default;
-
         protected override sealed bool MustHaveArgument => false;
         protected override sealed void Execute(in object arg = null)
         {
@@ -38,27 +35,23 @@ namespace Game.Instances.General
                     break;
 
                 // generate on world
-                case (Transform parent, Transform caster):
-                    if (HasOverrideProperty)
-                        Debug.LogWarning($"[action] in {name}, if have any override property, argument will be ignored.");
+                case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation):
+
                     Instantiate(
                         original: _spawn,
                         parent:   parent,
-                        position: caster.position,
-                        rotation: caster.rotation);
+                        position: _overridePosition == default ? position() : _overridePosition,
+                        rotation: _overrideRotation == default ? rotation() : Quaternion.Euler(_overrideRotation));
                     break;
 
                 // generate on pool
-                case (Transform parent, Transform caster, ObjectSpawner<IDestoryManagedObject> pool):
-                    if (HasOverrideProperty)
-                        Debug.LogWarning($"[action] in {name}, if have any override property, argument will be ignored.");
+                case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation, ObjectSpawner<IDestoryManagedObject> pool):
 
                     var obj = pool.Spawn(_spawn);
 
-                    obj.transform.position = caster.position;
-                    obj.transform.rotation = caster.rotation;
+                    obj.transform.position = _overridePosition == default ? position() : _overridePosition;
+                    obj.transform.rotation = _overrideRotation == default ? rotation() : Quaternion.Euler(_overrideRotation);
                     obj.transform.parent   = parent;
-
                     break;
 
                 // invalid argument

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1082105057795404200}
   m_Layer: 0
   m_Name: "\u673A\u7532_player"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,6 @@ MonoBehaviour:
   - _tag: Back
     _item: {fileID: 2004786342617208265}
   _aimPoint: {fileID: 0}
-  _aimBone: {fileID: 0}
 --- !u!114 &2630632268396808693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb457e00e72b0c43953f23503c5d4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSpeed:
+    _baseValue: 0
+    _currentValue: 0
+    _factorList: []
+  _testWeapons: []
+  <CurrentInventoryBulletCount>k__BackingField: 0
 --- !u!114 &9122134497242637858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6b6fe217966664186dabeb8356963d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testWeapons: []
 --- !u!1 &5255614019324253512
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +163,7 @@ GameObject:
   - component: {fileID: 8300763722567177525}
   m_Layer: 0
   m_Name: model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

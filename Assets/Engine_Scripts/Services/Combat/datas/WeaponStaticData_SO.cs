@@ -7,36 +7,45 @@ namespace Game.Services.Combat
     [CreateAssetMenu(fileName = "new Weapon", menuName = "Data/Combat/Weapon")]
     public sealed class WeaponStaticData_SO : ScriptableObject
     {
+        private readonly static Checker safe = new (nameof(WeaponStaticData_SO));
+
         [Header("Assets")]
 
         [SerializeField]
         private GameObject _prefeb;
         public GameObject Prefeb
-            => _prefeb.AsSafeInspectorValue(name, static p => p != null && p.TryGetComponent<IWeapon>(out _));
+            => safe.Checked(_prefeb, valid: static p => p != null && p.TryGetComponent<IWeapon>(out _));
+
+        [Header("Property")]
+
+        [SerializeField]
+        private int _damage;
+        public int BulletDamage 
+            => safe.Checked(_damage);
 
         [Header("Shooting")]
 
         [SerializeField]
         private float _bulletSpeed;
         public float BulletSpeed
-            => _bulletSpeed.AsSafeInspectorValue(name, static s => s > 0);
+            => safe.Checked(_bulletSpeed);
 
         [SerializeField]
         private float _bulletExistingTime_Sec;
         public float BulletExistingTime_Sec
-            => _bulletExistingTime_Sec.AsSafeInspectorValue(name, t => t > 0);
+            => safe.Checked(_bulletExistingTime_Sec);
 
         [SerializeField]
         private int _magazineCapacity;
         public int MagazineCapacity
-            => _magazineCapacity.AsSafeInspectorValue(name, c => c > 0);
+            => safe.Checked(_magazineCapacity);
 
         [Space]
 
         [SerializeField]
         private float _shootingRoundCd_Sec;
         public float ShootingRoundCd_Sec
-            => _shootingRoundCd_Sec.AsSafeInspectorValue(name, static cd => cd > 0);
+            => safe.Checked(_shootingRoundCd_Sec);
 
         [SerializeField]
         private float _shootingAccuracyOffsetAngle;
@@ -48,6 +57,6 @@ namespace Game.Services.Combat
         [SerializeField]
         private ShootingRound[] _shootingLoopRound;
         public ShootingRound[] ShootingLoopRound 
-            => _shootingLoopRound.AsSafeInspectorValue(name, static r => r != null && r.Length > 0);
+            => safe.Checked(_shootingLoopRound, valid: static r => r != null && r.Length > 0);
     }
 }

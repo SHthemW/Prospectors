@@ -44,7 +44,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7864251908712264615}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.01
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -76,9 +76,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletRb: {fileID: 3532617064447642451}
-  _bulletTransform: {fileID: 6476086722261934086}
   <CurrentExistingSeconds>k__BackingField: 0
   <CurrentHitTimes>k__BackingField: 0
+  <Damage>k__BackingField: 0
+  <OnHitActions>k__BackingField:
+  - {fileID: 11400000, guid: 97770fc47d4681e4896de3ca072e4866, type: 2}
+  - {fileID: 11400000, guid: b29d586187babaa4ca1b81a5a6e7419e, type: 2}
 --- !u!114 &8345218708569397138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f00f86292fceab4aa0a644be4c6383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enableHitDebug: 1
+  _enableHitDebug: 0
 --- !u!1 &8720303613389829782
 GameObject:
   m_ObjectHideFlags: 0

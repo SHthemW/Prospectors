@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdfa85827e06824abd8f8174c4a6374, type: 3}
+  m_Name: spawn hitted hole - default
+  m_EditorClassIdentifier: 
+  _effectiveTags:
+  - hitHoleSpawnInfo
+  _spawn: {fileID: 5458000370715713130, guid: d0d721aee7c87c64db4fffeee95255e2, type: 3}
+  _overridePosition: {x: 0, y: 0, z: 0}
+  _overrideRotation: {x: -60, y: 0, z: 0}

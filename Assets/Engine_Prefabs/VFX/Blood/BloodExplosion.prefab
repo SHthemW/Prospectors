@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5771799046649065760}
   - component: {fileID: 9047117623504170527}
   - component: {fileID: 147269488993247339}
+  - component: {fileID: -1451821850557597933}
   m_Layer: 0
   m_Name: BloodExplosion
   m_TagString: Untagged
@@ -45,7 +46,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4747,6 +4748,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-1451821850557597933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3814113618925355111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075037ec509dc704b9a3df9c985f586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4704843959021398732
 GameObject:
   m_ObjectHideFlags: 0
