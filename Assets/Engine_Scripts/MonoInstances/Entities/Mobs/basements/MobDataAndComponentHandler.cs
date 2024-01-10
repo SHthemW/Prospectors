@@ -20,9 +20,8 @@ namespace Game.Instances.Mob
         private MobStaticData_SO _staticData;
         internal int MaxHealth => _staticData.MaxHealth;
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
-        internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal float BaseMoveSpeed => _staticData.MoveSpped;
-        internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
+        
 
         [SerializeField]
         private FSMActionData _aiActionProperties;
@@ -34,7 +33,13 @@ namespace Game.Instances.Mob
         public IAnimationStateName AnimStateNames
             => safe.Checked(_animStateNames);
 
-        // components ref
+        [Header("Behaviours")]
+
+        [SerializeField] 
+        private ExecutableAction[] _onHittedActions;
+        internal ExecutableAction[] OnHittedActions => safe.Checked(_onHittedActions);
+        internal bool OverrideHitActions => OnHittedActions.Length > 0;
+
         [Header("Components")]
 
         [SerializeField]
