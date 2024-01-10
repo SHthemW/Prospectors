@@ -40,6 +40,10 @@ namespace Game.Instances.Mob
         internal ExecutableAction[] OnHittedActions => safe.Checked(_onHittedActions);
         internal bool OverrideHitActions => OnHittedActions.Length > 0;
 
+        [SerializeField]
+        private ExecutableAction[] _onDeadActions;
+        internal ExecutableAction[] OnDeadActions => safe.Checked(_onDeadActions);
+
         [Header("Components")]
 
         [SerializeField]
