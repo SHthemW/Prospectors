@@ -82,7 +82,7 @@ MonoBehaviour:
   _aiActionProperties: {fileID: 11400000, guid: e32e7e61991cd9c46af08af9626f179b,
     type: 2}
   _animStateNames: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
-  _animator: {fileID: 0}
+  _animator: {fileID: 557476555918016417}
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
   _playerDetector: {fileID: 3225559880050982115}
@@ -417,16 +417,21 @@ PrefabInstance:
     - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
         type: 3}
       propertyPath: translator.layerMixModes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
         type: 3}
       propertyPath: translator.layerBlendModes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
         type: 3}
       propertyPath: translator.layerMixModes.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191649057587015146, guid: 984c98df7d465f347a151529cafacde0,
+        type: 3}
+      propertyPath: translator.layerMixModes.Array.data[3]
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -434,6 +439,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984c98df7d465f347a151529cafacde0, type: 3}
+--- !u!95 &557476555918016417 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7337817227133075929, guid: 984c98df7d465f347a151529cafacde0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7091379534143667832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4583511389238253270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6769547199284734126, guid: 984c98df7d465f347a151529cafacde0,
