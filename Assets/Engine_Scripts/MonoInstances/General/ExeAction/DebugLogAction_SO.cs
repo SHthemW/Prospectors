@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,8 +13,32 @@ namespace Game.Instances.General
         [SerializeField]
         private string _logContent;
 
-        protected override bool MustHaveArgument => false;
-        protected override void Execute(in object caster = null)
+        public override void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
+        {
+            switch (objArgs)
+            {
+                case UnityEngine.Object[] oa when oa.Length == 0:
+                    break;
+
+                default:
+                    throw new ArgumentException();
+            }   
+
+            switch (strArgs)
+            {
+                case string[] sa when sa.Length == 0:
+                    break;
+
+                case string[] sa when sa.Length == 1:
+                    _logContent = sa[0]; 
+                    break;
+
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
+        protected override void Execute(in object runtimeArgs = null)
         {
             Debug.Log("[Action test]: " + _logContent);
         }
