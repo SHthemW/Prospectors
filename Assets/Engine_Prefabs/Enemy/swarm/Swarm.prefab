@@ -84,6 +84,7 @@ MonoBehaviour:
   _animStateNames: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _onHittedActions:
   - {fileID: 11400000, guid: 2326b37a81cca194aa08d99b2e4a6800, type: 2}
+  _onDeadActions: []
   _animator: {fileID: 557476555918016417}
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
