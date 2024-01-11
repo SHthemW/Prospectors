@@ -18,6 +18,9 @@ namespace Game.Interfaces
         public abstract void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
         public void Implement(in Dictionary<string, object> kwargs = null)
         {
+            if (_effectiveTags.Length == 1 && _effectiveTags[0] == "ALL")
+                Execute();
+
             foreach (var tag in _effectiveTags)
                 Execute(kwargs[tag]);
         }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4241bd31e1af88942be4142db86303a6, type: 3}
   m_Name: print test log
   m_EditorClassIdentifier: 
-  _logContent: action is executed.
+  _effectiveTags:
+  - ALL

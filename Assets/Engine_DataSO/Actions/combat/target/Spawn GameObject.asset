@@ -10,10 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fdfa85827e06824abd8f8174c4a6374, type: 3}
-  m_Name: spawn hitted expl - blood
+  m_Name: Spawn GameObject
   m_EditorClassIdentifier: 
-  _effectiveTags:
-  - hitEffectSpawnInfo
-  _spawn: {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
-  _overridePosition: {x: 0, y: 0, z: 0}
-  _overrideRotation: {x: 0, y: 0, z: 0}
+  _effectiveTags: []

@@ -30,7 +30,7 @@ namespace Game.Instances.Combat
         public int Damage { get; set; }
 
         [field: SerializeField]
-        internal ExecutableAction[] OnHitActions { get; private set; }
+        internal ParameterizedAction[] OnHitActions { get; private set; }
         public Action<GameObject> DeactiveAction { get; set; }
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");

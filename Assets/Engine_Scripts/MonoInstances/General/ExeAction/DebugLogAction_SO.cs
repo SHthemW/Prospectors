@@ -10,7 +10,6 @@ namespace Game.Instances.General
         menuName = "General/ExeAction/DebugLogAction")]
     internal sealed class DebugLogAction_SO : ExecutableAction
     {
-        [SerializeField]
         private string _logContent;
 
         public override void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)

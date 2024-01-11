@@ -36,13 +36,13 @@ namespace Game.Instances.Mob
         [Header("Behaviours")]
 
         [SerializeField] 
-        private ExecutableAction[] _onHittedActions;
-        internal ExecutableAction[] OnHittedActions => safe.Checked(_onHittedActions);
+        private ParameterizedAction[] _onHittedActions;
+        internal ParameterizedAction[] OnHittedActions => safe.Checked(_onHittedActions);
         internal bool OverrideHitActions => OnHittedActions.Length > 0;
 
         [SerializeField]
-        private ExecutableAction[] _onDeadActions;
-        internal ExecutableAction[] OnDeadActions => safe.Checked(_onDeadActions);
+        private ParameterizedAction[] _onDeadActions;
+        internal ParameterizedAction[] OnDeadActions => safe.Checked(_onDeadActions);
 
         [Header("Components")]
 

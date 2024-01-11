@@ -83,7 +83,10 @@ MonoBehaviour:
     type: 2}
   _animStateNames: {fileID: 11400000, guid: 082964b24c9f1cc42a19fc35ea43cd30, type: 2}
   _onHittedActions:
-  - {fileID: 11400000, guid: 2326b37a81cca194aa08d99b2e4a6800, type: 2}
+  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
+    _objectArgs:
+    - {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
+    _stringArgs: []
   _onDeadActions: []
   _animator: {fileID: 557476555918016417}
   _rigidbody: {fileID: 7880027440252663570}

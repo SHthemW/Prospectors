@@ -80,8 +80,10 @@ MonoBehaviour:
   <CurrentHitTimes>k__BackingField: 0
   <Damage>k__BackingField: 0
   <OnHitActions>k__BackingField:
-  - {fileID: 11400000, guid: 97770fc47d4681e4896de3ca072e4866, type: 2}
-  - {fileID: 11400000, guid: b29d586187babaa4ca1b81a5a6e7419e, type: 2}
+  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
+    _objectArgs:
+    - {fileID: 5458000370715713130, guid: d0d721aee7c87c64db4fffeee95255e2, type: 3}
+    _stringArgs: []
 --- !u!114 &8345218708569397138
 MonoBehaviour:
   m_ObjectHideFlags: 0
