@@ -17,6 +17,14 @@ namespace Game.Instances.General
         private Vector3    _overridePosition = Vector3.zero;
         private Vector3    _overrideRotation = Vector3.zero;
 
+        /// <param name="objArgs">
+        /// <br/> 0. object to spawn: GameObject
+        /// </param>
+        /// <param name="strArgs">
+        /// <br/> [0. override spawn position: float, float, float]
+        /// <br/> [1. override spawn rotation: float, float, float]
+        /// </param>
+        /// <exception cref="ArgumentException"></exception>
         public override void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
             switch (objArgs)

@@ -13,6 +13,14 @@ namespace Game.Instances.General
         private string   _pieceName;
         private int      _layerIndex = 0;
 
+        /// <param name="objArgs">
+        /// <br/> 0. override animator: Animator
+        /// </param>
+        /// <param name="strArgs">
+        /// <br/> [0. piece name: string]
+        /// <br/> [1. layer index: int]
+        /// </param>
+        /// <exception cref="ArgumentException"></exception>
         public override void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
             switch (objArgs) 

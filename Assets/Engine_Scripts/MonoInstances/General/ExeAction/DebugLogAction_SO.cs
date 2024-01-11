@@ -12,6 +12,13 @@ namespace Game.Instances.General
     {
         private string _logContent;
 
+        /// <param name="objArgs">
+        /// <br/> []
+        /// </param>
+        /// <param name="strArgs">
+        /// <br/> [0. log text: string]
+        /// </param>
+        /// <exception cref="ArgumentException"></exception>
         public override void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
             switch (objArgs)
