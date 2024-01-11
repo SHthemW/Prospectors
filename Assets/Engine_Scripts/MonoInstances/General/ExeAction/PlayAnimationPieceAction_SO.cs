@@ -14,7 +14,7 @@ namespace Game.Instances.General
         private int      _layerIndex = 0;
 
         /// <param name="objArgs">
-        /// <br/> 0. override animator: Animator
+        /// <br/> [0. override animator: Animator]
         /// </param>
         /// <param name="strArgs">
         /// <br/> [0. piece name: string]
