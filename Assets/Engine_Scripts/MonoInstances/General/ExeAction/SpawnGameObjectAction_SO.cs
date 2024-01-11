@@ -11,7 +11,7 @@ namespace Game.Instances.General
     [CreateAssetMenu(
         fileName = "new SpawnGameObjectAction",
         menuName = "General/ExeAction/SpawnGameObjectAction")]
-    internal sealed class SpawnGameObjectAction_SO : ExecutableAction
+    internal sealed class SpawnGameObjectAction_SO : ScriptableAction
     {
         private GameObject _spawn;
         private Vector3    _overridePosition = Vector3.zero;

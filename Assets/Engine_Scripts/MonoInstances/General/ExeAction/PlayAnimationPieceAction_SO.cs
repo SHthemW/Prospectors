@@ -7,7 +7,7 @@ namespace Game.Instances.General
     [CreateAssetMenu(
         fileName = "new PlayAnimationPieceAction", 
         menuName = "General/ExeAction/PlayAnimationPieceAction")]
-    internal sealed class PlayAnimationPieceAction_SO : ExecutableAction
+    internal sealed class PlayAnimationPieceAction_SO : ScriptableAction
     {
         private Animator _animator = null;
         private string   _pieceName;

@@ -1,14 +1,10 @@
-﻿using Game.Utils.Extensions;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
 namespace Game.Interfaces
 {
-    public abstract class ExecutableAction : ScriptableObject
+    public abstract class ScriptableAction : ScriptableObject
     {
         [SerializeField]
         private string[] _effectiveTags;

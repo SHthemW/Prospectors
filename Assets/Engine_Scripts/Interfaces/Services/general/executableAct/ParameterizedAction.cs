@@ -10,7 +10,7 @@ namespace Game.Interfaces
         private readonly static Checker safe = new(nameof(ParameterizedAction));
 
         [SerializeField]
-        private ExecutableAction _behaviour;
+        private ScriptableAction _behaviour;
         public readonly void Implement(Dictionary<string, object> kwargs = null)
         {
             _behaviour.TrySetArgs(

@@ -8,7 +8,7 @@ namespace Game.Instances.General
     [CreateAssetMenu(
         fileName = "new DebugLogAction",
         menuName = "General/ExeAction/DebugLogAction")]
-    internal sealed class DebugLogAction_SO : ExecutableAction
+    internal sealed class DebugLogAction_SO : ScriptableAction
     {
         private string _logContent;
 
