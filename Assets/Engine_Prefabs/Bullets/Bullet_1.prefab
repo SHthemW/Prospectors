@@ -82,6 +82,10 @@ MonoBehaviour:
   <OnHitActions>k__BackingField:
   - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
     _objectArgs:
+    - {fileID: 4976700907685403352, guid: b754921f640ea1846af06e8db60fa93b, type: 3}
+    _stringArgs: []
+  - _behaviour: {fileID: 11400000, guid: 8213e53f1a93d4043a4767c4ab945a17, type: 2}
+    _objectArgs:
     - {fileID: 5458000370715713130, guid: d0d721aee7c87c64db4fffeee95255e2, type: 3}
     _stringArgs: []
 --- !u!114 &8345218708569397138
