@@ -24,12 +24,26 @@ MonoBehaviour:
     - _bullet: {fileID: 7864251908712264615, guid: 4c566723f377fc549af6c04245991b06,
         type: 3}
       _gunActions:
-      - {fileID: 11400000, guid: 59e7f4a44c196764b8e328d1a521b7fc, type: 2}
-      - {fileID: 11400000, guid: 0b0c3909797da854e9e2a912a0e1669d, type: 2}
+      - _behaviour: {fileID: 11400000, guid: 4aad28a8e6778ba45b0574dd69367072, type: 2}
+        _objectArgs:
+        - {fileID: 1367265255530156543, guid: 35886e38ec640d44089c15b3499d24a2, type: 3}
+        _stringArgs: []
+      - _behaviour: {fileID: 11400000, guid: ceca57fcd5e1bae4285e0632d63d8775, type: 2}
+        _objectArgs:
+        - {fileID: 4153021328485329472, guid: de804dd785977f04db1920f6aad5cf9d, type: 3}
+        _stringArgs: []
       _masterActions: []
       _shootingAngleOffset: 0
       _shootingDelaySecond: 0
     _gunActions:
-    - {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
+    - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
+      _objectArgs: []
+      _stringArgs:
+      - fire
+      - 0
     _masterActions:
-    - {fileID: 11400000, guid: 18f2cba72f07d6e4ab8274b720e7a86d, type: 2}
+    - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
+      _objectArgs: []
+      _stringArgs:
+      - fire
+      - 1

@@ -10,10 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fdfa85827e06824abd8f8174c4a6374, type: 3}
-  m_Name: throw bullet shell
+  m_Name: Spawn Gun Fire Effect
   m_EditorClassIdentifier: 
   _effectiveTags:
-  - shellSpawnInfo
-  _spawn: {fileID: 1367265255530156543, guid: 35886e38ec640d44089c15b3499d24a2, type: 3}
-  _overridePosition: {x: 0, y: 0, z: 0}
-  _overrideRotation: {x: 0, y: 0, z: 0}
+  - gunFireSpawnInfo
