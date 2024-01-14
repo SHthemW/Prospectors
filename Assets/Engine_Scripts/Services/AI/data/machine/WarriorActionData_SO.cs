@@ -1,7 +1,7 @@
 ﻿using Game.Interfaces;
 using UnityEngine;
 
-namespace Game.Services.FSM
+namespace Game.Services.AI
 {
     [CreateAssetMenu(fileName = "new Warrior", menuName = "Data/FSM/Warrior")]
     public sealed class WarriorActionData_SO : FSMActionData

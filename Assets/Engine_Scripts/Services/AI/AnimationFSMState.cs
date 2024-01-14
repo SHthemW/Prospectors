@@ -1,8 +1,8 @@
+using Game.Interfaces;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Interfaces
+namespace Game.Services.AI
 {
     public abstract class AnimationFSMState : StateMachineBehaviour
     {

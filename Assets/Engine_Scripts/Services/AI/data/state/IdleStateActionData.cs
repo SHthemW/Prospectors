@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Services.FSM
+namespace Game.Services.AI
 {
     [Serializable]
     public struct IdleStateActionData
