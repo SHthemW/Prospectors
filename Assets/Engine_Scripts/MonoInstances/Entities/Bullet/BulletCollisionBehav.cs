@@ -20,7 +20,7 @@ namespace Game.Instances.Combat
             if (!collision.gameObject.CompareTag("Hitable"))
             {
                 ThisBullet.CurrentHitTimes += OBSTACLE_TIMES_COST;
-                Array.ForEach(ThisBullet.OnHitActions, a => a.Execute(_bulletActionImpl));
+                Array.ForEach(ThisBullet.OnHitActions, a => ((IExecutableAction)a).ExecuteWith(_bulletActionImpl));
                 return;
             }
 
@@ -31,7 +31,7 @@ namespace Game.Instances.Combat
             ThisBullet.CurrentHitTimes += hitable.HitTimesConsumption;
 
             if (!hitable.OverrideHitActions)
-                Array.ForEach(ThisBullet.OnHitActions, a => a.Execute(_bulletActionImpl));
+                Array.ForEach(ThisBullet.OnHitActions, a => ((IExecutableAction)a).ExecuteWith(_bulletActionImpl));
 
             if (_enableHitDebug)
                 Debug.Log("[bullet] hitted: " + collision.gameObject.name);

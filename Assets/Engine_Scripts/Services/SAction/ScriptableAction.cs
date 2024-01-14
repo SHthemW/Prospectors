@@ -1,4 +1,5 @@
-﻿using Game.Interfaces.Data;
+﻿using Game.Interfaces;
+using Game.Interfaces.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,12 @@ using UnityEngine;
 
 namespace Game.Services.SAction
 {
-    public abstract class ScriptableAction : ScriptableObject
+    public abstract class ScriptableAction : ScriptableObject, IExecutableAction
     {
         [SerializeField]
         private SActionDataTag _responsibles;
 
-        public Dictionary<SActionDataTag, object> RuntimeKwargs { private get; set; }   
+        public Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }   
 
         public abstract void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
         public void Execute()

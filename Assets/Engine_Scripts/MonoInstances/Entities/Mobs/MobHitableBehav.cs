@@ -53,7 +53,7 @@ namespace Game.Instances.Mob
             _currentHittedPosition = position;
 
             foreach (var action in ThisMob.OnHittedActions)
-                action.Execute(_mobActionImpl);
+                ((IExecutableAction)action).ExecuteWith(_mobActionImpl);
 
             CombatUtil.Hit(
                 who:    ThisMob.Health.Get(),
