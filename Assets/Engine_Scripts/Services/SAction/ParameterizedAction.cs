@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Game.Interfaces;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Interfaces.SAction
+namespace Game.Services.SAction
 {
     [Serializable]
     public struct ParameterizedAction

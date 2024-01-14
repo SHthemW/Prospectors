@@ -1,5 +1,5 @@
 ﻿using Game.Interfaces;
-using Game.Interfaces.SAction;
+using Game.Services.SAction;
 using Game.Utils.Attributes;
 using Game.Utils.Collections;
 using System;
