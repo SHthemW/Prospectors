@@ -1,4 +1,5 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Game.Services.SAction
 
         [SerializeField]
         private ScriptableAction _behaviour;
-        public readonly void Execute(Dictionary<ScriptableActionTag, object> kwargs)
+        public readonly void Execute(Dictionary<SActionDataTag, object> kwargs)
         {
             _behaviour.SetStaticArgs(
                 objArgs: safe.Checked(_objectArgs),

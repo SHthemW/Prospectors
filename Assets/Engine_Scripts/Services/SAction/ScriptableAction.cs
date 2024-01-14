@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Interfaces.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,9 +9,9 @@ namespace Game.Services.SAction
     public abstract class ScriptableAction : ScriptableObject
     {
         [SerializeField]
-        private ScriptableActionTag _responsibles;
+        private SActionDataTag _responsibles;
 
-        public Dictionary<ScriptableActionTag, object> RuntimeKwargs { private get; set; }   
+        public Dictionary<SActionDataTag, object> RuntimeKwargs { private get; set; }   
 
         public abstract void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
         public void Execute()

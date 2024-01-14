@@ -1,6 +1,6 @@
-﻿using Game.Interfaces.GameObj;
+﻿using Game.Interfaces.Data;
+using Game.Interfaces.GameObj;
 using Game.Services.Combat;
-using Game.Services.SAction;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,19 +10,19 @@ namespace Game.Instances.Combat
     [RequireComponent(typeof(BulletDataAndComponentHandler))]
     internal abstract class BulletBehaviour : MonoBehaviour
     {
-        protected Dictionary<ScriptableActionTag, object> _bulletActionImpl;
+        protected Dictionary<SActionDataTag, object> _bulletActionImpl;
 
         private void Awake()
         {
             _bulletActionImpl = new()
             {
-                [ScriptableActionTag.HitEffectSpawnInfo] = (
+                [SActionDataTag.HitEffectSpawnInfo] = (
                 parent:   ThisBullet.HitEffectParent.Get(),
                 position: (Func<Vector3>)   (() => transform.position),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
                 pool:     new ObjectSpawner<IDestoryManagedObject>()
                 ),
-                [ScriptableActionTag.HitHoleSpawnInfo] = (
+                [SActionDataTag.HitHoleSpawnInfo] = (
                 parent:   ThisBullet.HitHoleParent.Get(),
                 position: (Func<Vector3>)   (() => transform.position),
                 rotation: (Func<Quaternion>)(() => transform.rotation),

@@ -1,7 +1,7 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.Data;
 using Game.Interfaces.GameObj;
 using Game.Services.Combat;
-using Game.Services.SAction;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +10,9 @@ namespace Game.Instances.Mob
 {
     internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly
     {
-        private Dictionary<ScriptableActionTag, object> _mobActionImpl;
-        private ObjectSpawner<IDestoryManagedObject>    _hitEffectSpawner;
-        private ObjectSpawner<IDestoryManagedObject>    _hitHoleSpawner;
+        private Dictionary<SActionDataTag, object>   _mobActionImpl;
+        private ObjectSpawner<IDestoryManagedObject> _hitEffectSpawner;
+        private ObjectSpawner<IDestoryManagedObject> _hitHoleSpawner;
 
         private void Awake()
         {
@@ -26,13 +26,13 @@ namespace Game.Instances.Mob
         {
             _mobActionImpl = new()
             {
-                [ScriptableActionTag.HitEffectSpawnInfo] = (
+                [SActionDataTag.HitEffectSpawnInfo] = (
                 parent:   ThisMob.HitEffectParent.Get(),
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
                 pool:     _hitEffectSpawner
                 ),
-                [ScriptableActionTag.HitHoleSpawnInfo] = (
+                [SActionDataTag.HitHoleSpawnInfo] = (
                 parent:   ThisMob.HitHoleParent.Get(), 
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),

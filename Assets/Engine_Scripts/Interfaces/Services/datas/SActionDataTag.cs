@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game.Services.SAction
+namespace Game.Interfaces.Data
 {
     [Flags]
-    public enum ScriptableActionTag
+    public enum SActionDataTag
     {
         // spawn gameobject
         HitEffectSpawnInfo = 1 << 0,
@@ -18,9 +18,9 @@ namespace Game.Services.SAction
 
     public static class ScriptableActionTagExtensions
     {
-        public static IEnumerable<ScriptableActionTag> Selections(this ScriptableActionTag value)
+        public static IEnumerable<SActionDataTag> Selections(this SActionDataTag value)
         {
-            foreach (ScriptableActionTag flag in Enum.GetValues(typeof(ScriptableActionTag)))
+            foreach (SActionDataTag flag in Enum.GetValues(typeof(SActionDataTag)))
                 if (value.HasFlag(flag))
                     yield return flag;
         }

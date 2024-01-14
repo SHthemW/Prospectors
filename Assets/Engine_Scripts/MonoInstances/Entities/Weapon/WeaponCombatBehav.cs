@@ -1,7 +1,7 @@
 using Game.Interfaces;
+using Game.Interfaces.Data;
 using Game.Interfaces.GameObj;
 using Game.Services.Combat;
-using Game.Services.SAction;
 using Game.Utils.Extensions;
 using System;
 using System.Collections.Generic;
@@ -26,22 +26,22 @@ namespace Game.Instances.Combat
                 actAfterReload: static num => Debug.Log($"reload finished, get {num}."));
         }
 
-        private Dictionary<ScriptableActionTag, object> _gunActionImpl;
-        private Dictionary<ScriptableActionTag, object> _masterActionImpl;
+        private Dictionary<SActionDataTag, object> _gunActionImpl;
+        private Dictionary<SActionDataTag, object> _masterActionImpl;
 
         private void Start()
         {
             _gunActionImpl = new()
             {
-                [ScriptableActionTag.PrimaryAnimator] = ThisWeapon.Animator,
+                [SActionDataTag.PrimaryAnimator] = ThisWeapon.Animator,
 
-                [ScriptableActionTag.GunShellSpawnInfo] = (
+                [SActionDataTag.GunShellSpawnInfo] = (
                     parent:   ThisWeapon.ShellParent.Get(),
                     position: (Func<Vector3>)   (() => ThisWeapon.ShellThrowingWindow.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.ShellThrowingWindow.rotation),
                     pool:     _bulletShellSpawner
                 ),
-                [ScriptableActionTag.GunFireSpawnInfo] = (
+                [SActionDataTag.GunFireSpawnInfo] = (
                     parent:   ThisWeapon.Muzzle,
                     position: (Func<Vector3>)   (() => ThisWeapon.Muzzle.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.Muzzle.rotation),
@@ -50,7 +50,7 @@ namespace Game.Instances.Combat
             };
             _masterActionImpl = new()
             {
-                [ScriptableActionTag.PrimaryAnimator] = ThisWeapon.MasterAnimators
+                [SActionDataTag.PrimaryAnimator] = ThisWeapon.MasterAnimators
             };
         }
 
