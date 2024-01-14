@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Game.Interfaces
+namespace Game.Interfaces.SAction
 {
     public abstract class ScriptableAction : ScriptableObject
     {

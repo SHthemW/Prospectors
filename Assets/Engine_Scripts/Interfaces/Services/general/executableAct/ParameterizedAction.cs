@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Interfaces
+namespace Game.Interfaces.SAction
 {
     [Serializable]
     public struct ParameterizedAction

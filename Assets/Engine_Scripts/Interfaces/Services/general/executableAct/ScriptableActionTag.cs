@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game.Interfaces
+namespace Game.Interfaces.SAction
 {
     [Flags]
     public enum ScriptableActionTag

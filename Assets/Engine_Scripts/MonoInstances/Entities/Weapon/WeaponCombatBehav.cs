@@ -1,5 +1,6 @@
 using Game.Interfaces;
 using Game.Interfaces.GameObj;
+using Game.Interfaces.SAction;
 using Game.Services.Combat;
 using Game.Utils.Extensions;
 using System;
