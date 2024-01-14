@@ -12,13 +12,13 @@ namespace Game.Services.SAction
 
         [SerializeField]
         private ScriptableAction _behaviour;
-        public readonly void Execute(Dictionary<ScriptableActionTag, object> kwargs = null)
+        public readonly void Execute(Dictionary<ScriptableActionTag, object> kwargs)
         {
             _behaviour.SetStaticArgs(
                 objArgs: safe.Checked(_objectArgs),
                 strArgs: safe.Checked(_stringArgs));
 
-            _behaviour.RuntimeKwargs = kwargs;
+            _behaviour.RuntimeKwargs = kwargs ?? throw new ArgumentNullException(nameof(kwargs));
             _behaviour.Execute();
         }
 
