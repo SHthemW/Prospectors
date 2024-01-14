@@ -21,7 +21,7 @@ namespace Game.Instances.General
         /// <br/> [1. layer index: int]
         /// </param>
         /// <exception cref="ArgumentException"></exception>
-        public override void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
+        public override sealed void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
             switch (objArgs) 
             { 
@@ -55,7 +55,7 @@ namespace Game.Instances.General
             }
         }
 
-        protected override void Execute(in object runtimeArgs = null)
+        protected override sealed void ExecuteFor(in object runtimeArgs)
         {
             switch (runtimeArgs)
             {

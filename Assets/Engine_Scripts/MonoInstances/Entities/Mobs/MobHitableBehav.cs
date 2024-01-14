@@ -9,9 +9,9 @@ namespace Game.Instances.Mob
 {
     internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly
     {
-        private Dictionary<string, object>           _mobActionImpl;
-        private ObjectSpawner<IDestoryManagedObject> _hitEffectSpawner;
-        private ObjectSpawner<IDestoryManagedObject> _hitHoleSpawner;
+        private Dictionary<ScriptableActionTag, object> _mobActionImpl;
+        private ObjectSpawner<IDestoryManagedObject>    _hitEffectSpawner;
+        private ObjectSpawner<IDestoryManagedObject>    _hitHoleSpawner;
 
         private void Awake()
         {
@@ -25,13 +25,13 @@ namespace Game.Instances.Mob
         {
             _mobActionImpl = new()
             {
-                ["hitEffectSpawnInfo"] = (
+                [ScriptableActionTag.HitEffectSpawnInfo] = (
                 parent:   ThisMob.HitEffectParent.Get(),
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
                 pool:     _hitEffectSpawner
                 ),
-                ["hitHoleSpawnInfo"] = (
+                [ScriptableActionTag.HitHoleSpawnInfo] = (
                 parent:   ThisMob.HitHoleParent.Get(), 
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
@@ -52,7 +52,7 @@ namespace Game.Instances.Mob
             _currentHittedPosition = position;
 
             foreach (var action in ThisMob.OnHittedActions)
-                action.Implement(_mobActionImpl);
+                action.Execute(_mobActionImpl);
 
             CombatUtil.Hit(
                 who:    ThisMob.Health.Get(),

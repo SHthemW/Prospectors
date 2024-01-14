@@ -1,24 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
 
 namespace Game.Interfaces
 {
     public abstract class ScriptableAction : ScriptableObject
     {
         [SerializeField]
-        private string[] _effectiveTags;
+        private ScriptableActionTag _responsibles;
 
-        protected abstract void Execute(in object runtimeArgs = null);
+        public Dictionary<ScriptableActionTag, object> RuntimeKwargs { private get; set; }   
 
-        public abstract void TrySetArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
-        public void Implement(in Dictionary<string, object> kwargs = null)
+        public abstract void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
+        public void Execute()
         {
-            if (_effectiveTags.Length == 1 && _effectiveTags[0] == "ALL")
-                Execute();
+            if (RuntimeKwargs == null)
+                throw new ArgumentNullException(nameof(RuntimeKwargs));
 
-            foreach (var tag in _effectiveTags)
-                Execute(kwargs[tag]);
+            var resp = _responsibles.Selections();
+
+            if (resp.Count() == 0)
+                Debug.LogWarning($"[action]: {name} has no responsibles.");
+
+            foreach (var tag in resp)
+                ExecuteFor(RuntimeKwargs[tag]);
         }
+
+        protected abstract void ExecuteFor(in object runtimeArgs);
     }
 }

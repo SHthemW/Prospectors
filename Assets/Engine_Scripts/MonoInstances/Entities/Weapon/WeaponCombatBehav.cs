@@ -25,22 +25,22 @@ namespace Game.Instances.Combat
                 actAfterReload: static num => Debug.Log($"reload finished, get {num}."));
         }
 
-        private Dictionary<string, object> _gunActionImpl;
-        private Dictionary<string, object> _masterActionImpl;
+        private Dictionary<ScriptableActionTag, object> _gunActionImpl;
+        private Dictionary<ScriptableActionTag, object> _masterActionImpl;
 
         private void Start()
         {
             _gunActionImpl = new()
             {
-                ["anim1"] = ThisWeapon.Animator,
+                [ScriptableActionTag.PrimaryAnimator] = ThisWeapon.Animator,
 
-                ["shellSpawnInfo"] = (
+                [ScriptableActionTag.GunShellSpawnInfo] = (
                     parent:   ThisWeapon.ShellParent.Get(),
                     position: (Func<Vector3>)   (() => ThisWeapon.ShellThrowingWindow.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.ShellThrowingWindow.rotation),
                     pool:     _bulletShellSpawner
                 ),
-                ["gunFireSpawnInfo"] = (
+                [ScriptableActionTag.GunFireSpawnInfo] = (
                     parent:   ThisWeapon.Muzzle,
                     position: (Func<Vector3>)   (() => ThisWeapon.Muzzle.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.Muzzle.rotation),
@@ -49,7 +49,7 @@ namespace Game.Instances.Combat
             };
             _masterActionImpl = new()
             {
-                ["anim1"] = ThisWeapon.MasterAnimators
+                [ScriptableActionTag.PrimaryAnimator] = ThisWeapon.MasterAnimators
             };
         }
 
@@ -126,15 +126,15 @@ namespace Game.Instances.Combat
                     bullet.transform.position = ThisWeapon.Muzzle.position;
                     bullet.transform.SetParent(ThisWeapon.BulletParent.Get());
 
-                    Array.ForEach(unit.GunActions, act => act.Implement(_gunActionImpl));
-                    Array.ForEach(unit.MasterActions, act => act.Implement(_masterActionImpl));
+                    Array.ForEach(unit.GunActions, act => act.Execute(_gunActionImpl));
+                    Array.ForEach(unit.MasterActions, act => act.Execute(_masterActionImpl));
                 },  
                 delayTimeSec: unit.ShootingDelaySecond, 
                 coroutineMgr: this);
             }
 
-            Array.ForEach(CurrentShootingRound.GunActions,    act => act.Implement(_gunActionImpl));
-            Array.ForEach(CurrentShootingRound.MasterActions, act => act.Implement(_masterActionImpl));
+            Array.ForEach(CurrentShootingRound.GunActions,    act => act.Execute(_gunActionImpl));
+            Array.ForEach(CurrentShootingRound.MasterActions, act => act.Execute(_masterActionImpl));
 
             ResetShootingCd();
         }

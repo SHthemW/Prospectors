@@ -11,13 +11,14 @@ namespace Game.Interfaces
 
         [SerializeField]
         private ScriptableAction _behaviour;
-        public readonly void Implement(Dictionary<string, object> kwargs = null)
+        public readonly void Execute(Dictionary<ScriptableActionTag, object> kwargs = null)
         {
-            _behaviour.TrySetArgs(
+            _behaviour.SetStaticArgs(
                 objArgs: safe.Checked(_objectArgs),
                 strArgs: safe.Checked(_stringArgs));
 
-            _behaviour.Implement(kwargs);
+            _behaviour.RuntimeKwargs = kwargs;
+            _behaviour.Execute();
         }
 
         [SerializeField]
