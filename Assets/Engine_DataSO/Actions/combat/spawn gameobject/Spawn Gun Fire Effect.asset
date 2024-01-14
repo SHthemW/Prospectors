@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdfa85827e06824abd8f8174c4a6374, type: 3}
   m_Name: Spawn Gun Fire Effect
   m_EditorClassIdentifier: 
-  _effectiveTags:
-  - gunFireSpawnInfo
+  _responsibles: 4
