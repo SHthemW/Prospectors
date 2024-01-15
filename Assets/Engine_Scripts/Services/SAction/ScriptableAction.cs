@@ -26,9 +26,14 @@ namespace Game.Services.SAction
                 Debug.LogWarning($"[action]: {name} has no responsibles.");
 
             foreach (var tag in resp)
-                ExecuteFor(RuntimeKwargs[tag]);
+            {
+                if (RuntimeKwargs.TryGetValue(tag, out object arg))              
+                    ExecuteFor(arg);
+                else
+                    ExecuteFor();
+            }
         }
 
-        protected abstract void ExecuteFor(in object runtimeArgs);
+        protected abstract void ExecuteFor(in object runtimeArgs = null);
     }
 }
