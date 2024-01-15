@@ -12,9 +12,7 @@ namespace Game.Services.SAction
         [SerializeField]
         private SActionDataTag _responsibles;
 
-        public Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }   
-
-        public abstract void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
+        public Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }
         public void Execute()
         {
             if (RuntimeKwargs == null)
@@ -27,13 +25,14 @@ namespace Game.Services.SAction
 
             foreach (var tag in resp)
             {
-                if (RuntimeKwargs.TryGetValue(tag, out object arg))              
+                if (RuntimeKwargs.TryGetValue(tag, out object arg))
                     ExecuteFor(arg);
                 else
                     ExecuteFor();
             }
         }
 
+        public abstract void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
         protected abstract void ExecuteFor(in object runtimeArgs = null);
     }
 }
