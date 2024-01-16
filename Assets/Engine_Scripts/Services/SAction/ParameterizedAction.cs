@@ -20,18 +20,17 @@ namespace Game.Services.SAction
         [SerializeField]
         private string[] _stringArgs;
 
-        public readonly Dictionary<SActionDataTag, object> RuntimeKwargs
+        public readonly void Init(Dictionary<SActionDataTag, object> kwargs)
         {
-            get => _behaviour.RuntimeKwargs;
-            set => _behaviour.RuntimeKwargs = value ?? throw new ArgumentNullException(nameof(RuntimeKwargs));
-        }
+            _behaviour.Init(kwargs);
 
-        public readonly void Execute()
-        {
             _behaviour.SetStaticArgs(
                 objArgs: safe.Checked(_objectArgs),
                 strArgs: safe.Checked(_stringArgs));
+        }
 
+        public readonly void Execute()
+        {            
             _behaviour.Execute();
         }
     }

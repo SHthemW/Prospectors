@@ -6,12 +6,12 @@ namespace Game.Interfaces
 {
     public interface IExecutableAction
     {
+        void Init(Dictionary<SActionDataTag, object> kwargs);
         void Execute();
-        Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }
 
         void ExecuteWith(Dictionary<SActionDataTag, object> kwargs)
         {
-            RuntimeKwargs = kwargs ?? throw new ArgumentNullException(nameof(kwargs));
+            Init(kwargs);
             Execute();
         }
     }

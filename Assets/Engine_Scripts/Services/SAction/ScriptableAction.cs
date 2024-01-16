@@ -11,19 +11,25 @@ namespace Game.Services.SAction
         [SerializeField]
         private SActionDataTag _responsible;
 
-        public Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }
+        private Dictionary<SActionDataTag, object> _runtimeKwargs;
+
         protected object Argument
         {
             get
             {
-                if (RuntimeKwargs == null)
+                if (_runtimeKwargs == null)
                     throw new ArgumentNullException();
 
-                if (!RuntimeKwargs.TryGetValue(_responsible, out object value))
+                if (!_runtimeKwargs.TryGetValue(_responsible, out object value))
                     return null;
 
                 return value;
             }
+        }
+
+        public void Init(Dictionary<SActionDataTag, object> kwargs)
+        {
+            _runtimeKwargs = kwargs;
         }
 
         public abstract void Execute();
