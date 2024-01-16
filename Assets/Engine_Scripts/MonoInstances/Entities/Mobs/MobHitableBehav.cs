@@ -39,6 +39,9 @@ namespace Game.Instances.Mob
                 pool:     _hitHoleSpawner
                 )
             };
+
+            for (int i = 0; i < ThisMob.OnHittedActions.Length; i++)
+                IExecutableAction.Init(ref ThisMob.OnHittedActions[i], _mobActionImpl);
         }
 
         public bool Enable { get; set; } = true;
@@ -53,7 +56,7 @@ namespace Game.Instances.Mob
             _currentHittedPosition = position;
 
             foreach (var action in ThisMob.OnHittedActions)
-                ((IExecutableAction)action).ExecuteWith(_mobActionImpl);
+                ((IExecutableAction)action).Execute();
 
             CombatUtil.Hit(
                 who:    ThisMob.Health.Get(),

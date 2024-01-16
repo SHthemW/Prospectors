@@ -6,13 +6,18 @@ namespace Game.Interfaces
 {
     public interface IExecutableAction
     {
-        void Init(Dictionary<SActionDataTag, object> kwargs);
+        IExecutableAction New(Dictionary<SActionDataTag, object> kwargs);
         void Execute();
 
         void ExecuteWith(Dictionary<SActionDataTag, object> kwargs)
         {
-            Init(kwargs);
-            Execute();
+            // TODO: delete
+        }
+
+        static void Init<TAction>(ref TAction action, Dictionary<SActionDataTag, object> kwargs) where TAction : IExecutableAction
+        {
+            var instance = (TAction)action.New(kwargs);
+            action = instance;
         }
     }
 }

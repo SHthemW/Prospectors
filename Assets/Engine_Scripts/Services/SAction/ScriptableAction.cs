@@ -18,7 +18,7 @@ namespace Game.Services.SAction
             get
             {
                 if (_runtimeKwargs == null)
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(Argument));
 
                 if (!_runtimeKwargs.TryGetValue(_responsible, out object value))
                     return null;
@@ -27,9 +27,19 @@ namespace Game.Services.SAction
             }
         }
 
-        public void Init(Dictionary<SActionDataTag, object> kwargs)
+        public IExecutableAction New(Dictionary<SActionDataTag, object> kwargs)
         {
-            _runtimeKwargs = kwargs;
+            var type = GetType();
+            var instance = CreateInstance(type);
+
+            if (instance is ScriptableAction sa)
+            {
+                sa._responsible = _responsible;
+                sa._runtimeKwargs = kwargs;
+            }
+            else throw new Exception();
+
+            return (IExecutableAction)instance;
         }
 
         public abstract void Execute();
