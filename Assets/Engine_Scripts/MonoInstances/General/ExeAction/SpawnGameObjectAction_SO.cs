@@ -24,7 +24,7 @@ namespace Game.Instances.General
         /// <br/> [1. override spawn rotation: float, float, float]
         /// </param>
         /// <exception cref="ArgumentException"></exception>
-        public override void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
+        public override sealed void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
             switch (objArgs)
             {
@@ -62,9 +62,9 @@ namespace Game.Instances.General
             }
         }
 
-        protected override sealed void ExecuteFor(in object runtimeArgs)
+        public override sealed void Execute()
         {
-            switch (runtimeArgs)
+            switch (Argument)
             {
                 // use default value and generate on world
                 case null:

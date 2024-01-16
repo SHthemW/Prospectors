@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdfa85827e06824abd8f8174c4a6374, type: 3}
   m_Name: Spawn Gun Bullet Shell
   m_EditorClassIdentifier: 
-  _responsibles: 8
+  _responsible: 4

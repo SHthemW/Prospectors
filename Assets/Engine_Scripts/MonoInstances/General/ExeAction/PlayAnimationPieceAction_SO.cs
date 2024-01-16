@@ -55,13 +55,13 @@ namespace Game.Instances.General
             }
         }
 
-        protected override sealed void ExecuteFor(in object runtimeArgs)
+        public override sealed void Execute()
         {
-            switch (runtimeArgs)
+            switch (Argument)
             {
                 case null:
                     if (_animator == null)
-                        throw new ArgumentNullException(nameof(runtimeArgs));
+                        throw new ArgumentNullException(nameof(Argument));
                     _animator.Play(_pieceName, _layerIndex);
                     break;
 

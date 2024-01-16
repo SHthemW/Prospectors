@@ -43,7 +43,7 @@ namespace Game.Instances.General
             }
         }
 
-        protected override sealed void ExecuteFor(in object runtimeArgs)
+        public override sealed void Execute()
         {
             Debug.Log("[Action test]: " + _logContent);
         }

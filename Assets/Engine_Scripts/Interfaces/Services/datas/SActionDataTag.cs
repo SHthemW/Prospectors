@@ -3,26 +3,17 @@ using System.Collections.Generic;
 
 namespace Game.Interfaces.Data
 {
-    [Flags]
-    public enum SActionDataTag
+    public enum SActionDataTag : int
     {
+        None               = 0,
+
         // spawn gameobject
-        HitEffectSpawnInfo = 1 << 0,
-        HitHoleSpawnInfo   = 1 << 1,
-        GunFireSpawnInfo   = 1 << 2,
-        GunShellSpawnInfo  = 1 << 3,
+        HitEffectSpawnInfo = 1,
+        HitHoleSpawnInfo   = 2,
+        GunFireSpawnInfo   = 3,
+        GunShellSpawnInfo  = 4,
 
         // play animation
-        PrimaryAnimator    = 1 << 4,
-    }
-
-    public static class ScriptableActionTagExtensions
-    {
-        public static IEnumerable<SActionDataTag> Selections(this SActionDataTag value)
-        {
-            foreach (SActionDataTag flag in Enum.GetValues(typeof(SActionDataTag)))
-                if (value.HasFlag(flag))
-                    yield return flag;
-        }
+        PrimaryAnimator    = 5,
     }
 }

@@ -2,7 +2,6 @@
 using Game.Interfaces.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Game.Services.SAction
@@ -10,29 +9,24 @@ namespace Game.Services.SAction
     public abstract class ScriptableAction : ScriptableObject, IExecutableAction
     {
         [SerializeField]
-        private SActionDataTag _responsibles;
+        private SActionDataTag _responsible;
 
         public Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }
-        public void Execute()
+        protected object Argument
         {
-            if (RuntimeKwargs == null)
-                throw new ArgumentNullException(nameof(RuntimeKwargs));
-
-            var resp = _responsibles.Selections();
-
-            if (resp.Count() == 0)
-                Debug.LogWarning($"[action]: {name} has no responsibles.");
-
-            foreach (var tag in resp)
+            get
             {
-                if (RuntimeKwargs.TryGetValue(tag, out object arg))
-                    ExecuteFor(arg);
-                else
-                    ExecuteFor();
+                if (RuntimeKwargs == null)
+                    throw new ArgumentNullException();
+
+                if (!RuntimeKwargs.TryGetValue(_responsible, out object value))
+                    return null;
+
+                return value;
             }
         }
 
+        public abstract void Execute();
         public abstract void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs);
-        protected abstract void ExecuteFor(in object runtimeArgs = null);
     }
 }
