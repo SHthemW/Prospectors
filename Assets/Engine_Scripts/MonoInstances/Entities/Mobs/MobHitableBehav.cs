@@ -2,6 +2,7 @@
 using Game.Interfaces.Data;
 using Game.Interfaces.GameObj;
 using Game.Services.Combat;
+using Game.Services.SAction;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,38 +11,27 @@ namespace Game.Instances.Mob
 {
     internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly
     {
-        private Dictionary<SActionDataTag, object>   _mobActionImpl;
-        private ObjectSpawner<IDestoryManagedObject> _hitEffectSpawner;
-        private ObjectSpawner<IDestoryManagedObject> _hitHoleSpawner;
-
-        private void Awake()
-        {
-            _hitEffectSpawner = new();
-            _hitHoleSpawner = new();
-        }
-
         private Vector3 _currentHittedPosition;
 
         private void Start()
         {
-            _mobActionImpl = new()
+            IExecutableAction.BatchInit(kwargs: new()
             {
                 [SActionDataTag.HitEffectSpawnInfo] = (
                 parent:   ThisMob.HitEffectParent.Get(),
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     _hitEffectSpawner
+                pool:     new ObjectSpawner<IDestoryManagedObject>()
                 ),
                 [SActionDataTag.HitHoleSpawnInfo] = (
-                parent:   ThisMob.HitHoleParent.Get(), 
+                parent:   ThisMob.HitHoleParent.Get(),
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     _hitHoleSpawner
+                pool:     new ObjectSpawner<IDestoryManagedObject>()
                 )
-            };
-
-            for (int i = 0; i < ThisMob.OnHittedActions.Length; i++)
-                IExecutableAction.Init(ref ThisMob.OnHittedActions[i], _mobActionImpl);
+            },
+            ThisMob.OnHittedActions,
+            ThisMob.OnDeadActions);
         }
 
         public bool Enable { get; set; } = true;
