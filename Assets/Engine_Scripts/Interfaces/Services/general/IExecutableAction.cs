@@ -10,13 +10,13 @@ namespace Game.Interfaces
         void Execute();
 
         /// <summary>
-        /// init an action by create instance of it, and REPLACE input by this instance.
+        /// init an action by create DEEPCLONE of it, and REPLACE input by this clone.
         /// </summary>
         /// <typeparam name="TAction"></typeparam>
         /// <param name="action">action to init</param>
         /// <param name="kwargs">action arguments</param>
         /// <exception cref="ArgumentNullException"></exception>
-        static void Init<TAction>(ref TAction action, Dictionary<SActionDataTag, object> kwargs) where TAction : IExecutableAction
+        static void Init<TAction>(Dictionary<SActionDataTag, object> kwargs, ref TAction action) where TAction : IExecutableAction
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -28,6 +28,14 @@ namespace Game.Interfaces
             instance.RuntimeKwargs = kwargs;
             action = instance;
         }
+
+        /// <summary>
+        /// init some action array by create DEEPCLONE of it, and REPLACE them by this clone.
+        /// </summary>
+        /// <typeparam name="TAction"></typeparam>
+        /// <param name="kwargs"></param>
+        /// <param name="actionArrs"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         static void BatchInit<TAction>(Dictionary<SActionDataTag, object> kwargs, params TAction[][] actionArrs) where TAction : IExecutableAction
         {
             if (actionArrs == null) 
@@ -38,8 +46,16 @@ namespace Game.Interfaces
 
             foreach (var actionArr in actionArrs)
                 for (int i = 0; i < actionArr.Length; i++)
-                    Init(ref actionArr[i], kwargs);
+                    Init(kwargs, ref actionArr[i]);
         }
+
+        /// <summary>
+        /// init some action array by create DEEPCLONE of it, and REPLACE them by this clone.
+        /// </summary>
+        /// <typeparam name="TAction"></typeparam>
+        /// <param name="kwargs"></param>
+        /// <param name="actionArrs"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         static void BatchInit<TAction>(Dictionary<SActionDataTag, object> kwargs, in IEnumerable<TAction[]> actionArrs) where TAction : IExecutableAction
         {
             if (kwargs == null)
