@@ -4,6 +4,7 @@ using Game.Services.Combat;
 using Game.Utils.Attributes;
 using Game.Utils.Collections;
 using Game.Utils.Extensions;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Instances.Combat
@@ -59,11 +60,11 @@ namespace Game.Instances.Combat
         public int MaxBulletNumberFromMaster => _master.TryGetBulletFromInventory(MaxMagazineCapacity);
 
 
-        /*
-         *  Shooting runtimes
-         */
+        [field: Header("Runtimes")]
 
-        public ShootingRound[] ShootingLoopRound => _staticData.ShootingLoopRound;
+        [field: SerializeField, ReadOnly]
+        public ShootingRound[] ShootingLoopRound { get; private set; }
+
         public Vector3 AimingDirection => AimingPosition - MasterPosition;
         public float BulletAccuracyOffsetAngle 
             => UnityEngine.Random.Range(-_staticData.ShootingAccuracyOffsetAngle, _staticData.ShootingAccuracyOffsetAngle);
@@ -72,5 +73,10 @@ namespace Game.Instances.Combat
         public float ShootingCdSec => _staticData.ShootingRoundCd_Sec;
         public int MaxMagazineCapacity => _staticData.MagazineCapacity;
         public int BulletDamage => _staticData.BulletDamage;
+
+        private void Awake()
+        {
+            ShootingLoopRound = _staticData.ShootingLoopRound.Select(round => round.DeepClone()).ToArray();
+        }
     }
 }

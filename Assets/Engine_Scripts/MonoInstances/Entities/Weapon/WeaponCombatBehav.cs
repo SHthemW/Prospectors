@@ -143,15 +143,15 @@ namespace Game.Instances.Combat
                     bullet.transform.position = ThisWeapon.Muzzle.position;
                     bullet.transform.SetParent(ThisWeapon.BulletParent.Get());
 
-                    Array.ForEach(unit.GunActions, act => ((IExecutableAction)act).Execute());
-                    Array.ForEach(unit.MasterActions, act => ((IExecutableAction)act).Execute());
+                    //Array.ForEach(unit.GunActions, act => ((IExecutableAction)act).Execute());
+                    //Array.ForEach(unit.MasterActions, act => ((IExecutableAction)act).Execute());
                 },  
                 delayTimeSec: unit.ShootingDelaySecond, 
                 coroutineMgr: this);
             }
 
-            Array.ForEach(CurrentShootingRound.GunActions,    act => ((IExecutableAction)act).Execute());
-            Array.ForEach(CurrentShootingRound.MasterActions, act => ((IExecutableAction)act).Execute());
+            //Array.ForEach(CurrentShootingRound.GunActions,    act => ((IExecutableAction)act).Execute());
+            //Array.ForEach(CurrentShootingRound.MasterActions, act => ((IExecutableAction)act).Execute());
 
             ResetShootingCd();
         }

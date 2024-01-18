@@ -12,7 +12,7 @@ namespace Game.Services.Combat
     /// one <see cref="ShootingRound"/> means one shoot (one time trigger press). <br/>
     /// </summary>
     [Serializable]
-    public struct ShootingRound : IEnumerable<ShootingUnit>
+    public struct ShootingRound : IEnumerable<ShootingUnit>, IDeepCloneable<ShootingRound>
     {
         [SerializeField]
         private ShootingUnit[] _units;
@@ -38,6 +38,16 @@ namespace Game.Services.Combat
             return _units.GetEnumerator();
         }
 
+        public readonly ShootingRound DeepClone()
+        {
+            return new ShootingRound
+            {
+                _units         = IDeepCloneable<ShootingUnit>     .BatchDeepClone(_units),
+                _gunActions    = IDeepCloneable<IExecutableAction>.BatchDeepClone(_gunActions),
+                _masterActions = IDeepCloneable<IExecutableAction>.BatchDeepClone(_masterActions),
+            };
+        }
+
         public static ShootingRound GetCurrentRound(ref int currentIndex, in ShootingRound[] shootingRounds)
         {
             if (currentIndex >= shootingRounds.Length)
@@ -55,7 +65,7 @@ namespace Game.Services.Combat
     /// it should contains ONLY ONE bullet in each unit.
     /// </summary>
     [Serializable]
-    public struct ShootingUnit
+    public struct ShootingUnit : IDeepCloneable<ShootingUnit>
     {
         private readonly static Checker safe = new(nameof(ShootingUnit));
 
@@ -87,5 +97,17 @@ namespace Game.Services.Combat
         private float _shootingDelaySecond;
         public readonly float ShootingDelaySecond
             => _shootingDelaySecond;
+
+        public readonly ShootingUnit DeepClone() 
+        {
+            return new ShootingUnit
+            {
+                _bullet              = this._bullet,
+                _gunActions          = IDeepCloneable<IExecutableAction>.BatchDeepClone(_gunActions),
+                _masterActions       = IDeepCloneable<IExecutableAction>.BatchDeepClone(_masterActions),
+                _shootingAngleOffset = this._shootingAngleOffset,
+                _shootingDelaySecond = this._shootingDelaySecond,
+            };
+        }
     }
 }
