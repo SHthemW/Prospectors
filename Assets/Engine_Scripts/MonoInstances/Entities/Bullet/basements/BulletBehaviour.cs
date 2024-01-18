@@ -10,27 +10,6 @@ namespace Game.Instances.Combat
     [RequireComponent(typeof(BulletDataAndComponentHandler))]
     internal abstract class BulletBehaviour : MonoBehaviour
     {
-        protected Dictionary<SActionDataTag, object> _bulletActionImpl;
-
-        private void Awake()
-        {
-            _bulletActionImpl = new()
-            {
-                [SActionDataTag.HitEffectSpawnInfo] = (
-                parent:   ThisBullet.HitEffectParent.Get(),
-                position: (Func<Vector3>)   (() => transform.position),
-                rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
-                ),
-                [SActionDataTag.HitHoleSpawnInfo] = (
-                parent:   ThisBullet.HitHoleParent.Get(),
-                position: (Func<Vector3>)   (() => transform.position),
-                rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
-                )
-            };
-        }
-
         private BulletDataAndComponentHandler _thisBullet;
         protected BulletDataAndComponentHandler ThisBullet 
         { 

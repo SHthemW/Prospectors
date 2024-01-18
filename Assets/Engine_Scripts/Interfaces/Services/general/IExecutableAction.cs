@@ -1,6 +1,7 @@
 ﻿using Game.Interfaces.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game.Interfaces
 {
@@ -9,13 +10,8 @@ namespace Game.Interfaces
         IExecutableAction New(Dictionary<SActionDataTag, object> kwargs);
         void Execute();
 
-        void ExecuteWith(Dictionary<SActionDataTag, object> kwargs)
-        {
-            // TODO: delete
-        }
-
         /// <summary>
-        /// init an action by create instance of it, and replace it by this instance.
+        /// init an action by create instance of it, and REPLACE input by this instance.
         /// </summary>
         /// <typeparam name="TAction"></typeparam>
         /// <param name="action">action to init</param>
@@ -44,6 +40,16 @@ namespace Game.Interfaces
                 for (int i = 0; i < actionArr.Length; i++)
                     Init(ref actionArr[i], kwargs);
         }
+        static void BatchInit<TAction>(Dictionary<SActionDataTag, object> kwargs, in IEnumerable<TAction[]> actionArrs) where TAction : IExecutableAction
+        {
+            if (kwargs == null)
+                throw new ArgumentNullException(nameof(kwargs));
 
+            if (actionArrs == null)
+                throw new ArgumentNullException(nameof(actionArrs));
+
+            foreach (var actionArr in actionArrs)
+                BatchInit(kwargs, actionArr);
+        }
     }
 }
