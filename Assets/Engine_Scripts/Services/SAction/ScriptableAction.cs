@@ -11,35 +11,32 @@ namespace Game.Services.SAction
         [SerializeField]
         private SActionDataTag _responsible;
 
-        private Dictionary<SActionDataTag, object> _runtimeKwargs;
-
+        public Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }
         protected object Argument
         {
             get
             {
-                if (_runtimeKwargs == null)
+                if (RuntimeKwargs == null)
                     throw new ArgumentNullException(nameof(Argument));
 
-                if (!_runtimeKwargs.TryGetValue(_responsible, out object value))
+                if (!RuntimeKwargs.TryGetValue(_responsible, out object value))
                     return null;
 
                 return value;
             }
         }
 
-        public IExecutableAction New(Dictionary<SActionDataTag, object> kwargs)
+        public IExecutableAction DeepClone()
         {
-            var type = GetType();
-            var instance = CreateInstance(type);
+            var instance = CreateInstance(GetType());
 
             if (instance is ScriptableAction sa)
             {
                 sa._responsible = _responsible;
-                sa._runtimeKwargs = kwargs;
             }
             else throw new Exception();
 
-            return (IExecutableAction)instance;
+            return (ScriptableAction)instance;
         }
 
         public abstract void Execute();

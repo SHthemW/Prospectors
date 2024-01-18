@@ -1,13 +1,12 @@
 ﻿using Game.Interfaces.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Game.Interfaces
 {
-    public interface IExecutableAction
+    public interface IExecutableAction : IDeepCloneable<IExecutableAction>
     {
-        IExecutableAction New(Dictionary<SActionDataTag, object> kwargs);
+        Dictionary<SActionDataTag, object> RuntimeKwargs { get; set; }
         void Execute();
 
         /// <summary>
@@ -25,7 +24,8 @@ namespace Game.Interfaces
             if (kwargs == null) 
                 throw new ArgumentNullException(nameof(kwargs));
 
-            var instance = (TAction)action.New(kwargs);
+            var instance = (TAction)action.DeepClone();
+            instance.RuntimeKwargs = kwargs;
             action = instance;
         }
         static void BatchInit<TAction>(Dictionary<SActionDataTag, object> kwargs, params TAction[][] actionArrs) where TAction : IExecutableAction

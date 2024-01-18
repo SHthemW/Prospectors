@@ -20,13 +20,19 @@ namespace Game.Services.SAction
         [SerializeField]
         private string[] _stringArgs;
 
-        public readonly IExecutableAction New(Dictionary<SActionDataTag, object> kwargs)
+        public readonly Dictionary<SActionDataTag, object> RuntimeKwargs 
+        { 
+            get => _behaviour.RuntimeKwargs; 
+            set => _behaviour.RuntimeKwargs = value; 
+        }
+
+        public readonly IExecutableAction DeepClone()
         {
             var instance = new ParameterizedAction
             {
-                _behaviour = (ScriptableAction)((IExecutableAction)_behaviour).New(kwargs),
-                _objectArgs = _objectArgs,
-                _stringArgs = _stringArgs
+                _behaviour = (ScriptableAction)this._behaviour.DeepClone(),
+                _objectArgs = this._objectArgs,
+                _stringArgs = this._stringArgs
             };
 
             instance._behaviour.SetStaticArgs(
@@ -37,8 +43,8 @@ namespace Game.Services.SAction
         }
 
         public readonly void Execute()
-        {            
+        {
             _behaviour.Execute();
-        } 
+        }
     }
 }
