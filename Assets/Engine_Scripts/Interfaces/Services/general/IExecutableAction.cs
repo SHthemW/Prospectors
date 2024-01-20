@@ -48,24 +48,5 @@ namespace Game.Interfaces
                 for (int i = 0; i < actionArr.Length; i++)
                     Init(kwargs, ref actionArr[i]);
         }
-
-        /// <summary>
-        /// init some action array by create DEEPCLONE of it, and REPLACE them by this clone.
-        /// </summary>
-        /// <typeparam name="TAction"></typeparam>
-        /// <param name="kwargs"></param>
-        /// <param name="actionArrs"></param>
-        /// <exception cref="ArgumentNullException"></exception>
-        static void BatchInit<TAction>(Dictionary<SActionDataTag, object> kwargs, in IEnumerable<TAction[]> actionArrs) where TAction : IExecutableAction
-        {
-            if (kwargs == null)
-                throw new ArgumentNullException(nameof(kwargs));
-
-            if (actionArrs == null)
-                throw new ArgumentNullException(nameof(actionArrs));
-
-            foreach (var actionArr in actionArrs)
-                BatchInit(kwargs, actionArr);
-        }
     }
 }

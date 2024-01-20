@@ -25,49 +25,38 @@ namespace Game.Instances.Combat
 
         private void Start()
         {
-            IExecutableAction.BatchInit(kwargs: new()
+            var gunActionImpl = new Dictionary<SActionDataTag, object>()
             {
                 [SActionDataTag.PrimaryAnimator] = ThisWeapon.Animator,
 
                 [SActionDataTag.GunShellSpawnInfo] = (
-                    parent:   ThisWeapon.ShellParent.Get(),
+                    parent: ThisWeapon.ShellParent.Get(),
                     position: (Func<Vector3>)(() => ThisWeapon.ShellThrowingWindow.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.ShellThrowingWindow.rotation),
-                    pool:     new ObjectSpawner<IDestoryManagedObject>()
+                    pool: new ObjectSpawner<IDestoryManagedObject>()
                 ),
                 [SActionDataTag.GunFireSpawnInfo] = (
                     parent: ThisWeapon.Muzzle,
                     position: (Func<Vector3>)(() => ThisWeapon.Muzzle.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.Muzzle.rotation),
-                    pool:     new ObjectSpawner<IDestoryManagedObject>()
+                    pool: new ObjectSpawner<IDestoryManagedObject>()
                 ),
-            },
-            GetGunActions());
+            };
 
-            IExecutableAction.BatchInit(kwargs: new()
+            var masterActionImpl = new Dictionary<SActionDataTag, object>()
             {
                 [SActionDataTag.PrimaryAnimator] = ThisWeapon.MasterAnimators
-            },
-            GetMasterActions());
+            };
 
-            IEnumerable<ParameterizedAction[]> GetGunActions()
+            foreach (var round in ThisWeapon.ShootingLoopRound)
             {
-                foreach (var round in ThisWeapon.ShootingLoopRound)
-                {
-                    yield return round.GunActions;
+                IExecutableAction.BatchInit(gunActionImpl, round.GunActions);
+                IExecutableAction.BatchInit(masterActionImpl, round.MasterActions);
 
-                    foreach (var unit in round)
-                        yield return unit.GunActions;
-                }  
-            }
-            IEnumerable<ParameterizedAction[]> GetMasterActions()
-            {
-                foreach (var round in ThisWeapon.ShootingLoopRound)
+                foreach (var unit in round)
                 {
-                    yield return round.MasterActions;
-
-                    foreach (var unit in round)
-                        yield return unit.MasterActions;
+                    IExecutableAction.BatchInit(gunActionImpl, unit.GunActions);
+                    IExecutableAction.BatchInit(masterActionImpl, unit.MasterActions);
                 }
             }
         }
