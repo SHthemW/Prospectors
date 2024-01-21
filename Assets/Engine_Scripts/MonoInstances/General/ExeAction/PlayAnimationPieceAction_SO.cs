@@ -1,4 +1,4 @@
-﻿using Game.Interfaces;
+﻿using Game.Services.SAction;
 using System;
 using UnityEngine;
 
@@ -7,35 +7,78 @@ namespace Game.Instances.General
     [CreateAssetMenu(
         fileName = "new PlayAnimationPieceAction", 
         menuName = "General/ExeAction/PlayAnimationPieceAction")]
-    internal sealed class PlayAnimationPieceAction_SO : ExecutableAction
+    internal sealed class PlayAnimationPieceAction_SO : ScriptableAction
     {
-        [SerializeField]
-        private string _pieceName;
+        private Animator _animator = null;
+        private string   _pieceName;
+        private int      _layerIndex = 0;
 
-        [SerializeField]
-        private int _layerIndex = 0;
-
-        protected override bool MustHaveArgument => true;
-        protected override void Execute(in object animComponent)
+        /// <param name="objArgs">
+        /// <br/> [0. override animator: Animator]
+        /// </param>
+        /// <param name="strArgs">
+        /// <br/> [0. piece name: string]
+        /// <br/> [1. layer index: int]
+        /// </param>
+        /// <exception cref="ArgumentException"></exception>
+        public override sealed void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
-            if (animComponent == null)
-                throw new ArgumentNullException();
+            switch (objArgs) 
+            { 
+                case UnityEngine.Object[] oa when oa.Length == 0:
+                    break;
 
-            else if (animComponent is Animator animator)
-            {
-                if (animator.gameObject.activeInHierarchy)
-                    animator.Play(_pieceName, _layerIndex);
+                case UnityEngine.Object[] oa when oa.Length == 1 && oa[0] is Animator animator:
+                    _animator = animator;
+                    break;
+
+                default:
+                    throw new ArgumentException();
             }
 
-            else if (animComponent is Animator[] animators)
+            switch (strArgs)
             {
-                foreach (Animator each in animators)
-                    if (each.gameObject.activeInHierarchy)
-                        each.Play(_pieceName, _layerIndex);
-            }
+                case string[] sa when sa.Length == 0:
+                    break;
 
-            else
-                throw new InvalidOperationException();
+                case string[] sa:
+                    try
+                    {
+                        _pieceName = sa[0];
+                        _layerIndex = int.Parse(sa[1]);
+                    }
+                    catch (IndexOutOfRangeException) { break; }
+                    break;
+
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
+        public override sealed void Execute()
+        {
+            switch (Argument)
+            {
+                case null:
+                    if (_animator == null)
+                        throw new ArgumentNullException(nameof(Argument));
+                    _animator.Play(_pieceName, _layerIndex);
+                    break;
+
+                case Animator animator:
+                    if (animator.gameObject.activeInHierarchy)
+                        animator.Play(_pieceName, _layerIndex);
+                    break;
+
+                case Animator[] animators:
+                    foreach (Animator each in animators)
+                        if (each.gameObject.activeInHierarchy)
+                            each.Play(_pieceName, _layerIndex);
+                    break;
+
+                default:
+                    throw new ArgumentException();
+            }
         }
     }
 }

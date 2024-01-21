@@ -1,8 +1,7 @@
 ﻿using Game.Interfaces;
-using Game.Services.Combat;
+using Game.Services.SAction;
 using Game.Utils.Attributes;
 using Game.Utils.Collections;
-using Game.Utils.Extensions;
 using System;
 using UnityEngine;
 
@@ -30,7 +29,7 @@ namespace Game.Instances.Combat
         public int Damage { get; set; }
 
         [field: SerializeField]
-        internal ExecutableAction[] OnHitActions { get; private set; }
+        internal ParameterizedAction[] OnHitActions { get; private set; }
         public Action<GameObject> DeactiveAction { get; set; }
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");

@@ -1,5 +1,5 @@
 ﻿using Game.Interfaces;
-using Game.Services.FSM;
+using Game.Services.AI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

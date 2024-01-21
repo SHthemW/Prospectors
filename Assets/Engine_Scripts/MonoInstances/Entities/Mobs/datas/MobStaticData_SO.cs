@@ -26,17 +26,5 @@ namespace Game.Instances.Mob
         private int _maxHealth;
         internal int MaxHealth 
             => safe.Checked(_maxHealth, static h => h > 0);
-
-        [Header("Action")]
-
-        [SerializeField]
-        private ExecutableAction[] _onHittedActions;
-        internal ExecutableAction[] OnHittedActions 
-            => safe.Checked(_onHittedActions);
-
-        [SerializeField]
-        private bool _overrideHitActions;
-        internal bool OverrideHitActions 
-            => _overrideHitActions;
     }
 }

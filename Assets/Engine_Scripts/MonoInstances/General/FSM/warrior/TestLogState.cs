@@ -1,6 +1,4 @@
-﻿using Game.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using Game.Services.AI;
 using UnityEngine;
 
 namespace Game.Instances.General.FSM

@@ -1,6 +1,8 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.Data;
 using Game.Interfaces.GameObj;
 using Game.Services.Combat;
+using Game.Services.SAction;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,35 +11,27 @@ namespace Game.Instances.Mob
 {
     internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly
     {
-        private Dictionary<string, object>           _mobActionImpl;
-        private ObjectSpawner<IDestoryManagedObject> _hitEffectSpawner;
-        private ObjectSpawner<IDestoryManagedObject> _hitHoleSpawner;
-
-        private void Awake()
-        {
-            _hitEffectSpawner = new();
-            _hitHoleSpawner = new();
-        }
-
         private Vector3 _currentHittedPosition;
 
         private void Start()
         {
-            _mobActionImpl = new()
+            IExecutableAction.BatchInit(kwargs: new()
             {
-                ["hitEffectSpawnInfo"] = (
+                [SActionDataTag.HitEffectSpawnInfo] = (
                 parent:   ThisMob.HitEffectParent.Get(),
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     _hitEffectSpawner
+                pool:     new ObjectSpawner<IDestoryManagedObject>()
                 ),
-                ["hitHoleSpawnInfo"] = (
-                parent:   ThisMob.HitHoleParent.Get(), 
+                [SActionDataTag.HitHoleSpawnInfo] = (
+                parent:   ThisMob.HitHoleParent.Get(),
                 position: (Func<Vector3>)   (() => _currentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     _hitHoleSpawner
+                pool:     new ObjectSpawner<IDestoryManagedObject>()
                 )
-            };
+            },
+            ThisMob.OnHittedActions,
+            ThisMob.OnDeadActions);
         }
 
         public bool Enable { get; set; } = true;
@@ -52,7 +46,7 @@ namespace Game.Instances.Mob
             _currentHittedPosition = position;
 
             foreach (var action in ThisMob.OnHittedActions)
-                action.Implement(_mobActionImpl);
+                ((IExecutableAction)action).Execute();
 
             CombatUtil.Hit(
                 who:    ThisMob.Health.Get(),

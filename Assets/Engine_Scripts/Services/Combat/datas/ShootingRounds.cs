@@ -1,5 +1,5 @@
 ﻿using Game.Interfaces;
-using Game.Utils.Extensions;
+using Game.Services.SAction;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Game.Services.Combat
     /// one <see cref="ShootingRound"/> means one shoot (one time trigger press). <br/>
     /// </summary>
     [Serializable]
-    public struct ShootingRound : IEnumerable<ShootingUnit>
+    public struct ShootingRound : IEnumerable<ShootingUnit>, IDeepCloneable<ShootingRound>
     {
         [SerializeField]
         private ShootingUnit[] _units;
@@ -20,13 +20,13 @@ namespace Game.Services.Combat
         [Header("Action")]
 
         [SerializeField]
-        private ExecutableAction[] _gunActions;
-        public readonly ExecutableAction[] GunActions
+        private ParameterizedAction[] _gunActions;
+        public readonly ParameterizedAction[] GunActions
             => _gunActions;
 
         [SerializeField]
-        private ExecutableAction[] _masterActions;
-        public readonly ExecutableAction[] MasterActions
+        private ParameterizedAction[] _masterActions;
+        public readonly ParameterizedAction[] MasterActions
             => _masterActions;
 
         public readonly IEnumerator<ShootingUnit> GetEnumerator()
@@ -36,6 +36,16 @@ namespace Game.Services.Combat
         readonly IEnumerator IEnumerable.GetEnumerator()
         {
             return _units.GetEnumerator();
+        }
+
+        public readonly ShootingRound DeepClone()
+        {
+            return new ShootingRound
+            {
+                _units         = IDeepCloneable<ShootingUnit>     .BatchDeepClone(_units),
+                _gunActions    = IDeepCloneable<IExecutableAction>.BatchDeepClone(_gunActions),
+                _masterActions = IDeepCloneable<IExecutableAction>.BatchDeepClone(_masterActions),
+            };
         }
 
         public static ShootingRound GetCurrentRound(ref int currentIndex, in ShootingRound[] shootingRounds)
@@ -55,7 +65,7 @@ namespace Game.Services.Combat
     /// it should contains ONLY ONE bullet in each unit.
     /// </summary>
     [Serializable]
-    public struct ShootingUnit
+    public struct ShootingUnit : IDeepCloneable<ShootingUnit>
     {
         private readonly static Checker safe = new(nameof(ShootingUnit));
 
@@ -67,13 +77,13 @@ namespace Game.Services.Combat
         [Header("Action")]
 
         [SerializeField]
-        private ExecutableAction[] _gunActions;
-        public readonly ExecutableAction[] GunActions
+        private ParameterizedAction[] _gunActions;
+        public readonly ParameterizedAction[] GunActions
             => _gunActions;
 
         [SerializeField]
-        private ExecutableAction[] _masterActions;
-        public readonly ExecutableAction[] MasterActions
+        private ParameterizedAction[] _masterActions;
+        public readonly ParameterizedAction[] MasterActions
             => _masterActions;
 
         [Header("Property")]
@@ -87,5 +97,17 @@ namespace Game.Services.Combat
         private float _shootingDelaySecond;
         public readonly float ShootingDelaySecond
             => _shootingDelaySecond;
+
+        public readonly ShootingUnit DeepClone() 
+        {
+            return new ShootingUnit
+            {
+                _bullet              = this._bullet,
+                _gunActions          = IDeepCloneable<IExecutableAction>.BatchDeepClone(_gunActions),
+                _masterActions       = IDeepCloneable<IExecutableAction>.BatchDeepClone(_masterActions),
+                _shootingAngleOffset = this._shootingAngleOffset,
+                _shootingDelaySecond = this._shootingDelaySecond,
+            };
+        }
     }
 }

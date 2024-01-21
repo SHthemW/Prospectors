@@ -1,5 +1,5 @@
 ﻿using Game.Interfaces;
-using Game.Services.FSM;
+using Game.Services.AI;
 using UnityEngine;
 
 namespace Game.Instances.General.FSM

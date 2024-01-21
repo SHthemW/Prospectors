@@ -1,37 +1,79 @@
-﻿using Game.Interfaces;
-using Game.Interfaces.GameObj;
+﻿using Game.Interfaces.GameObj;
 using Game.Services.Combat;
+using Game.Services.SAction;
+using Game.Utils.Extensions;
 using System;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace Game.Instances.General
 {
     [CreateAssetMenu(
         fileName = "new SpawnGameObjectAction",
         menuName = "General/ExeAction/SpawnGameObjectAction")]
-    internal sealed class SpawnGameObjectAction_SO : ExecutableAction
+    internal sealed class SpawnGameObjectAction_SO : ScriptableAction
     {
-        [SerializeField] 
         private GameObject _spawn;
+        private Vector3    _overridePosition = Vector3.zero;
+        private Vector3    _overrideRotation = Vector3.zero;
 
-        [SerializeField]
-        private Vector3 _overridePosition;
-
-        [SerializeField]
-        private Vector3 _overrideRotation;
-
-        protected override sealed bool MustHaveArgument => false;
-        protected override sealed void Execute(in object arg = null)
+        /// <param name="objArgs">
+        /// <br/> 0. object to spawn: GameObject
+        /// </param>
+        /// <param name="strArgs">
+        /// <br/> [0. override spawn position: float, float, float]
+        /// <br/> [1. override spawn rotation: float, float, float]
+        /// </param>
+        /// <exception cref="ArgumentException"></exception>
+        public override sealed void SetStaticArgs(in UnityEngine.Object[] objArgs, in string[] strArgs)
         {
-            switch (arg)
+            switch (objArgs)
+            {
+                case UnityEngine.Object[] oa:
+                    try
+                    {
+                        if (oa[0] is GameObject obj)
+                            _spawn = obj;
+                        else 
+                            throw new ArgumentException();
+                    }
+                    catch (IndexOutOfRangeException) { throw new ArgumentException(); }
+                    break;
+
+                default:
+                    throw new ArgumentException();
+            }
+
+            switch (strArgs)
+            {
+                case string[] sa when sa.Length == 0:
+                    break; 
+
+                case string[] sa when sa.Length > 0:
+                    try
+                    {
+                        _overridePosition = sa[0].ToVector3();
+                        _overrideRotation = sa[1].ToVector3();
+                    }
+                    catch (IndexOutOfRangeException) { break; }
+                    break;   
+
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
+        public override sealed void Execute()
+        {
+            switch (Argument)
             {
                 // use default value and generate on world
                 case null:
-                    Instantiate(
-                        original: _spawn,
-                        position: _overridePosition,
-                        rotation: Quaternion.Euler(_overrideRotation));
+                    if (_spawn == null)
+                        throw new ArgumentException("spawn object is requirement.");
+                        Instantiate(
+                            original: _spawn,
+                            position: _overridePosition,
+                            rotation: Quaternion.Euler(_overrideRotation));
                     break;
 
                 // generate on world

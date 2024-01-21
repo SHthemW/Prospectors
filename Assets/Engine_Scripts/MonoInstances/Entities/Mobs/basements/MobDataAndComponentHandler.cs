@@ -1,11 +1,8 @@
 ﻿using Game.Interfaces;
 using Game.Services.Animation;
 using Game.Services.Combat;
-using Game.Services.FSM;
-using Game.Services.Physics;
+using Game.Services.SAction;
 using Game.Utils.Collections;
-using Game.Utils.Extensions;
-using System;
 using UnityEngine;
 
 namespace Game.Instances.Mob
@@ -20,9 +17,8 @@ namespace Game.Instances.Mob
         private MobStaticData_SO _staticData;
         internal int MaxHealth => _staticData.MaxHealth;
         internal int HitTimesConsumption => _staticData.HitTimesConsumption;
-        internal bool OverrideHitActions => _staticData.OverrideHitActions;
         internal float BaseMoveSpeed => _staticData.MoveSpped;
-        internal ExecutableAction[] OnHittedActions => _staticData.OnHittedActions;
+        
 
         [SerializeField]
         private FSMActionData _aiActionProperties;
@@ -34,7 +30,17 @@ namespace Game.Instances.Mob
         public IAnimationStateName AnimStateNames
             => safe.Checked(_animStateNames);
 
-        // components ref
+        [Header("Behaviours")]
+
+        [SerializeField] 
+        private ParameterizedAction[] _onHittedActions;
+        internal ParameterizedAction[] OnHittedActions => safe.Checked(_onHittedActions);
+        internal bool OverrideHitActions => OnHittedActions.Length > 0;
+
+        [SerializeField]
+        private ParameterizedAction[] _onDeadActions;
+        internal ParameterizedAction[] OnDeadActions => safe.Checked(_onDeadActions);
+
         [Header("Components")]
 
         [SerializeField]
