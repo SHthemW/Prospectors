@@ -9,31 +9,9 @@ using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly
+    internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly, IHoldCharHitPosition
     {
-        private Vector3 _currentHittedPosition;
-
-        private void Start()
-        {
-            IExecutableAction.BatchInit(kwargs: new()
-            {
-                [SActionDataTag.HitEffectSpawnInfo] = (
-                parent:   ThisMob.HitEffectParent.Get(),
-                position: (Func<Vector3>)   (() => _currentHittedPosition),
-                rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
-                ),
-                [SActionDataTag.HitHoleSpawnInfo] = (
-                parent:   ThisMob.HitHoleParent.Get(),
-                position: (Func<Vector3>)   (() => _currentHittedPosition),
-                rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
-                )
-            },
-            ThisMob.OnHittedActions,
-            ThisMob.OnDeadActions);
-        }
-
+        public Vector3 CurrentHittedPosition { get; set; }
         public bool Enable { get; set; } = true;
 
         int IBulletHitable.HitTimesConsumption => ThisMob.HitTimesConsumption;
@@ -43,15 +21,15 @@ namespace Game.Instances.Mob
             if (!this.Enable)
                 return;
 
-            _currentHittedPosition = position;
+            CurrentHittedPosition = position;
+
+            var health = ThisMob.Health.Get();
+            health.CurrentHealth -= bullet.Damage <= health.CurrentHealth
+                ? bullet.Damage
+                : health.CurrentHealth;
 
             foreach (var action in ThisMob.OnHittedActions)
                 ((IExecutableAction)action).Execute();
-
-            CombatUtil.Hit(
-                who:    ThisMob.Health.Get(),
-                damage: bullet.Damage,
-                anim:   (animator: ThisMob.Animator, name: ThisMob.AnimStateNames));
         }
     }
 }

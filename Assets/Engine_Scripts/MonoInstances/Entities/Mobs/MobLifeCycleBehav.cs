@@ -23,14 +23,6 @@ namespace Game.Instances.Mob
         private void Start()
         {
             CurrentHealth = ThisMob.MaxHealth;
-
-            IExecutableAction.BatchInit(kwargs: new()
-            {
-                [SActionDataTag.RootGameObject] = ThisMob.RootTransform.gameObject,
-
-                [SActionDataTag.PrimaryAnimator] = ThisMob.Animator,
-            },
-            ThisMob.OnDeadActions);
         }
 
         private void Update()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8600817203158024051}
   - component: {fileID: 7880027440252663570}
   - component: {fileID: 8421677013100890187}
+  - component: {fileID: 5279665398420080128}
   - component: {fileID: 6499651309505189434}
   - component: {fileID: 3814471394102011251}
   - component: {fileID: 2263207410418370473}
@@ -87,6 +88,12 @@ MonoBehaviour:
     _objectArgs:
     - {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
     _stringArgs: []
+  - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
+    _objectArgs: []
+    _stringArgs:
+    - _getHit_1
+    - 0
+    - 1
   _onDeadActions:
   - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
     _objectArgs: []
@@ -99,6 +106,18 @@ MonoBehaviour:
   _playerDetector: {fileID: 3225559880050982115}
   <Health>k__BackingField:
     _object: {fileID: 2210639238161841983}
+--- !u!114 &5279665398420080128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210639238161841983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1789400a6abf9bf4ca2f36a31e031065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6499651309505189434
 MonoBehaviour:
   m_ObjectHideFlags: 0
