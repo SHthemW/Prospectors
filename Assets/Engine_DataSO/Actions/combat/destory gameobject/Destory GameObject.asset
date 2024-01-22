@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e272bff30fcca42b03fd0c6c49a5e5, type: 3}
-  m_Name: Swarm
+  m_Script: {fileID: 11500000, guid: c9d2e8c227cfa7a4397b29e41acb5ac8, type: 3}
+  m_Name: Destory GameObject
   m_EditorClassIdentifier: 
-  _moveSpeed: 30
-  _hitTimesConsumption: 1
-  _maxHealth: 100
+  _responsible: 6

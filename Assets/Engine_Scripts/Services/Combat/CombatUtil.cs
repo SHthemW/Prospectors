@@ -21,19 +21,5 @@ namespace Game.Services.Combat
                 animator.SetTrigger(name.OnHit[UnityEngine.Random.Range(0, name.OnHit.Length)]);
             }
         }
-
-        public static void Die(IEnableOnAliveOnly[] behavioursToDisable, (Animator animator, IAnimationStateName name) anim = default)
-        {
-            if (behavioursToDisable == null)
-                throw new ArgumentNullException();
-
-            Array.ForEach(behavioursToDisable, behav => behav.Enable = false);
-
-            if (anim != default) // play animation
-            {
-                var (animator, name) = anim;
-                animator.SetTrigger(name.Die);
-            }
-        }
     }
 }
