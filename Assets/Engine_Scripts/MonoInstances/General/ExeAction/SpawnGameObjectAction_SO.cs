@@ -91,8 +91,16 @@ namespace Game.Instances.General
                 // generate on pool
                 case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation, ObjectSpawnerManager<IDestoryManagedObject> pool):
 
-                    var obj = pool.Spawn(_spawn);
-
+                    IDestoryManagedObject obj;
+                    try
+                    {
+                        obj = pool.Spawn(_spawn);
+                    }
+                    catch (InvalidOperationException e) 
+                    { 
+                        Debug.Log(e.Message);
+                        break; 
+                    }                  
                     obj.transform.position = _overridePosition == default ? position() : _overridePosition;
                     obj.transform.rotation = _overrideRotation == default ? rotation() : Quaternion.Euler(_overrideRotation);
                     obj.transform.parent   = parent;

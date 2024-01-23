@@ -22,14 +22,28 @@ namespace Game.Services.Combat
             _componentPool   = new();
             _gameObjectPool  = new(
                 createFunc:      () => UnityEngine.Object.Instantiate(_spawn),
-                actionOnGet:     go => go.SetActive(true),
+                actionOnGet:     go =>
+                {
+                    if (go != null) 
+                        go.SetActive(true);
+                },
                 actionOnRelease: go => go.SetActive(false),
                 actionOnDestroy: go => UnityEngine.Object.Destroy(go)
             );
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         internal TComponent Spawn()
         {
             GameObject obj = _gameObjectPool.Get();
+
+            if (obj == null)
+                throw new InvalidOperationException(message: "Pool: get an null object.");
+
             TComponent component = GetComponentOnPool(key: obj);
 
             component.DeactiveAction = _gameObjectPool.Release;
