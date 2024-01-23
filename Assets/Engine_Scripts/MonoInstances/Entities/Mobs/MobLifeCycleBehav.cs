@@ -20,6 +20,11 @@ namespace Game.Instances.Mob
          *  behaviours
          */
 
+        private void Awake()
+        {
+            ThisMob.Health = new(this);
+        }
+
         private void Start()
         {
             CurrentHealth = ThisMob.MaxHealth;

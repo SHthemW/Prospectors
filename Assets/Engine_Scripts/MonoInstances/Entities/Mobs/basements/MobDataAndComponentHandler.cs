@@ -66,14 +66,12 @@ namespace Game.Instances.Mob
         internal Detector PlayerDetector 
             => safe.Checked(_playerDetector);
 
-        [field: SerializeField]
-        internal ObjectComponent<IHoldCharHealth> Health { get; set; }
-
-        [field: SerializeField]
-        internal ObjectComponent<IHoldCharHitPosition> CurrentHitPos { get; set; }
+        internal BufferedComponent<IHoldCharHealth> Health { get; set; }
+        internal BufferedComponent<IHoldCharHitPosition> HitPosHolder { get; set; }
 
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
+
 
         private void Start()
         {
@@ -85,13 +83,13 @@ namespace Game.Instances.Mob
 
                 [SActionDataTag.HitEffectSpawnInfo] = (
                 parent:   this.HitEffectParent.Get(),
-                position: (Func<Vector3>)   (() => this.CurrentHitPos.Get().CurrentHittedPosition),
+                position: (Func<Vector3>)   (() => this.HitPosHolder.Get().CurrentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
                 pool:     new ObjectSpawner<IDestoryManagedObject>()
                 ),
                 [SActionDataTag.HitHoleSpawnInfo] = (
                 parent:   this.HitHoleParent.Get(),
-                position: (Func<Vector3>)   (() => this.CurrentHitPos.Get().CurrentHittedPosition),
+                position: (Func<Vector3>)   (() => this.HitPosHolder.Get().CurrentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
                 pool:     new ObjectSpawner<IDestoryManagedObject>()
                 )

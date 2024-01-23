@@ -9,6 +9,11 @@ namespace Game.Instances.Mob
         public Vector3 CurrentHittedPosition { get; set; }
         public bool Enable { get; set; } = true;
 
+        private void Awake()
+        {
+            ThisMob.HitPosHolder = new(this);
+        }
+
         int IBulletHitable.HitTimesConsumption => ThisMob.HitTimesConsumption;
         bool IBulletHitable.OverrideHitActions => ThisMob.OverrideHitActions;
         void IBulletHitable.Hit(IBullet bullet, Vector3 position)
