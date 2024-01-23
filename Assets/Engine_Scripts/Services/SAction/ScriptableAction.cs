@@ -17,7 +17,7 @@ namespace Game.Services.SAction
             get
             {
                 if (RuntimeKwargs == null)
-                    throw new ArgumentNullException(nameof(Argument));
+                    throw new ArgumentNullException(nameof(Argument), message: $"SAction {name} has null runtime argument.");
 
                 if (!RuntimeKwargs.TryGetValue(_responsible, out object value))
                     return null;
