@@ -1,8 +1,11 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.Data;
+using Game.Interfaces.GameObj;
 using Game.Services.Animation;
 using Game.Services.Combat;
 using Game.Services.SAction;
 using Game.Utils.Collections;
+using System;
 using UnityEngine;
 
 namespace Game.Instances.Mob
@@ -66,7 +69,35 @@ namespace Game.Instances.Mob
         [field: SerializeField]
         internal ObjectComponent<IHoldCharHealth> Health { get; set; }
 
+        [field: SerializeField]
+        internal ObjectComponent<IHoldCharHitPosition> CurrentHitPos { get; set; }
+
         public SingletonComponent<Transform> HitEffectParent { get; set; } = new("@HitEffects");
         public SingletonComponent<Transform> HitHoleParent { get; set; } = new("@HitHoles");
+
+        private void Start()
+        {
+            IExecutableAction.BatchInit(kwargs: new()
+            {
+                [SActionDataTag.RootGameObject]  = this.RootTransform.gameObject,
+
+                [SActionDataTag.PrimaryAnimator] = this.Animator,
+
+                [SActionDataTag.HitEffectSpawnInfo] = (
+                parent:   this.HitEffectParent.Get(),
+                position: (Func<Vector3>)   (() => this.CurrentHitPos.Get().CurrentHittedPosition),
+                rotation: (Func<Quaternion>)(() => transform.rotation),
+                pool:     new ObjectSpawner<IDestoryManagedObject>()
+                ),
+                [SActionDataTag.HitHoleSpawnInfo] = (
+                parent:   this.HitHoleParent.Get(),
+                position: (Func<Vector3>)   (() => this.CurrentHitPos.Get().CurrentHittedPosition),
+                rotation: (Func<Quaternion>)(() => transform.rotation),
+                pool:     new ObjectSpawner<IDestoryManagedObject>()
+                )
+            },
+            this.OnHittedActions,
+            this.OnDeadActions);
+        }
     }
 }

@@ -1,16 +1,11 @@
 ﻿using Game.Interfaces;
-using Game.Interfaces.Data;
-using Game.Interfaces.GameObj;
-using Game.Services.Combat;
-using Game.Services.SAction;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Instances.Mob
 {
     internal sealed class MobHitableBehav : MobBehaviour, IBulletHitable, IEnableOnAliveOnly, IHoldCharHitPosition
     {
+        [field: SerializeField]
         public Vector3 CurrentHittedPosition { get; set; }
         public bool Enable { get; set; } = true;
 
