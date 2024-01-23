@@ -87,13 +87,26 @@ MonoBehaviour:
     _objectArgs:
     - {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
     _stringArgs: []
-  _onDeadActions: []
+  - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
+    _objectArgs: []
+    _stringArgs:
+    - _getHit_1
+    - 0
+    - 1
+  _onDeadActions:
+  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
+    _objectArgs:
+    - {fileID: 2347264275908147945, guid: be05d7582a27a074c827f6ae66ac1d3a, type: 3}
+    _stringArgs: []
+  - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
+    _objectArgs: []
+    _stringArgs:
+    - Die
+    - 3
   _animator: {fileID: 557476555918016417}
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
   _playerDetector: {fileID: 3225559880050982115}
-  <Health>k__BackingField:
-    _object: {fileID: 2210639238161841983}
 --- !u!114 &6499651309505189434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5f7492e2dedce49b5c887c462e78e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHittedPosition>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!114 &2263207410418370473
 MonoBehaviour:
   m_ObjectHideFlags: 0

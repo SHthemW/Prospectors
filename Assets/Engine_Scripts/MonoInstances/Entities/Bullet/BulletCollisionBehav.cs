@@ -23,13 +23,13 @@ namespace Game.Instances.Combat
                 parent:   ThisBullet.HitEffectParent.Get(),
                 position: (Func<Vector3>)(() => transform.position),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
+                pool:     new ObjectSpawnerManager<IDestoryManagedObject>()
                 ),
                 [SActionDataTag.HitHoleSpawnInfo] = (
                 parent:   ThisBullet.HitHoleParent.Get(),
                 position: (Func<Vector3>)(() => transform.position),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
+                pool:     new ObjectSpawnerManager<IDestoryManagedObject>()
                 )
             },
             ThisBullet.OnHitActions);

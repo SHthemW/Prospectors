@@ -1,10 +1,11 @@
 ﻿using Game.Interfaces;
+using Game.Interfaces.Data;
 using Game.Services.Combat;
 using UnityEngine;
 
 namespace Game.Instances.Mob
 {
-    internal sealed class MobLifeCycleBehav : MobBehaviour, IHoldCharHealth
+    internal sealed class MobLifeCycleBehav : MobBehaviour, IHoldCharHealth, IEnableOnAliveOnly
     {
         /*
          *  datas
@@ -15,9 +16,17 @@ namespace Game.Instances.Mob
         [field: SerializeField, Utils.Attributes.ReadOnly]
         public int CurrentHealth { get; set; }
 
+        [field: SerializeField]
+        public bool Enable { get; set; } = true;
+
         /*
          *  behaviours
          */
+
+        private void Awake()
+        {
+            ThisMob.Health = new(this);
+        }
 
         private void Start()
         {
@@ -26,8 +35,17 @@ namespace Game.Instances.Mob
 
         private void Update()
         {
+            if (!this.Enable)
+                return;
+
             if (CurrentHealth <= 0)
-                CombatUtil.Die(behavioursToDisable: GetComponents<IEnableOnAliveOnly>(), anim: (ThisMob.Animator, ThisMob.AnimStateNames));
+            {
+                foreach (var action in ThisMob.OnDeadActions)
+                    action.Execute();
+
+                foreach (var toDisables in GetComponents<IEnableOnAliveOnly>())
+                    toDisables.Enable = false;
+            }
         }
     }
 }
