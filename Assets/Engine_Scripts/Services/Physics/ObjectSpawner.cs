@@ -1,21 +1,19 @@
-﻿using Game.Interfaces;
-using Game.Interfaces.GameObj;
+﻿using Game.Interfaces.GameObj;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Game.Services.Combat
 {
-    public sealed class ObjectSpawner<TComponent> where TComponent : IDestoryManagedObject
+    internal sealed class ObjectSpawner<TComponent> where TComponent : IDestoryManagedObject
     {
         private readonly ObjectPool<GameObject>             _gameObjectPool;
         private readonly Dictionary<GameObject, TComponent> _componentPool;
 
         private readonly GameObject _spawn;
 
-        public ObjectSpawner(in GameObject spawn)
+        internal ObjectSpawner(in GameObject spawn)
         {
             _spawn = spawn != null 
                 ? spawn 
@@ -29,7 +27,7 @@ namespace Game.Services.Combat
                 actionOnDestroy: go => UnityEngine.Object.Destroy(go)
             );
         }
-        public TComponent Spawn()
+        internal TComponent Spawn()
         {
             GameObject obj = _gameObjectPool.Get();
             TComponent component = GetComponentOnPool(key: obj);
