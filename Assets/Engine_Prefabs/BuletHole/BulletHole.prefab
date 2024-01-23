@@ -33,7 +33,7 @@ Transform:
   - {fileID: 428652268793262923}
   - {fileID: 4783124207359085710}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!114 &4337579768246370133
 MonoBehaviour:
@@ -51,14 +51,14 @@ MonoBehaviour:
   bakeOnAwake: 0
   flipNormals: 0
   backfaceCulling: 0
-  distance: 0.1
+  distance: 0.02
   angleConstraint: 180
-  technique: 0
+  technique: 4
   deferredFlags: 0
   inclusion: 0
   transformObserver:
-    lastPosition: {x: 0, y: 0, z: 0}
-    lastScale: {x: 0.15, y: 0.15, z: 0.15}
+    lastPosition: {x: -1.736, y: 2.027, z: 4.721}
+    lastScale: {x: 0.3, y: 0.3, z: 0.3}
     lastRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
     transform: {fileID: 8421418360697771905}
   needsDynamicGeometry: 1
@@ -74,12 +74,12 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eeac1c8a924f34248ba1a4c4f66042b1, type: 2}
   atlas: {fileID: 0}
   atlasRegionIndex: 0
-  maxDistance: 1
+  maxDistance: 0.8
   projectionDistance: 1
   smoothNormals: 0
   normalSmoothFactor: 0
   normalSmoothThreshold: 0
-  resolution: 1
+  resolution: 2
   multiMeshEnabled: 0
   cullInvisible: 0
   cullUnreachable: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   surfaceRotation: 0
   quality: 1
   sharedMesh: {fileID: 0}
-  instanceID: 40494
+  instanceID: -1484
 --- !u!114 &-935860915616249927
 MonoBehaviour:
   m_ObjectHideFlags: 0
