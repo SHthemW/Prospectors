@@ -94,6 +94,10 @@ MonoBehaviour:
     - 0
     - 1
   _onDeadActions:
+  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
+    _objectArgs:
+    - {fileID: 2347264275908147945, guid: be05d7582a27a074c827f6ae66ac1d3a, type: 3}
+    _stringArgs: []
   - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
     _objectArgs: []
     _stringArgs:
@@ -103,10 +107,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 7880027440252663570}
   _rootTransform: {fileID: 8600817203158024051}
   _playerDetector: {fileID: 3225559880050982115}
-  <Health>k__BackingField:
-    _object: {fileID: 2210639238161841983}
-  <CurrentHitPos>k__BackingField:
-    _object: {fileID: 2210639238161841983}
 --- !u!114 &6499651309505189434
 MonoBehaviour:
   m_ObjectHideFlags: 0

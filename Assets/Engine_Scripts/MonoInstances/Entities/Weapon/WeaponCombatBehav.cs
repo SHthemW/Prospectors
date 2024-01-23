@@ -12,7 +12,7 @@ namespace Game.Instances.Combat
 {
     internal sealed class WeaponCombatBehav : WeaponBehaviour
     {
-        private ObjectSpawner<IBullet> _bulletShooter;
+        private ObjectSpawnerManager<IBullet> _bulletShooter;
 
         private void Awake()
         {
@@ -33,13 +33,13 @@ namespace Game.Instances.Combat
                     parent: ThisWeapon.ShellParent.Get(),
                     position: (Func<Vector3>)(() => ThisWeapon.ShellThrowingWindow.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.ShellThrowingWindow.rotation),
-                    pool: new ObjectSpawner<IDestoryManagedObject>()
+                    pool: new ObjectSpawnerManager<IDestoryManagedObject>()
                 ),
                 [SActionDataTag.GunFireSpawnInfo] = (
                     parent: ThisWeapon.Muzzle,
                     position: (Func<Vector3>)(() => ThisWeapon.Muzzle.position),
                     rotation: (Func<Quaternion>)(() => ThisWeapon.Muzzle.rotation),
-                    pool: new ObjectSpawner<IDestoryManagedObject>()
+                    pool: new ObjectSpawnerManager<IDestoryManagedObject>()
                 ),
             };
 

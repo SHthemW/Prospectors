@@ -85,13 +85,13 @@ namespace Game.Instances.Mob
                 parent:   this.HitEffectParent.Get(),
                 position: (Func<Vector3>)   (() => this.HitPosHolder.Get().CurrentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
+                pool:     new ObjectSpawnerManager<IDestoryManagedObject>()
                 ),
                 [SActionDataTag.HitHoleSpawnInfo] = (
                 parent:   this.HitHoleParent.Get(),
                 position: (Func<Vector3>)   (() => this.HitPosHolder.Get().CurrentHittedPosition),
                 rotation: (Func<Quaternion>)(() => transform.rotation),
-                pool:     new ObjectSpawner<IDestoryManagedObject>()
+                pool:     new ObjectSpawnerManager<IDestoryManagedObject>()
                 )
             },
             this.OnHittedActions,

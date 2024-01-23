@@ -13,29 +13,28 @@ namespace Game.Services.Combat
         private readonly ObjectPool<GameObject>             _gameObjectPool;
         private readonly Dictionary<GameObject, TComponent> _componentPool;
 
-        private GameObject _currentGameObject;
+        private readonly GameObject _spawn;
 
-        public ObjectSpawner()
+        public ObjectSpawner(in GameObject spawn)
         {
+            _spawn = spawn != null 
+                ? spawn 
+                : throw new ArgumentNullException(nameof(spawn), message: "cannot init objectSpawner by null gameObject.");
+
             _componentPool   = new();
             _gameObjectPool  = new(
-                createFunc:      () => UnityEngine.Object.Instantiate(_currentGameObject),
+                createFunc:      () => UnityEngine.Object.Instantiate(_spawn),
                 actionOnGet:     go => go.SetActive(true),
                 actionOnRelease: go => go.SetActive(false),
                 actionOnDestroy: go => UnityEngine.Object.Destroy(go)
             );
         }
-        public TComponent Spawn(in GameObject objToSpawn)
+        public TComponent Spawn()
         {
-            if (objToSpawn == null) 
-                throw new ArgumentNullException();
-
-            _currentGameObject = objToSpawn;
             GameObject obj = _gameObjectPool.Get();
-
             TComponent component = GetComponentOnPool(key: obj);
-            component.DeactiveAction = _gameObjectPool.Release;
 
+            component.DeactiveAction = _gameObjectPool.Release;
             return component;
         }
 

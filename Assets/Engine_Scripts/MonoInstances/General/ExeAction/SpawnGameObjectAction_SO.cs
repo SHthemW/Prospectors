@@ -64,6 +64,8 @@ namespace Game.Instances.General
 
         public override sealed void Execute()
         {
+            Debug.Log(_spawn.name);
+
             switch (Argument)
             {
                 // use default value and generate on world
@@ -87,7 +89,7 @@ namespace Game.Instances.General
                     break;
 
                 // generate on pool
-                case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation, ObjectSpawner<IDestoryManagedObject> pool):
+                case (Transform parent, Func<Vector3> position, Func<Quaternion> rotation, ObjectSpawnerManager<IDestoryManagedObject> pool):
 
                     var obj = pool.Spawn(_spawn);
 
