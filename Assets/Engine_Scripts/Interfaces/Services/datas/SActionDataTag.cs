@@ -15,5 +15,8 @@ namespace Game.Interfaces.Data
 
         // play animation
         PrimaryAnimator    = 5,
+
+        // destory gameobject
+        RootGameObject     = 6,
     }
 }
