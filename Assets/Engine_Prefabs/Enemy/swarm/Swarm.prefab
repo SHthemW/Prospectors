@@ -37,7 +37,7 @@ Transform:
   - {fileID: 5473601821898986896}
   - {fileID: 2926436485709287340}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7880027440252663570
 Rigidbody:
@@ -93,6 +93,10 @@ MonoBehaviour:
     - _getHit_1
     - 0
     - 1
+  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
+    _objectArgs:
+    - {fileID: 1208725514348758300, guid: e4f974acc73d2f040aa74f15c207ffd7, type: 3}
+    _stringArgs: []
   _onDeadActions:
   - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
     _objectArgs:
@@ -120,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentHealth>k__BackingField: 0
+  <Enable>k__BackingField: 1
 --- !u!114 &3814471394102011251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,10 +251,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.71
+  m_Radius: 0.7802779
   m_Height: 2.13
   m_Direction: 0
-  m_Center: {x: 0.46, y: 0.86, z: 0.68}
+  m_Center: {x: 0.46000004, y: 0.789722, z: 0.68000007}
 --- !u!1001 &5466762456217462944
 PrefabInstance:
   m_ObjectHideFlags: 0
