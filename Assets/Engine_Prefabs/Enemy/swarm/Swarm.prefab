@@ -37,7 +37,7 @@ Transform:
   - {fileID: 5473601821898986896}
   - {fileID: 2926436485709287340}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7880027440252663570
 Rigidbody:
@@ -86,10 +86,6 @@ MonoBehaviour:
   - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
     _objectArgs:
     - {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
-    _stringArgs: []
-  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
-    _objectArgs:
-    - {fileID: 1208725514348758300, guid: e4f974acc73d2f040aa74f15c207ffd7, type: 3}
     _stringArgs: []
   - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
     _objectArgs: []

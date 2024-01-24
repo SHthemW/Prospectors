@@ -40,21 +40,21 @@ namespace Game.Instances.Combat
             if (collision.gameObject.CompareTag("Unhitable"))
                 return;
 
-            if (!collision.gameObject.CompareTag("Hitable"))
+            if (collision.gameObject.CompareTag("Hitable"))
+            {
+                if (!collision.gameObject.TryGetComponent(out IBulletHitable hitable))
+                    throw new MissingComponentException();
+
+                hitable.Hit(ThisBullet, transform.position);
+                ThisBullet.CurrentHitTimes += hitable.HitTimesConsumption;
+            }
+            else
             {
                 ThisBullet.CurrentHitTimes += OBSTACLE_TIMES_COST;
-                Array.ForEach(ThisBullet.OnHitActions, a => ((IExecutableAction)a).Execute());
-                return;
             }
 
-            if (!collision.gameObject.TryGetComponent(out IBulletHitable hitable))
-                throw new ArgumentException();
-
-            hitable.Hit(ThisBullet, transform.position);
-            ThisBullet.CurrentHitTimes += hitable.HitTimesConsumption;
-
-            if (!hitable.OverrideHitActions)
-                Array.ForEach(ThisBullet.OnHitActions, a => ((IExecutableAction)a).Execute());
+            foreach (var action in ThisBullet.OnHitActions)
+                action.Execute();
 
             if (_enableHitDebug)
                 Debug.Log("[bullet] hitted: " + collision.gameObject.name);

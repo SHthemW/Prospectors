@@ -38,7 +38,6 @@ namespace Game.Instances.Mob
         [SerializeField] 
         private ParameterizedAction[] _onHittedActions;
         internal ParameterizedAction[] OnHittedActions => safe.Checked(_onHittedActions);
-        internal bool OverrideHitActions => OnHittedActions.Length > 0;
 
         [SerializeField]
         private ParameterizedAction[] _onDeadActions;
