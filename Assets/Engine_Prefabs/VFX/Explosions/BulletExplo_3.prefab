@@ -9744,6 +9744,7 @@ GameObject:
   - component: {fileID: 7254158284043584016}
   - component: {fileID: 7374047756250919365}
   - component: {fileID: 8528529777013247413}
+  - component: {fileID: -7873182527447159044}
   m_Layer: 0
   m_Name: BulletExplo_3
   m_TagString: Untagged
@@ -9760,8 +9761,8 @@ Transform:
   m_GameObject: {fileID: 4537544798672958842}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4511471717823827740}
   - {fileID: 8661797676472459787}
@@ -14526,6 +14527,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-7873182527447159044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537544798672958842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075037ec509dc704b9a3df9c985f586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6662705479620454916
 GameObject:
   m_ObjectHideFlags: 0

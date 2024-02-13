@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.50980395}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.6509804}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4933,6 +4933,7 @@ GameObject:
   - component: {fileID: 385236416102280225}
   - component: {fileID: 1981951020587104663}
   - component: {fileID: 8311536388623975417}
+  - component: {fileID: -7069221505881537895}
   m_Layer: 0
   m_Name: blood_swarm
   m_TagString: Untagged
@@ -4949,13 +4950,13 @@ Transform:
   m_GameObject: {fileID: 1982452447576042369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7128315238622359262}
   - {fileID: 4923676607296129027}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1981951020587104663
 ParticleSystem:
@@ -5147,7 +5148,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.6313726}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.75686276}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9828,6 +9829,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-7069221505881537895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982452447576042369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075037ec509dc704b9a3df9c985f586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4219027823947164295
 GameObject:
   m_ObjectHideFlags: 0
