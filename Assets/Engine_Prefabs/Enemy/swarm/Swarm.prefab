@@ -93,6 +93,10 @@ MonoBehaviour:
     - _getHit_1
     - 0
     - 1
+  - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
+    _objectArgs:
+    - {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
+    _stringArgs: []
   _onDeadActions:
   - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
     _objectArgs:
