@@ -85,7 +85,7 @@ MonoBehaviour:
   _onHittedActions:
   - _behaviour: {fileID: 11400000, guid: 07e7922e944142a4fa5dfc4e74bcceb4, type: 2}
     _objectArgs:
-    - {fileID: 3814113618925355111, guid: 37fa28d151aa3c048b5e27b9b19282d8, type: 3}
+    - {fileID: 1982452447576042369, guid: f2bfe4d040b543d408d542ebe391f6ba, type: 3}
     _stringArgs: []
   - _behaviour: {fileID: 11400000, guid: 358f5983be576c042ad615994ba93c2f, type: 2}
     _objectArgs: []

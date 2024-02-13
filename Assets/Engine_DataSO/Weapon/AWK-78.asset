@@ -26,7 +26,7 @@ MonoBehaviour:
       _gunActions:
       - _behaviour: {fileID: 11400000, guid: ceca57fcd5e1bae4285e0632d63d8775, type: 2}
         _objectArgs:
-        - {fileID: 4153021328485329472, guid: de804dd785977f04db1920f6aad5cf9d, type: 3}
+        - {fileID: 8832934003024307431, guid: b48ec28b370453c41883af3396dd4458, type: 3}
         _stringArgs: []
       - _behaviour: {fileID: 11400000, guid: 4aad28a8e6778ba45b0574dd69367072, type: 2}
         _objectArgs:
